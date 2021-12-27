@@ -1,5 +1,7 @@
 package com.ycm.Sockets;
 
+import com.ycm.Sql.MemberSql;
+
 import java.io.*;
 import java.net.Socket;
 import java.sql.SQLException;
@@ -34,42 +36,43 @@ public class ServerThread implements Runnable {
 
         Random r = new Random();
 
-        while (true) {
-            try {
-                Object i = is.readObject();
+        try {
+            Object i = is.readObject();
 
-                if (i instanceof Request) {
-                    Request rq = (Request) i;
+            if (i instanceof Request) {
+                Request rq = (Request) i;
 
-                    Thread.sleep(SLEEPTIME);
+                Thread.sleep(SLEEPTIME);
 
-                    if (os == null) {
-                        try {
-                            os = new ObjectOutputStream(new BufferedOutputStream(this.socket.getOutputStream()));
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    Response rs = new Response(executeQuery(rq));
-
+                if (os == null) {
                     try {
-                        os.writeObject(rs);
-                        os.flush();
-                    } catch (Exception var7) {
-                        var7.printStackTrace();
-                    }
-
-                    if (rs.getObj() != null) {
-                        this.socket.close();
+                        os = new ObjectOutputStream(new BufferedOutputStream(this.socket.getOutputStream()));
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.exit(0);
+
+                Response rs = new Response(executeQuery(rq));
+
+                try {
+                    os.writeObject(rs);
+                    os.flush();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                if (rs.getObj() != null) {
+                    this.socket.close();
+                }
+
             }
         }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
     }
+
     /**
      * Function that returns an object as a response to posting the request.
      *
@@ -137,9 +140,11 @@ public class ServerThread implements Runnable {
                 case "notifyUser":
                     obj = sqlQuery.notifyUser(m.getArgs1(), m.getArgs2(), m.getArgs3(), Integer.parseInt(m.getArgs3()), m.getArgs4());
                     break;
+                    */
                 case "register":
-                    obj = UserSQL.register(m.getArgs1(), m.getArgs2(), m.getArgs3(), m.getArgs4());
+                    obj = MemberSql.register(m.getArgs1(), m.getArgs2(), m.getArgs3(), m.getArgs4(), m.getArgs5(), m.getArgs6());
                     break;
+                    /*
                 case "removeEmployee":
                     obj = AdminSQL.removeEmployee(m.getArgs1(), m.getArgs2());
                     break;

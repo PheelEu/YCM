@@ -7,19 +7,20 @@ import java.util.Date;
 public class Payment implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String ID;
+    private int ID;
     private String username;
     private Date paymentDate;
     private String type;
+    private String method;
     private double amount;
     private boolean paid;
-    private int lastID = 0;
 
-    public Payment(String ID, Member m, String type,double amount){
-        this.ID = String.valueOf(getID());
+    public Payment(int ID, Member m, String type,String method, double amount){
+        this.ID = ID;
         this.username = m.getUsername();
         this.paymentDate = Club.getToday();
         this.type = type;
+        this.method = method;
         this.amount = amount;
         this.paid = false;
     }
@@ -28,10 +29,7 @@ public class Payment implements Serializable {
      * Gets the id of the payment.
      * @return id of the last payment + 1.
      **/
-    public int getID(){
-        lastID++;
-        return lastID;
-    }
+    public int getID(){return ID;}
 
     /**
      * Gets the username of the member linked to this payment.
@@ -78,6 +76,22 @@ public class Payment implements Serializable {
      **/
     public void setType(String type) {
         this.type = type;
+    }
+
+    /**
+     * This method gets the method of payment.
+     * @return the method of payment, can be by card or bank transfer.
+     **/
+    public String getMethod() {
+        return method;
+    }
+
+    /**
+     * This method sets the type of payment for the notification.
+     * @param method it's the payment method, can be by card or bank transfer.
+     **/
+    public void setMethod(String method) {
+        this.method = method;
     }
 
     /**
