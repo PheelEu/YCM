@@ -2,6 +2,7 @@ package com.ycm.Classes;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -21,6 +22,7 @@ public class Race implements Serializable {
 
     private String name;
     private double cost;
+    private Date raceDay;
 
     ArrayList<Boat> competitors = new ArrayList<Boat>();
 
@@ -77,4 +79,16 @@ public class Race implements Serializable {
     public void setCompetitors(ArrayList<Boat> competitors) {
         this.competitors = competitors;
     }
+
+    /**
+     * Gets date of the race.
+     * @return the race day date.
+     **/
+    public Date getRaceDay() {return raceDay;}
+
+    /**
+     * Sets the date of the race.
+     * @param raceDay is the date on which the race is taking place.
+     **/
+    public void setRaceDay(Date raceDay) {this.raceDay = raceDay;}
 }

@@ -35,8 +35,8 @@ public class MemberSql {
     /**
      * Method with a query to delete a member from database.
      *
-     * @param email the email of user that will be delete.
-     * @param password the password of user that will be delete.
+     * @param email the email of user that will be deleted.
+     * @param password the password of user that will be deleted.
      * @return true if there are no errors.
      */
     public static Object delete(String email, String password) {
@@ -51,18 +51,11 @@ public class MemberSql {
     }
 
     /**
-     * Create an order in the database.
-     * This is as a purchase in the shop.
      *
-     * @param email the email of the user buying.
-     * @param nameWine the name of the wine that user wants.
-     * @param producerWine the producer's name of the wine that user wants.
-     * @param yearWine the production year of the wine that user wants.
-     * @param address the user's address.
-     * @param numBottles the number of bottles that user buying.
-     */
-    public static void AddBoat(String email, String nameWine, String producerWine, String yearWine, String address, int numBottles) {
-        String sqlInsert = "INSERT INTO buyorder (Email, NameWine, ProducerWine, YearWine, Address, NumBottles, Done) VALUES('" + email + "','" + nameWine + "','" + producerWine + "','"  + yearWine + "','" + address + "','" + numBottles + "','0')";
+     *
+     **/
+    public static void AddBoat(String name, String ID, double length, double boatStorage) {
+        String sqlInsert = "INSERT INTO boat (Name, ID, Length, BoatStorage) VALUES('" + name + "','" + ID + "','" + length + "','"  + boatStorage + "')";
         try {
             QuerySql.connection().execute(sqlInsert);
         }
@@ -72,23 +65,21 @@ public class MemberSql {
     }
 
     /**
-     * Create a new notification made by user in the database.
+     * Method with a query to delete a member from database.
      *
-     * @param email the email of the user that notify.
-     * @param nameWine the name of the wine interested in the notification.
-     * @param producerWine the producer's name of the wine.
-     * @param yearWine the production year of the wine.
-     * @param numBottles the number of bottles wanted by user.
+     * @param name the name of boat that will be deleted.
+     * @param ID it's the ID of the boat that will be deleted.
      * @return true if there are no errors.
      */
-    public static Object sendNotify(String email, String nameWine, String producerWine, String yearWine, int numBottles) {
-        String sqlInsert = "INSERT INTO sendnotify (Email, NameWine, ProducerWine, YearWine, NumBottles) VALUES('" + email + "','" + nameWine + "','" + producerWine + "','"  + yearWine + "','" + numBottles + "')";
+    public static Object removeBoat(String name, String ID) {
+        String sqlDelete = "DELETE FROM boat WHERE Name='" + name + "' AND ID='" + ID + "'";
         try {
-            QuerySql.connection().execute(sqlInsert);
+            QuerySql.connection().executeQuery(sqlDelete);
             return true;
         }
         catch (SQLException e) {
             return false;
         }
     }
+
 }

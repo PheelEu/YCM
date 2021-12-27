@@ -8,9 +8,9 @@ import java.sql.*;
 public class QuerySql {
 
     private static final String DBURL = "jdbc:mysql://localhost:3306/YCMClub?";
-    private static final String ARGS = "allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
+    private static final String ARGS = "createDatabaseIfNotExist=true&serverTimezone=UTC";
     private static final String LOGIN = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "";
 
     private static Connection conn;
 

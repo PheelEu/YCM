@@ -17,23 +17,21 @@ public class Boat implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String name;
-    private String ID;
+    private int ID;
     private double length;
     private double boatStorage;
-    private int lastID = 0;
 
     /**
      *Class Constructor
      *
      * @param name is the name of the boat
      * @param length is the length of the boat.
-     * @param boatStorage is the tax for the storage of the boat
      **/
-    public Boat(String name, double length, double boatStorage){
+    public Boat(String name, int ID, double length){
         this.name = name;
-        this.ID = String.valueOf(getID());;
+        this.ID = ID;
         this.length = length;
-        this.boatStorage = boatStorage;//TODO class payment method to implement
+        this.boatStorage = 0;//TODO class payment method to implement
     }
 
     /**
@@ -56,16 +54,15 @@ public class Boat implements Serializable {
      * Gets the ID of the boat.
      * @return the id of the boat.
      **/
-    public int getID() {
-        lastID++;
-        return lastID;
+    public int getID(){
+        return ID;
     }
 
     /**
      * Sets the ID of the boat.
      * @param ID is the id to set for the boat.
      **/
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 

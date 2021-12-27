@@ -22,14 +22,20 @@ public class Server {
     }
 
     private void run(){
+
+        System.out.println("Server is starting...");
         this.pool = new ThreadPoolExecutor(COREPOOL, MAXPOOL, IDLETIME,
                 TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
+        System.out.println("Server started...");
+
         while(true){
-            try{
+            try {
                 Socket s = this.socket.accept();
+                System.out.println("Client connected successfully");
 
                 this.pool.execute(new ServerThread(this, s));
             }catch(Exception e){
+                System.out.println("Client cannot connect to the server");
                 e.printStackTrace();
                 break;
             }
