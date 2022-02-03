@@ -1,7 +1,13 @@
 package com.ycm.Sql;
 
 
+import com.ycm.Classes.Employee;
+import com.ycm.Classes.Member;
+
+import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import static com.ycm.Sql.QuerySql.connection;
 
 /**
  * The class {@code MemberSql} defines a collection of queries for members.
@@ -25,11 +31,16 @@ public class MemberSql {
     public static Object register(String username, String password, String name, String surname, String address, String fc) {
         String sqlInsert = "INSERT INTO member (username, password, name, surname, address, fc) VALUES('"+ username + "', '" + password + "', '" + name + "', '" + surname + "', '" + address + "', '" + fc + "')";
         try {
-            QuerySql.connection().execute(sqlInsert);
+            connection().execute(sqlInsert);
             return true;
         } catch (SQLException e) {
             return false;
         }
+    }
+
+    public static Object jumbojet(String username, String password) {
+        System.out.println("Ciao");
+        return false;
     }
 
     /**
@@ -42,7 +53,7 @@ public class MemberSql {
     public static Object delete(String email, String password) {
         String sqlDelete = "DELETE FROM member WHERE email='" + email + "' AND password='" + password + "'";
         try {
-            QuerySql.connection().executeQuery(sqlDelete);
+            connection().executeQuery(sqlDelete);
             return true;
         }
         catch (SQLException e) {
@@ -57,7 +68,7 @@ public class MemberSql {
     public static Object AddBoat(String name, double length, double boatStorage) {
         String sqlInsert = "INSERT INTO boat (Name, Length, BoatStorage) VALUES('" + name + "','" + length + "','"  + boatStorage + "')";
         try {
-            QuerySql.connection().execute(sqlInsert);
+            connection().execute(sqlInsert);
             return true;
         }
         catch (SQLException e) {
@@ -75,7 +86,7 @@ public class MemberSql {
     public static Object removeBoat(String name, String ID) {
         String sqlDelete = "DELETE FROM boat WHERE Name='" + name + "' AND ID='" + ID + "'";
         try {
-            QuerySql.connection().executeQuery(sqlDelete);
+            connection().executeQuery(sqlDelete);
             return true;
         }
         catch (SQLException e) {

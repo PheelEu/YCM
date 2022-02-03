@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -20,7 +22,7 @@
                 <Font name="Arial" size="18.0" />
             </font>
         </Label>
-        <Label layoutX="45.0" layoutY="42.0" text="Sign Up">
+        <Label layoutX="61.0" layoutY="42.0" text="Sign Up">
             <font>
                 <Font name="Arial Bold" size="36.0" />
             </font>
@@ -61,5 +63,10 @@
       <TextField fx:id="surnameField" layoutX="374.0" layoutY="205.0" promptText="insert your surname" />
       <TextField fx:id="addressField" layoutX="374.0" layoutY="241.0" promptText="insert your address" />
       <TextField fx:id="FCField" layoutX="374.0" layoutY="279.0" promptText="insert FC or VAT" />
+      <ImageView fitHeight="216.0" fitWidth="216.0" layoutX="21.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/YCM%20Logo.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

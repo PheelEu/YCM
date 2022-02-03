@@ -1,9 +1,15 @@
 package com.ycm.Sql;
 
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import com.ycm.Classes.Employee;
 import com.ycm.Classes.Member;
 
-import java.sql.*;
 
 public class QuerySql {
 
@@ -49,7 +55,8 @@ public class QuerySql {
      * @throws SQLException if there is any error with the queries.
      */
     public static Object login(String username, String password) throws SQLException {
-        if(username.contains(".myc.employees")) {
+        if(username.contains(".ycm.employees")){
+            System.out.println("Ciao");
             String sqlSelect = "SELECT * FROM employee WHERE username='" + username + "' AND password='" + password + "'";
             ResultSet rst = connection().executeQuery(sqlSelect);
             if(rst.next()) {
@@ -58,13 +65,16 @@ public class QuerySql {
                 return new Employee(rst.getString("username"),  rst.getString("password"), rst.getString("name"), rst.getString("surname"), rst.getString("address"), rst.getString("FC"), true);
             }
         }
-        if(!username.contains(".myc.employees")) {
+
+        if(!username.contains(".ycm.employees")) {
+            System.out.println("ciao1");
             String sqlSelect = "SELECT * FROM member WHERE username='" + username + "' AND password='" + password + "'";
             ResultSet rst = connection().executeQuery(sqlSelect);
-            if(rst.next()) {
+            System.out.println(rst);
+            if (rst.next()) {
                 String sqlUpdate = "UPDATE member SET logged = 1 WHERE username= '" + username + "' AND password= '" + password + "'";
                 connection().executeUpdate(sqlUpdate);
-                return new Member(rst.getString("username"),  rst.getString("password"), rst.getString("name"), rst.getString("surname"), rst.getString("address"), rst.getString("FC"), true);
+                return new Member(rst.getString("username"), rst.getString("password"), rst.getString("name"), rst.getString("surname"), rst.getString("address"), rst.getString("FC"), true);
             }
         }
         return null;

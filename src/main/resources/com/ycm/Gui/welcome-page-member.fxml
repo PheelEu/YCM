@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ycm.Gui.MemberGuiController">
+    <children>
+        <Pane prefHeight="800.0" prefWidth="1200.0">
+            <children>
+                <Label layoutX="347.0" layoutY="43.0" text="Welcome to the YCM Club">
+                    <font>
+                        <Font name="Didot" size="48.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Images/YCM%20Logo.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="614.0" fitWidth="1200.0" layoutX="300.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Images/porto.jpeg" />
+                    </image>
+                </ImageView>
+                <Pane layoutY="186.0" prefHeight="614.0" prefWidth="300.0">
+                    <children>
+                        <Accordion prefHeight="614.0" prefWidth="300.0">
+                            <panes>
+                                <TitledPane animated="false" text="The Club">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <Hyperlink layoutX="15.0" layoutY="10.0" prefHeight="25.0" prefWidth="269.0" text="⚓️     Our Story" textFill="#030303">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Hyperlink>
+                                                <Hyperlink layoutX="15.0" layoutY="40.0" prefHeight="25.0" prefWidth="269.0" text="⚓️     Who we are" textFill="#030303">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Hyperlink>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </TitledPane>
+                        <TitledPane animated="false" text="Your Boats">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Hyperlink layoutX="15.0" layoutY="10.0" onAction="#addBoat" prefHeight="15.0" prefWidth="260.0" text="⚓️     Add a Boat" textFill="#030303">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Hyperlink layoutX="15.0" layoutY="40.0" onAction="#removeBoat" prefHeight="15.0" prefWidth="260.0" text="⚓️     Remove a Boat" textFill="#030303">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TitledPane>
+                                <TitledPane animated="false" text="Races">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <Hyperlink layoutX="15.0" layoutY="10.0" onAction="#upcomingRaces" prefHeight="15.0" prefWidth="260.0" text="⚓️     Upcoming Races" textFill="#030303">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Hyperlink>
+                                                <Hyperlink layoutX="15.0" layoutY="40.0" onAction="#raceResults" prefHeight="25.0" prefWidth="269.0" text="⚓️     Race Results" textFill="#030303">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Hyperlink>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </TitledPane>
+                                <TitledPane animated="false" text="Payments">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <Hyperlink layoutX="15.0" layoutY="10.0" onAction="#subscription" prefHeight="15.0" prefWidth="200.0" text="⚓️     Annual Subscription" textFill="#030303">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Hyperlink>
+                                                <Hyperlink layoutX="15.0" layoutY="40.0" onAction="#dockingFares" prefHeight="15.0" prefWidth="160.0" text="⚓️     Docking Fares" textFill="#030303">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Hyperlink>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </TitledPane>
+                                <TitledPane animated="false" text="Contacts">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <Text layoutX="15.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="⚓️     Telephone    +377 12 34 56 7" x="10.0" y="20.0">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Text>
+                                                <Text layoutX="15.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="⚓️     Email               info@ycmclub.com" x="10.0" y="20.0">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Text>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </TitledPane>
+                            </panes>
+                        </Accordion>
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
