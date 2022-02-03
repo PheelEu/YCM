@@ -54,13 +54,14 @@ public class MemberSql {
      *
      *
      **/
-    public static void AddBoat(String name, String ID, double length, double boatStorage) {
-        String sqlInsert = "INSERT INTO boat (Name, ID, Length, BoatStorage) VALUES('" + name + "','" + ID + "','" + length + "','"  + boatStorage + "')";
+    public static Object AddBoat(String name, double length, double boatStorage) {
+        String sqlInsert = "INSERT INTO boat (Name, Length, BoatStorage) VALUES('" + name + "','" + length + "','"  + boatStorage + "')";
         try {
             QuerySql.connection().execute(sqlInsert);
+            return true;
         }
         catch (SQLException e) {
-            return;
+            return false;
         }
     }
 

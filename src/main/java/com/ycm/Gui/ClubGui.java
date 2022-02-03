@@ -48,9 +48,9 @@ public class ClubGui extends Application {
         }
         mainStage = new Stage();
         popupStage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("welcome-page.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        mainStage.setTitle("Hello!");
+        mainStage.setTitle("YCM Club");
         mainStage.setScene(scene);
         mainStage.show();
     }

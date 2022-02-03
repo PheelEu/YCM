@@ -50,21 +50,21 @@ public class QuerySql {
      */
     public static Object login(String username, String password) throws SQLException {
         if(username.contains(".myc.employees")) {
-            String sqlSelect = "SELECT * FROM employee WHERE Username='" + username + "' AND Password='" + password + "'";
+            String sqlSelect = "SELECT * FROM employee WHERE username='" + username + "' AND password='" + password + "'";
             ResultSet rst = connection().executeQuery(sqlSelect);
             if(rst.next()) {
-                String sqlUpdate = "UPDATE employee SET Logged = 1 WHERE Username= '" + username + "' AND Password= '" + password + "'";
+                String sqlUpdate = "UPDATE employee SET Logged = 1 WHERE username= '" + username + "' AND password= '" + password + "'";
                 connection().executeUpdate(sqlUpdate);
-                return new Employee(rst.getString("Username"),  rst.getString("Password"), rst.getString("Name"), rst.getString("Surname"), rst.getString("Address"), rst.getString("FC"), true);
+                return new Employee(rst.getString("username"),  rst.getString("password"), rst.getString("name"), rst.getString("surname"), rst.getString("address"), rst.getString("FC"), true);
             }
         }
         if(!username.contains(".myc.employees")) {
-            String sqlSelect = "SELECT * FROM member WHERE Username='" + username + "' AND password='" + password + "'";
+            String sqlSelect = "SELECT * FROM member WHERE username='" + username + "' AND password='" + password + "'";
             ResultSet rst = connection().executeQuery(sqlSelect);
             if(rst.next()) {
-                String sqlUpdate = "UPDATE member SET Logged = 1 WHERE Username= '" + username + "' AND Password= '" + password + "'";
+                String sqlUpdate = "UPDATE member SET logged = 1 WHERE username= '" + username + "' AND password= '" + password + "'";
                 connection().executeUpdate(sqlUpdate);
-                return new Member(rst.getString("Username"),  rst.getString("Password"), rst.getString("Name"), rst.getString("Surname"), rst.getString("Address"), rst.getString("FC"), true);
+                return new Member(rst.getString("username"),  rst.getString("password"), rst.getString("name"), rst.getString("surname"), rst.getString("address"), rst.getString("FC"), true);
             }
         }
         return null;
@@ -79,7 +79,7 @@ public class QuerySql {
      * @return true if there are no errors.
      **/
     public static Object logout(String username, String password) {
-        String sqlUpdate = "UPDATE member SET Logged = 0 WHERE Username='" + username + "' AND Password='" + password + "'";
+        String sqlUpdate = "UPDATE member SET logged = 0 WHERE username='" + username + "' AND password='" + password + "'";
         try {
             connection().execute(sqlUpdate);
             return true;

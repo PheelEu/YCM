@@ -79,7 +79,7 @@ public class RegisterGuiController {
         if(!userField.getText().isEmpty() && !passField.getText().isEmpty() && !passField1.getText().isEmpty()
             && Objects.equals(passField.getText(), passField1.getText())){
             Object obj = new Client().run(new Request(new Message( "register", userField.getText(), passField.getText(), nameField.getText(), surnameField.getText(), addressField.getText(), FCField.getText())));
-            RegisterGui.a.setContentText("Member registered successfully!"); //TODO NON glielo abbiamo passeto ? maybe
+            RegisterGui.a.setContentText("Member registered successfully!");
             RegisterGui.a.showAndWait();
             getPopupStage().close();
         }
