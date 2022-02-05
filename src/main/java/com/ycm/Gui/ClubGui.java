@@ -6,9 +6,12 @@ import com.ycm.Sockets.Request;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ClubGui extends Application {
 
@@ -17,6 +20,8 @@ public class ClubGui extends Application {
     private static Stage mainStage;
 
     private static Stage popupStage;
+
+    private static int typeof;
 
     public static Stage getMainStage() {return mainStage;}
 
@@ -35,9 +40,11 @@ public class ClubGui extends Application {
 
     public static void setPopupScene(Scene popScene){popupStage.setScene(popScene);}
 
+    public static int getType(){return typeof;}
+
+    public static void setType(int t) {typeof = t;}
 
     public static void setPopupTitle(String title){popupStage.setTitle(title);}
-
 
     @Override
     public void start(Stage stage) throws IOException {

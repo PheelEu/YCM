@@ -16,7 +16,7 @@ public class Boat implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private static final int priceForMeter = 400;
+    private static final double priceForMeter = 400.0;
 
     private String name;
     private int ID;
@@ -29,9 +29,8 @@ public class Boat implements Serializable {
      * @param name is the name of the boat
      * @param length is the length of the boat.
      **/
-    public Boat(String name, int ID, double length){
+    public Boat(String name, double length){
         this.name = name;
-        this.ID = ID;
         this.length = length;
         this.boatStorage = length*priceForMeter;
     }
@@ -97,4 +96,8 @@ public class Boat implements Serializable {
      * Depends on the length of the boat.
      **/
     public void setBoatStorage() {this.boatStorage = this.length*priceForMeter;}
+
+    public static double getPriceForMeter() {
+        return priceForMeter;
+    }
 }

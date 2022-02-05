@@ -2,6 +2,7 @@ package com.ycm.Classes;
 
 import java.io.Serializable;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Payment implements Serializable {
@@ -9,7 +10,7 @@ public class Payment implements Serializable {
 
     private int ID;
     private String username;
-    private Date paymentDate;
+    private LocalDate paymentDate;
     private String type;
     private String method;
     private double amount;
@@ -51,7 +52,7 @@ public class Payment implements Serializable {
      * Gets the issuing date of this payment.
      * @return issuedDate of this payment.
      **/
-    public Date getPaymentDate() {
+    public LocalDate getPaymentDate() {
         return paymentDate;
     }
 
@@ -66,7 +67,7 @@ public class Payment implements Serializable {
      * This method gets the type of payment.
      * @return the type of payment.
      **/
-    public String getType() {
+    public String getTypeofPayment() {
         return type;
     }
 
@@ -74,7 +75,7 @@ public class Payment implements Serializable {
      * This method sets the type of payment for the notification.
      * @param type it's the payment type.
      **/
-    public void setType(String type) {
+    public void setTypeofPayment(String type) {
         this.type = type;
     }
 

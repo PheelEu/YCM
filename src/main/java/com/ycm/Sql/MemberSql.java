@@ -1,10 +1,5 @@
 package com.ycm.Sql;
 
-
-import com.ycm.Classes.Employee;
-import com.ycm.Classes.Member;
-
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static com.ycm.Sql.QuerySql.connection;
@@ -38,11 +33,6 @@ public class MemberSql {
         }
     }
 
-    public static Object jumbojet(String username, String password) {
-        System.out.println("Ciao");
-        return false;
-    }
-
     /**
      * Method with a query to delete a member from database.
      *
@@ -66,7 +56,7 @@ public class MemberSql {
      *
      **/
     public static Object AddBoat(String name, double length, double boatStorage) {
-        String sqlInsert = "INSERT INTO boat (Name, Length, BoatStorage) VALUES('" + name + "','" + length + "','"  + boatStorage + "')";
+        String sqlInsert = "INSERT INTO boat (name, length, boatStorage) VALUES('" + name + "','" + length + "','"  + boatStorage + "')";
         try {
             connection().execute(sqlInsert);
             return true;

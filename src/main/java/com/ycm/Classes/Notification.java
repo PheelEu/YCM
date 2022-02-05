@@ -83,7 +83,7 @@ public class Notification implements Serializable {
      * @param p is the payment type for this notification
      **/
     public void setTypeofPayment(Payment p) {
-        this.typeofPayment = p.getType();
+        this.typeofPayment = p.getTypeofPayment();
     }
 
     /**

@@ -1,9 +1,13 @@
 package com.ycm.Sockets;
 
+import com.ycm.Classes.Boat;
 import com.ycm.Sql.MemberSql;
+import com.ycm.Sql.PaymentSql;
+import com.ycm.Sql.QuerySql;
 
 import java.io.*;
 import java.net.Socket;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Random;
 
@@ -88,10 +92,18 @@ public class ServerThread implements Runnable {
             Message m = (Message) rq.getMsg();
 
             switch(m.getFunctionName()) {
-                /*
-                case "addEmployee":
-                    obj = AdminSQL.addEmployee(m.getArgs1(), m.getArgs2(), m.getArgs3(), m.getArgs4());
+                case "addBoat":
+                    obj = MemberSql.AddBoat(m.getArgs1(), Double.parseDouble(m.getArgs2()), Double.parseDouble(m.getArgs3()));
                     break;
+                case "removeBoat":
+                    obj = MemberSql.removeBoat(m.getArgs1(), m.getArgs2());
+                    break;
+
+                case "payment":
+                    obj = PaymentSql.addPayment(m.getArgs1(), Date.valueOf(m.getArgs2()), m.getArgs3(), m.getArgs4(),
+                            Double.parseDouble(m.getArgs5()), Boolean.parseBoolean(m.getArgs6()));
+                    break;
+                    /*
                 case "decrease":
                     obj =  sqlQuery.decrease(m.getArgs1(), m.getArgs2(), m.getArgs3(), m.getArgs4(), m.getArgs5(), Integer.parseInt(m.getArgs6()));
                     break;
@@ -104,39 +116,14 @@ public class ServerThread implements Runnable {
                 case "deliver":
                     obj = EmployeeSQL.deliver(Integer.parseInt(m.getArgs1()));
                     break;
-                case "getNotifyListShopEmployee":
-                    obj = NotifySQL.getNotifyListShopEmployee();
-                    break;
-                case "getNotifyListShopUser":
-                    obj = NotifySQL.getNotifyListShopUser();
-                    break;
-                case "getNotifyListUser":
-                    obj = NotifySQL.getNotifyListUser(m.getArgs1());
-                    break;
-                case "getNumOrdersToDo":
-                    obj = OrderSQL.getNumOrdersToDo();
-                    break;
-                case "getNumNotifiesToDo":
-                    obj = NotifySQL.getNumNotifiesToDo();
-                    break;
-                case "getNumNotifiesUser":
-                    obj = NotifySQL.getNumNotifiesUser(m.getArgs1());
-                    break;
-                case "getNumReplacement":
-                    obj = OrderSQL.getNumReplacement();
-                    break;
-                case "getOrderListEmployee":
-                    obj = OrderSQL.getOrderListEmployee();
-                    break;
-                case "getOrderListUser":
-                    obj = OrderSQL.getOrderListUser();
-                    break;
+                */
                 case "login":
-                    obj = sqlQuery.login(m.getArgs1(), m.getArgs2());
+                    obj = QuerySql.login(m.getArgs1(), m.getArgs2());
                     break;
                 case "logout":
-                    obj = sqlQuery.logout(m.getArgs1(), m.getArgs2());
+                    obj = QuerySql.logout(m.getArgs1(), m.getArgs2());
                     break;
+                    /*
                 case "notifyUser":
                     obj = sqlQuery.notifyUser(m.getArgs1(), m.getArgs2(), m.getArgs3(), Integer.parseInt(m.getArgs3()), m.getArgs4());
                     break;
@@ -180,7 +167,7 @@ public class ServerThread implements Runnable {
                     break;
                     */
                 default:
-                    obj = (Object) "No requested Query";
+                    obj = (Object) "Query not available";
             }
         }
         return obj;

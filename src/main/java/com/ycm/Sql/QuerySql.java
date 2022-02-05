@@ -56,7 +56,6 @@ public class QuerySql {
      */
     public static Object login(String username, String password) throws SQLException {
         if(username.contains(".ycm.employees")){
-            System.out.println("Ciao");
             String sqlSelect = "SELECT * FROM employee WHERE username='" + username + "' AND password='" + password + "'";
             ResultSet rst = connection().executeQuery(sqlSelect);
             if(rst.next()) {
@@ -67,10 +66,8 @@ public class QuerySql {
         }
 
         if(!username.contains(".ycm.employees")) {
-            System.out.println("ciao1");
             String sqlSelect = "SELECT * FROM member WHERE username='" + username + "' AND password='" + password + "'";
             ResultSet rst = connection().executeQuery(sqlSelect);
-            System.out.println(rst);
             if (rst.next()) {
                 String sqlUpdate = "UPDATE member SET logged = 1 WHERE username= '" + username + "' AND password= '" + password + "'";
                 connection().executeUpdate(sqlUpdate);
@@ -83,7 +80,7 @@ public class QuerySql {
     /**
      * Changes a boolean that tells whether a person is logged (0).
      *
-     * @param username the email of the person.
+     * @param username the username of the person.
      * @param password the password of the person.
      *
      * @return true if there are no errors.

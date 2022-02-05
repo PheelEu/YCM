@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="614.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ycm.Gui.MemberGuiController">
+   <children>
+      <Pane fx:id="mainPane" prefHeight="614.0" prefWidth="900.0">
+         <children>
+            <Label fx:id="dateLabel" layoutX="495.0" layoutY="465.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="162.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/YCM%20Logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="280.0" layoutY="50.0" text="Your annual subscription">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="80.0" layoutY="190.0" text="Thanks for being a member of this exclusive club!">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="118.0" layoutY="255.0" text="Here you can see your annual subscription info, and when it expires">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="42.0" layoutY="330.0" text="Annual subscription fee                                            1000€">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="nextPaymentLabel" layoutX="42.0" layoutY="465.0" text="Your next payment is due on the" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="397.0" layoutY="530.0" mnemonicParsing="false" onAction="#subscriptionPayBtn" text="Pay Now" visible="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Hyperlink layoutX="325.0" layoutY="395.0" onAction="#checkNextPaymentLink" text="When is my next payment due?" textFill="#070707" underline="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

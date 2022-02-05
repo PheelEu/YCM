@@ -68,23 +68,18 @@ public class RegisterGuiController {
         if(!Objects.equals(passField.getText(), passField1.getText())) {
             RegisterGui.a.setContentText("The passwords are not the same");
         }
-        /*
-        if(!userField.getText().isEmpty()) {
-            if ((userField.getText())) {
+        else { //TODO Make registration successful only after paying the annual sub !!!!
+            Object obj = new Client().run(new Request(new Message( "register", userField.getText(), passField.getText(), nameField.getText(), surnameField.getText(), addressField.getText(), FCField.getText())));
+            if((boolean) obj){
+                RegisterGui.a.setContentText("Member registered successfully!");
+                RegisterGui.a.showAndWait();
+                getPopupStage().close();
+            }
+            else{
                 RegisterGui.a.setContentText("Username is already in use!");
             }
-        }
+            RegisterGui.a.showAndWait();
 
-         */
-        if(!userField.getText().isEmpty() && !passField.getText().isEmpty() && !passField1.getText().isEmpty()
-            && Objects.equals(passField.getText(), passField1.getText())){
-            Object obj = new Client().run(new Request(new Message( "register", userField.getText(), passField.getText(), nameField.getText(), surnameField.getText(), addressField.getText(), FCField.getText())));
-            RegisterGui.a.setContentText("Member registered successfully!");
-            RegisterGui.a.showAndWait();
-            getPopupStage().close();
-        }
-        else {
-            RegisterGui.a.showAndWait();
         }
     }
 }

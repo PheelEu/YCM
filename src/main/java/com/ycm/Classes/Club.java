@@ -1,6 +1,8 @@
 package com.ycm.Classes;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 /**
@@ -11,8 +13,7 @@ import java.util.*;
  **/
 
 public class Club implements Serializable {
-    private static Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"), Locale.ITALY);
-    private static Date today = calendar.getTime();
+    private static LocalDate todayDate = LocalDate.now(ZoneId.of("Europe/Rome"));
     private String name;
     private String address;
 
@@ -33,8 +34,8 @@ public class Club implements Serializable {
      * This method gets today's date.
      * @return today's date.
      **/
-    public static Date getToday() {
-        return today;
+    public static LocalDate getToday() {
+        return todayDate;
     }
     /**
      * Gets the name of the club.

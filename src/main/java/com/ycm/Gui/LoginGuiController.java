@@ -42,36 +42,31 @@ public class LoginGuiController {
         else if(!userField.getText().isEmpty() && !passField.getText().isEmpty()){
             Object person = new Client().run(new Request(new Message( "login", userField.getText(), passField.getText())));
             if(person!=null){
-                System.out.println(person);
                 if(person instanceof Employee){
-                    System.out.println("sono una employee");
                     employee = (Employee) person;
                 }
                 if(person instanceof Member){
-                    System.out.println("sono un memeber");
                     member = (Member) person;
                 }
             }
             if(employee != null){
-                System.out.println("Sono un employee");
                 //TODO Chiamata ad employee gui e set dell' employee e della scena
-
+                ClubGui.getPopupStage().close();
             }
             if(member != null){
-                System.out.println("Sono un member");
                 try {
                     setScene(MemberGui.MemberWelcomeScene());
                     MemberGui.setMember(member);
+                    ClubGui.getPopupStage().close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            ClubGui.getPopupStage().close();
-        }
-        else{
-            LoginGui.a.setAlertType(Alert.AlertType.INFORMATION);
-            LoginGui.a.setContentText("Username or password are not correct \nPress Register button if you re not already registered");
-            LoginGui.a.showAndWait();
+            else{
+                LoginGui.a.setAlertType(Alert.AlertType.INFORMATION);
+                LoginGui.a.setContentText("Username or password are not correct \nPress Register button if you re not already registered");
+                LoginGui.a.showAndWait();
+            }
         }
     }
 
