@@ -6,10 +6,31 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PaymentGui {
+
+    private static LocalDate paymentDate;
+
+    private static Double cost;
+
+    public static void setPaymentDate(LocalDate paymentDate) {
+        PaymentGui.paymentDate = paymentDate;
+    }
+
+    public static LocalDate getPaymentDate() {
+        return paymentDate;
+    }
+
+    public static void setCost(Double cost) {
+        PaymentGui.cost = cost;
+    }
+
+    public static Double getCost() {
+        return cost;
+    }
 
     /**
      * Regex Checks

@@ -1,6 +1,7 @@
 package com.ycm.Classes;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,13 +23,20 @@ public class Race implements Serializable {
 
     private String name;
     private double cost;
-    private Date raceDay;
+    private LocalDate raceDay;
 
     ArrayList<Boat> competitors = new ArrayList<Boat>();
 
-    public Race(String name, double cost, ArrayList<Boat> competitors){
+    public Race(String name, double cost, LocalDate raceDay){
         this.name = name;
         this.cost = cost;
+        this.raceDay = raceDay;
+
+    }
+    public Race(String name, double cost, LocalDate raceDay,ArrayList<Boat> competitors){
+        this.name = name;
+        this.cost = cost;
+        this.raceDay = raceDay;
         this.competitors = competitors;
     }
 
@@ -84,11 +92,11 @@ public class Race implements Serializable {
      * Gets date of the race.
      * @return the race day date.
      **/
-    public Date getRaceDay() {return raceDay;}
+    public LocalDate getRaceDay() {return raceDay;}
 
     /**
      * Sets the date of the race.
      * @param raceDay is the date on which the race is taking place.
      **/
-    public void setRaceDay(Date raceDay) {this.raceDay = raceDay;}
+    public void setRaceDay(LocalDate raceDay) {this.raceDay = raceDay;}
 }

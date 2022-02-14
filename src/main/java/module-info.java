@@ -12,5 +12,7 @@ module com.ycm.Gui {
     requires java.sql;
 
     exports com.ycm.Gui;
+    exports com.ycm.Classes;
+    opens com.ycm.Classes to javafx.fxml;
     opens com.ycm.Gui to javafx.fxml;
 }

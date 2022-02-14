@@ -15,6 +15,16 @@
     <children>
         <Pane prefHeight="800.0" prefWidth="1200.0">
             <children>
+            <ImageView fitHeight="41.0" fitWidth="41.0" layoutX="1081.0" layoutY="23.0" onMouseClicked="#logoutIcon" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/logout.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="49.0" fitWidth="43.0" layoutX="1140.0" layoutY="18.0" onMouseClicked="#notificationIcon" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/notification%20icon.png" />
+               </image>
+            </ImageView>
                 <Label layoutX="347.0" layoutY="43.0" text="Welcome to the YCM Club">
                     <font>
                         <Font name="Didot" size="48.0" />
@@ -105,7 +115,7 @@
                                         <Font size="18.0" />
                                     </font>
                                 </TitledPane>
-                                <TitledPane animated="false" text="Payments">
+                                <TitledPane animated="false" text="Profile &amp; Payments">
                                     <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                             <children>
@@ -119,6 +129,11 @@
                                                         <Font size="16.0" />
                                                     </font>
                                                 </Hyperlink>
+                                    <Hyperlink layoutX="15.0" layoutY="70.0" onAction="#deleteAccountLink" prefHeight="15.0" prefWidth="200.0" text="⚓️     Delete your Account" textFill="#030303">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
                                             </children>
                                         </AnchorPane>
                                     </content>

@@ -1,18 +1,18 @@
 
 package com.ycm.Gui;
 
-        import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
+import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 
-        import java.io.IOException;
+import java.io.IOException;
 
-        import static com.ycm.Gui.ClubGui.getPopupStage;
-        import static com.ycm.Gui.ClubGui.setPopupScene;
+import static com.ycm.Gui.ClubGui.getPopupStage;
+import static com.ycm.Gui.ClubGui.setPopupScene;
 
 public class ClubGuiController {
 
     @FXML
-    void loginLink(ActionEvent event) {
+    void LoginIcon(MouseEvent event) {
         try {
             setPopupScene(LoginGui.LoginScene());
             getPopupStage().show();
@@ -23,7 +23,7 @@ public class ClubGuiController {
     }
 
     @FXML
-    void registerLink(ActionEvent event) {
+    void registerIcon(MouseEvent event) {
         try {
             setPopupScene(RegisterGui.registerUserScene());
             getPopupStage().show();

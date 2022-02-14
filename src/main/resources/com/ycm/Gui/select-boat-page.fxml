@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="614.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ycm.Gui.MemberSelectBoatGuiController">
+   <children>
+      <Pane prefHeight="614.0" prefWidth="900.0">
+         <children>
+            <Label layoutX="457.0" layoutY="35.0" text="Select a boat for" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="174.0" fitWidth="329.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/porto2.jpeg" />
+               </image>
+            </ImageView>
+            <TableView fx:id="boatTable" layoutY="190.0" prefHeight="320.0" prefWidth="900.0">
+               <columns>
+                  <TableColumn fx:id="boatNameCol" maxWidth="1.7976931348623157E308" minWidth="300.0" prefWidth="300.0" text="Boat Name" />
+                  <TableColumn fx:id="boatIDCol" maxWidth="1.7976931348623157E308" minWidth="300.0" prefWidth="300.0" text="Boat ID" />
+                  <TableColumn fx:id="boatLengthCol" maxWidth="1.7976931348623157E308" minWidth="300.0" prefWidth="300.0" text="Boat Length" />
+               </columns>
+            </TableView>
+            <Button layoutX="357.0" layoutY="541.0" mnemonicParsing="false" onAction="#paymentRaceBtn" text="Proceed to Payment">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="463.0" layoutY="85.0" text="the competition" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

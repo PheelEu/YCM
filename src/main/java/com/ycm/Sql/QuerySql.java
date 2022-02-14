@@ -55,7 +55,7 @@ public class QuerySql {
      * @throws SQLException if there is any error with the queries.
      */
     public static Object login(String username, String password) throws SQLException {
-        if(username.contains(".ycm.employees")){
+        if(username.contains(".ycm")){
             String sqlSelect = "SELECT * FROM employee WHERE username='" + username + "' AND password='" + password + "'";
             ResultSet rst = connection().executeQuery(sqlSelect);
             if(rst.next()) {
@@ -65,7 +65,7 @@ public class QuerySql {
             }
         }
 
-        if(!username.contains(".ycm.employees")) {
+        if(!username.contains(".ycm")) {
             String sqlSelect = "SELECT * FROM member WHERE username='" + username + "' AND password='" + password + "'";
             ResultSet rst = connection().executeQuery(sqlSelect);
             if (rst.next()) {
@@ -94,6 +94,28 @@ public class QuerySql {
             return false;
         }
     }
+
+    /**
+     * Deletes an account.
+     * Can be a member or an employee
+     *
+     * @param username the username of the person.
+     * @param password the password of the person.
+     *
+     * @return true if account has been deleted, false if it has not.
+     * @throws SQLException if there is any error with the queries.
+     */
+    public static Object deleteAccount(String username, String password) throws SQLException {
+        String sqlDelete = "DELETE FROM member WHERE username='" + username + "' AND password='" + password + "'";
+        try {
+            connection().executeUpdate(sqlDelete);
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
     /**
      * Create a new notification made by the system to the member.

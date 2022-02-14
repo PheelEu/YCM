@@ -21,6 +21,7 @@ public class Notification implements Serializable {
     private Date expiringDate;
     private String typeofPayment;
     private double amount;
+    private int boatID;
 
     /**
      * This is the Notification class constructor
@@ -36,6 +37,23 @@ public class Notification implements Serializable {
         this.expiringDate = expiringDate;
         this.typeofPayment = typeofPayment;
         this.amount = amount;
+    }
+
+    /**
+     * This is the Notification class constructor
+     *
+     * @param m is the member to send the notification to.
+     * @param expiringDate is the expiring date of the notification.
+     * @param typeofPayment is the type of tax which is due to be paid
+     * @param amount it's the amount of money due.
+     *
+     **/
+    public Notification(Member m, Date expiringDate, String typeofPayment, double amount, int boatID){
+        this.username = m.getUsername();
+        this.expiringDate = expiringDate;
+        this.typeofPayment = typeofPayment;
+        this.amount = amount;
+        this.boatID = boatID;
     }
 
     /**
@@ -100,6 +118,22 @@ public class Notification implements Serializable {
      **/
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    /**
+     * This method gets the Boat ID for this notification.
+     * @return the Boat ID for this notification
+     **/
+    public double getNBoatID() {
+        return boatID;
+    }
+
+    /**
+     * This method sets the boat ID for this notification.
+     * @param boatID it's the boat ID this notification.
+     **/
+    public void setNBoatID(int boatID) {
+        this.boatID = boatID;
     }
 
 }

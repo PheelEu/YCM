@@ -48,7 +48,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button layoutX="397.0" layoutY="530.0" mnemonicParsing="false" onAction="#subscriptionPayBtn" text="Pay Now" visible="false">
+            <Button fx:id="subscriptionPayBtn" layoutX="397.0" layoutY="530.0" mnemonicParsing="false" onAction="#subscriptionPayBtn" text="Pay Now" visible="false">
                <font>
                   <Font size="18.0" />
                </font>

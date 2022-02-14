@@ -13,8 +13,8 @@ import static com.ycm.Gui.ClubGui.setPopupTitle;
 public class LoginGui{
 
     /**
-     * This method creates a new stage and a new scene for the user register page.
-     * @return the stage for the user register page.
+     * This method creates a new stage and a new scene for the user login page.
+     * @return the stage for the user login page.
      * @throws IOException is an exception thrown if something in the GUI does not work
      **/
     public static Scene LoginScene() throws IOException {

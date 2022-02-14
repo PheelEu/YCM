@@ -15,16 +15,21 @@
    <children>
       <Pane prefHeight="800.0" prefWidth="1200.0">
          <children>
+            <ImageView fitHeight="35.0" fitWidth="63.0" layoutX="1134.0" layoutY="30.0" onMouseClicked="#registerIcon" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/Schermata_2022-02-22_alle_15.16.49-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="57.0" fitWidth="90.0" layoutX="1019.0" layoutY="29.0" onMouseClicked="#LoginIcon" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/Schermata_2022-02-22_alle_15.07.49-removebg-preview.png" />
+               </image>
+            </ImageView>
             <Label layoutX="222.0" layoutY="47.0" text="Welcome to the YCM Club">
                <font>
                   <Font name="Didot" size="48.0" />
                </font>
             </Label>
-            <Hyperlink layoutX="1100.0" layoutY="41.0" onAction="#registerLink" text="Register">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Hyperlink>
             <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/YCM%20Logo.png" />
@@ -127,11 +132,16 @@
                   </Accordion>
                </children>
             </Pane>
-            <Hyperlink layoutX="1027.0" layoutY="42.0" onAction="#loginLink" text="Login">
+            <Label layoutX="1135.0" layoutY="64.0" text="Sign Up">
                <font>
-                  <Font size="18.0" />
+                  <Font size="8.0" />
                </font>
-            </Hyperlink>
+            </Label>
+            <Label layoutX="1050.0" layoutY="64.0" text="Login">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

@@ -36,6 +36,20 @@ public class Boat implements Serializable {
     }
 
     /**
+     *Class Constructor
+     *
+     * @param name is the name of the boat
+     * @param ID is the id of the boat
+     * @param length is the length of the boat.
+     **/
+    public Boat(String name, int ID,double length){
+        this.name = name;
+        this.ID = ID;
+        this.length = length;
+        this.boatStorage = length*priceForMeter;
+    }
+
+    /**
      * Gets the name of the boat.
      * @return name of the boat.
      **/

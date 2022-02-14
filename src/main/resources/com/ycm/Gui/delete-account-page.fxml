@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ycm.Gui.DeleteAccountGuiController">
+   <children>
+      <Label layoutX="300.0" layoutY="19.0" text="Account delete">
+         <font>
+            <Font name="Arial Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="193.0" layoutY="130.0" text="Username">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="195.0" layoutY="177.0" text="Password">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userField" layoutX="316.0" layoutY="128.0" promptText="insert username" />
+      <PasswordField fx:id="passField" layoutX="316.0" layoutY="175.0" promptText="insert password" />
+      <Button layoutX="274.0" layoutY="268.0" mnemonicParsing="false" onAction="#DeleteAccountBtn" prefHeight="40.0" prefWidth="150.0" text="Delete your account">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="103.0" fitWidth="100.0" layoutX="185.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/YCM%20Logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="400.0" fitWidth="264.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/history-supreme-yacht-iphone-12-pro-max.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="290.0" layoutY="58.0" text="Insert your information to delete">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="308.0" layoutY="77.0" text="your account permanently">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="262.0" layoutY="233.0" text="This action is not reversible">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

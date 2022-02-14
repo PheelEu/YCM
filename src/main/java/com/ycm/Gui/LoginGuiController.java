@@ -50,8 +50,13 @@ public class LoginGuiController {
                 }
             }
             if(employee != null){
-                //TODO Chiamata ad employee gui e set dell' employee e della scena
-                ClubGui.getPopupStage().close();
+                try {
+                    setScene(EmployeeGui.EmployeeWelcomeScene());
+                    EmployeeGui.setEmployee(employee);
+                    ClubGui.getPopupStage().close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             if(member != null){
                 try {
