@@ -42,6 +42,7 @@ public class DeleteAccountGuiController {
             Object person = new Client().run(new Request(new Message( "deleteAccount", userField.getText(), passField.getText())));
             System.out.println((boolean)person);
             if((boolean) person) {
+                new Client().run(new Request(new Message( "removeNotification", userField.getText())));
                 a.setContentText("Your Account has been deleted");
                 a.showAndWait();
                 FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("welcome-page.fxml"));

@@ -64,7 +64,7 @@ public class MemberRacesGuiController implements Initializable {
                     IOException e) {
                 e.printStackTrace();
             }
-            Object boats = new Client().run(new Request(new Message("memberBoats", m.getUsername())));
+            Object boats = new Client().run(new Request(new Message("memberBoats", getMember().getUsername())));
             if (!(boats == null)) {
                 memberBoats = (ArrayList<Boat>) boats;
                 if (!(MemberSelectBoatGuiController.boatsObservableList.isEmpty())) {
@@ -90,6 +90,5 @@ public class MemberRacesGuiController implements Initializable {
         raceNameCol.setCellValueFactory(new PropertyValueFactory<Race, Double>("cost"));
         raceDayCol.setCellValueFactory(new PropertyValueFactory<Race, LocalDate>("raceDay"));
         raceTable.setItems(racesObservableList);
-
     }
 }

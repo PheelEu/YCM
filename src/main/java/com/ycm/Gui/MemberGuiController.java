@@ -104,7 +104,14 @@ public class MemberGuiController {
                 setPaid(true);
                 setPopupScene(PaymentGui.paymentScene());
                 setPopupTitle("Boat Storage Payment");
-                Boat boat = new Boat(boatName.getText(), Double.parseDouble(boatLength.getText()));
+                Object lastBoatID = new Client().run(new Request(new Message( "lastBoatID")));
+                Boat boat;
+                if(lastBoatID != null) {
+                    boat = new Boat(boatName.getText(), Integer.parseInt(String.valueOf(lastBoatID)) + 1, Double.parseDouble(boatLength.getText()));
+                }
+                else{
+                    boat = new Boat(boatName.getText(), 1, Double.parseDouble(boatLength.getText()));
+                }
                 setBoat(boat);
                 getPopupStage().show();
             } catch (
@@ -126,6 +133,14 @@ public class MemberGuiController {
 
     @FXML
     void removeBoat(ActionEvent event) {
+        setSelectBoatGuiType(2);
+        try {
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add((SelectBoatPane()));
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -153,7 +168,7 @@ public class MemberGuiController {
     
     @FXML
     void checkNextPaymentLink(ActionEvent event) {
-        Object date = new Client().run(new Request(new Message( "expiryDate", m.getUsername(), "Annual subscription payment")));
+        Object date = new Client().run(new Request(new Message( "expiryDate", getMember().getUsername(), "Annual subscription payment")));
         LocalDate data = LocalDate.parse(date.toString());
         LocalDate expiryDate = data.plusYears(1);
         if(expiryDate.isBefore(getToday())){
@@ -204,6 +219,7 @@ public class MemberGuiController {
 
     @FXML
     void upcomingRaces(ActionEvent event) {
+        setSelectBoatGuiType(1);
         try {
             contentPane.getChildren().clear();
             contentPane.getChildren().add((UpcomingRacesPane()));
@@ -220,6 +236,10 @@ public class MemberGuiController {
             for(int i=0; i<upcomingRaces.size(); i++){
                 MemberRacesGuiController.racesObservableList.add(new Race(upcomingRaces.get(i).getName(), upcomingRaces.get(i).getCost(), upcomingRaces.get(i).getRaceDay()));
             }
+        }
+        else{
+            a.setContentText("No race Available");
+            a.showAndWait();
         }
     }
 
@@ -239,7 +259,7 @@ public class MemberGuiController {
     @FXML
     void logoutIcon(MouseEvent event) throws IOException {
         a.setAlertType(Alert.AlertType.INFORMATION);
-        Object logout = new Client().run(new Request(new Message( "logout", m.getUsername(), m.getPassword())));
+        Object logout = new Client().run(new Request(new Message( "logout", getMember().getUsername(), getMember().getPassword())));
         if((boolean) logout){
             FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("welcome-page.fxml"));
             Scene scene = new Scene(fxmlLoader.load());

@@ -25,9 +25,13 @@ public class MemberGui {
 
     public static ArrayList<Boat> memberBoats = new ArrayList<Boat>();
 
-    static Member m = null;
+    static private Member m = null;
 
-    static Boat b = null;
+    static private Boat b = null;
+
+    static private int selectBoatGuiType;
+
+    static private boolean registered;
 
     /**
      * It's a set method to set the payment is has been payed or not
@@ -90,10 +94,35 @@ public class MemberGui {
     public static Race getRace(){return r;}
 
     /**
+     * It's a set method to set the gui race once a boat is selected
+     * @param sbt is the select boat gui type
+     **/
+    public static void setSelectBoatGuiType(int sbt){ selectBoatGuiType = sbt;}
+
+    /**
+     * It's a get method to get the gui boat once a boat is created
+     * @return the boat which has been create
+     **/
+    public static int getSelectBoatGuiType(){return selectBoatGuiType;}
+
+
+    /**
+     * It's a set method to set the if the member is already registered or not
+     * @param reg is the registered boolean to be set
+     **/
+    public static void setRegistered(boolean reg){registered = reg;}
+
+    /**
+     * It's a get method to check if member is already registered.
+     * @return the is paid boolean
+     **/
+    public static boolean isRegistered(){return registered;}
+
+    /**
      * This is an alert that is shown to the user.
      * it can contain information or a warning.
      **/
-    public static Alert a = new Alert(Alert.AlertType.NONE);
+    static Alert a = new Alert(Alert.AlertType.NONE);
 
     /**
      * This method creates a new stage and a new scene for the member welcome page.

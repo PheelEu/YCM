@@ -12,6 +12,8 @@ public class Message implements Serializable {
     private String args4;
     private String args5;
     private String args6;
+    private String args7;
+    private String args8;
 
     /**
      * Class constructor.
@@ -119,6 +121,54 @@ public class Message implements Serializable {
     }
 
     /**
+     * Class constructor.
+     *
+     * @param functionName name of the SQL function that need to be passed.
+     * @param args1 the first attribute needed by function.
+     * @param args2 the second attribute needed by function.
+     * @param args3 the third attribute needed by function.
+     * @param args4 the fourth attribute needed by function.
+     * @param args5 the fifth attribute needed by function.
+     * @param args6 the sixth attribute needed by function.
+     * @param args7 the seventh attribute needed by function.
+     */
+    public Message(String functionName, String args1, String args2, String args3, String args4, String args5, String args6, String args7) {
+        this.functionName = functionName;
+        this.args1 = args1;
+        this.args2 = args2;
+        this.args3 = args3;
+        this.args4 = args4;
+        this.args5 = args5;
+        this.args6 = args6;
+        this.args7 = args7;
+    }
+
+    /**
+     * Class constructor.
+     *
+     * @param functionName name of the SQL function that need to be passed.
+     * @param args1 the first attribute needed by function.
+     * @param args2 the second attribute needed by function.
+     * @param args3 the third attribute needed by function.
+     * @param args4 the fourth attribute needed by function.
+     * @param args5 the fifth attribute needed by function.
+     * @param args6 the sixth attribute needed by function.
+     * @param args7 the seventh attribute needed by function.
+     */
+    public Message(String functionName, String args1, String args2, String args3, String args4, String args5, String args6, String args7, String args8) {
+        this.functionName = functionName;
+        this.args1 = args1;
+        this.args2 = args2;
+        this.args3 = args3;
+        this.args4 = args4;
+        this.args5 = args5;
+        this.args6 = args6;
+        this.args7 = args7;
+        this.args8 = args8;
+    }
+
+
+    /**
      * Gets the name of function.
      *
      * @return the name.
@@ -179,5 +229,23 @@ public class Message implements Serializable {
      */
     public String getArgs6() {
         return args6;
+    }
+
+    /**
+     * Gets the seventh attribute.
+     *
+     * @return the attribute.
+     */
+    public String getArgs7() {
+        return args7;
+    }
+
+    /**
+     * Gets the eighth attribute.
+     *
+     * @return the attribute.
+     */
+    public String getArgs8() {
+        return args8;
     }
 }

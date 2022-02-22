@@ -93,15 +93,16 @@ public class ServerThread implements Runnable {
 
             switch(m.getFunctionName()) {
                 case "addBoat":
-                    obj = MemberSql.AddBoat(m.getArgs1(), Double.parseDouble(m.getArgs2()), Double.parseDouble(m.getArgs3()));
+                    obj = MemberSql.AddBoat(Integer.parseInt(m.getArgs1()),m.getArgs2(), Double.parseDouble(m.getArgs3()),
+                            Double.parseDouble(m.getArgs4()), m.getArgs5());
+                    break;
+                case "lastBoatID":
+                    obj = MemberSql.lastBoatID();
                     break;
                 case "removeBoat":
                     obj = MemberSql.removeBoat(m.getArgs1(), m.getArgs2());
                     break;
-                case "payment":
-                    obj = PaymentSql.addPayment(m.getArgs1(), Date.valueOf(m.getArgs2()), m.getArgs3(), m.getArgs4(),
-                            Double.parseDouble(m.getArgs5()), Boolean.parseBoolean(m.getArgs6()));
-                    break;
+
                 case "expiryDate":
                     obj =  MemberSql.expiryDate(m.getArgs1(), m.getArgs2());
                     break;
@@ -114,12 +115,30 @@ public class ServerThread implements Runnable {
                 case "addCompetitor":
                     obj = RaceSql.addCompetitor(m.getArgs1(), Integer.parseInt(m.getArgs2()), m.getArgs3());
                     break;
-
                  case "addNotification":
-                    obj =  NotificationSql.addNotification(m.getArgs1(), LocalDate.parse(m.getArgs2()), m.getArgs3(), Double.parseDouble(m.getArgs4()));
+                    obj =  NotificationSql.addNotification(Integer.parseInt(m.getArgs1()), m.getArgs2(),
+                            LocalDate.parse(m.getArgs3()), m.getArgs4(), Double.parseDouble(m.getArgs5()));
+                    break;
+                case "removeNotification":
+                    obj = NotificationSql.removeNotification(m.getArgs1());
                     break;
                 case "addBoatNotification":
-                    obj =  NotificationSql.addBoatNotification(m.getArgs1(), LocalDate.parse(m.getArgs2()), m.getArgs3(), Double.parseDouble(m.getArgs4()), Integer.parseInt(m.getArgs5()));
+                    obj =  NotificationSql.addBoatNotification(Integer.parseInt(m.getArgs1()),m.getArgs2(),
+                            LocalDate.parse(m.getArgs3()), m.getArgs4(), Double.parseDouble(m.getArgs5()), Integer.parseInt(m.getArgs6()));
+                    break;
+                case "removeBoatNotification":
+                    obj = NotificationSql.removeBoatNotification(m.getArgs1(), Integer.parseInt(m.getArgs2()));
+                    break;
+                case "payment":
+                    obj = PaymentSql.addPayment(Integer.parseInt(m.getArgs1()),m.getArgs2(), Date.valueOf(m.getArgs3()),
+                            m.getArgs4(), m.getArgs5(), Double.parseDouble(m.getArgs6()), Boolean.parseBoolean(m.getArgs7()),
+                            Integer.parseInt(m.getArgs8()));
+                    break;
+                case "lastPaymentID":
+                    obj = PaymentSql.lastPaymentID();
+                    break;
+                case "deletePayment":
+                    obj =  PaymentSql.deletePayment(m.getArgs1(), Double.parseDouble(m.getArgs2()));
                     break;
 
                     /*
@@ -141,6 +160,9 @@ public class ServerThread implements Runnable {
                     break;
                 case "deleteAccount":
                     obj = QuerySql.deleteAccount(m.getArgs1(), m.getArgs2());
+                    break;
+                case "checkUsername":
+                    obj = MemberSql.checkUsername(m.getArgs1());
                     break;
                     /*
                 case "notifyUser":

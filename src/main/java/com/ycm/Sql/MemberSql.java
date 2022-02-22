@@ -38,23 +38,7 @@ public class MemberSql {
             connection().execute(sqlInsert);
             return true;
         } catch (SQLException e) {
-            return false;
-        }
-    }
-
-    /**
-     * Method with a query to delete a member from database.
-     *
-     * @param email    the email of user that will be deleted.
-     * @param password the password of user that will be deleted.
-     * @return true if there are no errors.
-     */
-    public static Object delete(String email, String password) {
-        String sqlDelete = "DELETE FROM member WHERE email='" + email + "' AND password='" + password + "'";
-        try {
-            connection().executeQuery(sqlDelete);
-            return true;
-        } catch (SQLException e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -62,12 +46,13 @@ public class MemberSql {
     /**
      *
      **/
-    public static Object AddBoat(String name, double length, double boatStorage) {
-        String sqlInsert = "INSERT INTO boat (name, length, boatStorage) VALUES('" + name + "','" + length + "','" + boatStorage + "')";
+    public static Object AddBoat(int ID, String name, double length, double boatStorage, String owner) {
+        String sqlInsert = "INSERT INTO boat (ID, name, length, boatStorage, owner) VALUES('" + ID + "','" + name + "','" + length + "','" + boatStorage + "','" + owner + "')";
         try {
             connection().execute(sqlInsert);
             return true;
         } catch (SQLException e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -91,11 +76,31 @@ public class MemberSql {
     }
 
     /**
+     * Method with a query get the last boat ID from database.
+     *
+     * @return true if there are no errors.
+     */
+    public static Object lastBoatID() {
+        String sqlSelect = "SELECT MAX( `ID` ) FROM `boat`";
+        try {
+            ResultSet rst = connection().executeQuery(sqlSelect);
+            if (rst.next()) {
+                String number = rst.getString(1);
+                return number;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+
+    /**
      * Changes a boolean that tells whether a person is logged (1) or not(0).
      * Can be a member or an employee
      *
      * @param username the username of the member.
-     * @param type the type of payment.
+     * @param type     the type of payment.
      * @return the last payment date.
      * @throws SQLException if there is any error with the queries.
      */
@@ -122,9 +127,9 @@ public class MemberSql {
 
 
     /**
-     * Selects all the races
+     * Selects all the boats
      *
-     * @return all the races in descending order.
+     * @return all the boats of a member.
      * @throws SQLException if there is any error with the queries.
      */
     public static Object memberBoats(String username) throws SQLException {
@@ -133,13 +138,36 @@ public class MemberSql {
             ResultSet rst = connection().executeQuery(sqlSelect);
             ArrayList<Boat> boats = new ArrayList<Boat>();
             while (rst.next()) {
-                Boat boat = new Boat(rst.getString("name"),Integer.parseInt(rst.getString("ID")), Double.parseDouble(rst.getString("length")));
+                Boat boat = new Boat(rst.getString("name"), Integer.parseInt(rst.getString("ID")), Double.parseDouble(rst.getString("length")));
                 boats.add(boat);
             }
             return boats;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    /**
+     * Checks if a username is already in use or not.
+     *
+     * @param username the username of the person.
+     * @return the person, that can either be a member or an employee.
+     * @throws SQLException if there is any error with the queries.
+     */
+    public static Object checkUsername(String username) {
+        String sqlSelect = "SELECT * FROM member WHERE username='" + username + "'";
+        try {
+            ResultSet rst =connection().executeQuery(sqlSelect);
+            if (rst == null){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

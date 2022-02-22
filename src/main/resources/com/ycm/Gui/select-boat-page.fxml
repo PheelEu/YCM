@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="614.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ycm.Gui.MemberSelectBoatGuiController">
    <children>
       <Pane prefHeight="614.0" prefWidth="900.0">
@@ -32,12 +31,12 @@
                   <TableColumn fx:id="boatLengthCol" maxWidth="1.7976931348623157E308" minWidth="300.0" prefWidth="300.0" text="Boat Length" />
                </columns>
             </TableView>
-            <Button layoutX="357.0" layoutY="541.0" mnemonicParsing="false" onAction="#paymentRaceBtn" text="Proceed to Payment">
+            <Button fx:id="selectBoatBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="445.0" layoutY="534.0" mnemonicParsing="false" onAction="#selectBoatBtn" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Label layoutX="463.0" layoutY="85.0" text="the competition" textAlignment="CENTER">
+            <Label fx:id="boatListLabel" alignment="CENTER" layoutX="463.0" layoutY="85.0" prefHeight="42.0" prefWidth="280.0" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="36.0" />
                </font>

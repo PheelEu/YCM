@@ -1,6 +1,7 @@
 package com.ycm.Gui;
 
 
+import com.ycm.Classes.Boat;
 import com.ycm.Sockets.Client;
 import com.ycm.Sockets.Message;
 import com.ycm.Sockets.Request;
@@ -89,22 +90,26 @@ public class PaymentGuiController implements Initializable {
         if(!cNameField.getText().isEmpty() && !cSurnameField.getText().isEmpty() && isValidCVVNumber(cvvField.getText()) &&
                 !(dateField.getValue() == null) && isValidCVVNumber(cvvField.getText()) &&
                 isValidCardNumber(cardNumber.getText()) && !getToday().isAfter(LocalDate.parse(dateField.getValue().toString()))){
-            LocalDate date = null;
+            LocalDate date;
+            Object obj;
             if(Objects.equals(typeOfPayment, "Annual subscription payment")){
                 date = getPaymentDate();
+                obj = new Client().run(new Request(new Message( "payment", getMember().getUsername(),
+                        String.valueOf(date), typeOfPayment, "Credit Card", String.valueOf(getCost()),
+                        String.valueOf(isPaid()), String.valueOf(0))));
             }
             else{
                 date = LocalDate.parse(getToday().toString());
+                obj = new Client().run(new Request(new Message( "payment", getMember().getUsername(),
+                        String.valueOf(date), typeOfPayment, "Credit Card", String.valueOf(getCost()),
+                        String.valueOf(isPaid()), String.valueOf(getBoat().getID()))));
             }
-            Object obj = new Client().run(new Request(new Message( "payment", m.getUsername(),
-                    String.valueOf(date), typeOfPayment, "Credit Card", String.valueOf(getCost()),
-                    String.valueOf(isPaid()))));
             if((boolean) obj) {
                 PaymentGui.a.setContentText("Payment successful!");
                 PaymentGui.a.showAndWait();
                 if(getType()==1){
-                    Object boat = new Client().run(new Request(new Message( "addBoat", b.getName(),
-                            String.valueOf(b.getLength()), String.valueOf(b.getBoatStorage()))));
+                    Object boat = new Client().run(new Request(new Message( "addBoat", getBoat().getName(),
+                            String.valueOf(getBoat().getLength()), String.valueOf(getBoat().getBoatStorage()))));
                     if((boolean) boat) {
                         PaymentGui.a.setContentText("Boat added");
                     }
@@ -116,7 +121,7 @@ public class PaymentGuiController implements Initializable {
                     PaymentGui.a.setContentText("Annual subscription accepted");
                 }
                 if(getType()==3){
-                    Object competitor = new Client().run(new Request(new Message( "addCompetitor", m.getUsername(),
+                    Object competitor = new Client().run(new Request(new Message( "addCompetitor", getMember().getUsername(),
                            String.valueOf(getBoat().getID()), getRace().getName())));
 
                     if((boolean) competitor){
@@ -162,28 +167,37 @@ public class PaymentGuiController implements Initializable {
         }
         if(!bNameField.getText().isEmpty() && !bSurnameField.getText().isEmpty() && !ibanField.getText().isEmpty()
                 && !bicSwiftField.getText().isEmpty() && !emailField.getText().isEmpty()){
-            LocalDate date = null;
+            LocalDate date;
+            Object obj;
+            int paymentID = 1;
+            Object lastPaymentID = new Client().run(new Request(new Message( "lastPaymentID")));
+            if(lastPaymentID != null) {
+                paymentID = Integer.parseInt(String.valueOf(lastPaymentID)) + 1;
+            }
             if(Objects.equals(typeOfPayment, "Annual subscription payment")){
                 date = getPaymentDate();
+                obj = new Client().run(new Request(new Message( "payment", String.valueOf(paymentID),getMember().getUsername(),
+                        String.valueOf(date), typeOfPayment, "Bank Transfer", String.valueOf(getCost()),
+                        String.valueOf(isPaid()), String.valueOf(0))));
             }
             else{
                 date = LocalDate.parse(getToday().toString());
+                obj = new Client().run(new Request(new Message( "payment", String.valueOf(paymentID),getMember().getUsername(),
+                        String.valueOf(date), typeOfPayment, "Bank Transfer", String.valueOf(getCost()),
+                        String.valueOf(isPaid()), String.valueOf(getBoat().getID()))));
             }
-            Object obj = new Client().run(new Request(new Message( "payment", m.getUsername(),
-                    String.valueOf(date), typeOfPayment, "Bank Transfer", String.valueOf(getCost()),
-                    String.valueOf(isPaid()))));
             if((boolean) obj) {
                 PaymentGui.a.setContentText("Payment successful!");
                 PaymentGui.a.showAndWait();
                 if(getType()==1){
-                    Object boat = new Client().run(new Request(new Message( "addBoat", b.getName(),
-                            String.valueOf(b.getLength()), String.valueOf(b.getBoatStorage()))));
+                    Object boat = new Client().run(new Request(new Message( "addBoat", String.valueOf(getBoat().getID()), getBoat().getName(),
+                            String.valueOf(getBoat().getLength()), String.valueOf(getBoat().getBoatStorage()), getMember().getUsername())));
                     if((boolean) boat) {
-                        Object notification = new Client().run(new Request(new Message( "addBoatNotification", m.getName(),
-                              getToday().plusYears(1).toString(), typeOfPayment, String.valueOf(getCost()), String.valueOf(b.getID()))));
+                        Object notification = new Client().run(new Request(new Message( "addBoatNotification", String.valueOf(paymentID), getMember().getUsername(),
+                              getToday().plusYears(1).toString(), typeOfPayment, String.valueOf(getCost()), String.valueOf(getBoat().getID()))));
                         if(!(boolean) notification){
-                            PaymentGui.a.setContentText("There has been an error while creating" +
-                                    " \nthe notification for this payment!"+"\nContact us!");
+                        PaymentGui.a.setContentText("There has been an error while creating" +
+                                   " \nthe notification for this payment!"+"\nContact us!");
                         }
                         else {
                             PaymentGui.a.setContentText("Boat added");
@@ -191,21 +205,36 @@ public class PaymentGuiController implements Initializable {
                     }
                     else{
                         PaymentGui.a.setContentText("Boat not added");
+                        Object deletePayment = new Client().run(new Request(new Message( "deletePayment", getMember().getUsername(), String.valueOf(getCost()))));
                     }
                 }
                 if(getType()==2){
-                    Object notification = new Client().run(new Request(new Message( "addNotification", m.getName(),
-                            getToday().plusYears(1).toString(), typeOfPayment, String.valueOf(getCost()))));
-                    if(!(boolean) notification){
-                        PaymentGui.a.setContentText("There has been an error while creating" +
-                                " \nthe notification for this payment!"+"\nContact us!");
-                    }
-                    else {
-                        PaymentGui.a.setContentText("Annual subscription accepted");
+                    if((boolean) obj) {//TODO CHECK IF WORKS!!
+                        Object notification = new Client().run(new Request(new Message("addNotification", String.valueOf(paymentID), getMember().getUsername(),
+                                String.valueOf(getToday().plusYears(1)), typeOfPayment, String.valueOf(getCost()))));
+                        if (!(boolean) notification) {
+                            PaymentGui.a.setContentText("There has been an error while creating" +
+                                    " \nthe notification for this payment!" + "\nContact us!");
+                        }
+                        if (!isRegistered()) {
+                            Object member = new Client().run(new Request(new Message("register", getMember().getUsername(), getMember().getPassword(), getMember().getName(), getMember().getSurname(), getMember().getAddress(), getMember().getFC())));
+                            if ((boolean) member) {
+                                PaymentGui.a.setContentText("Member registered successfully!");
+                            }
+                            if (!(boolean) member) {
+                                PaymentGui.a.setContentText("Something went wrong, contact an employee!");
+                                Object deletePayment = new Client().run(new Request(new Message("deletePayment", getMember().getUsername(), String.valueOf(getCost()))));
+                                if(!(boolean) deletePayment){
+                                    PaymentGui.a.setContentText("Something went wrong, contact an employee!");
+                                }
+                            }
+                        } else {
+                            PaymentGui.a.setContentText("Annual subscription accepted");
+                        }
                     }
                 }
                 if(getType()==3){
-                    Object competitor = new Client().run(new Request(new Message( "addCompetitor", m.getUsername(),
+                    Object competitor = new Client().run(new Request(new Message( "addCompetitor", getMember().getUsername(),
                             String.valueOf(getBoat().getID()), getRace().getName())));
 
                     if((boolean) competitor){
