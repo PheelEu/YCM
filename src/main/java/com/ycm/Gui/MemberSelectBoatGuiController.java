@@ -77,7 +77,7 @@ public class MemberSelectBoatGuiController implements Initializable {
                 Object removeBoat = new Client().run(new Request(new Message( "removeBoat", boat.getName(), String.valueOf(boat.getID()))));
                 if((boolean) removeBoat){
                     a.setContentText("Boat removed correctly");
-                    Object removeNotification = new Client().run(new Request(new Message("removeNotification", getMember().getUsername(), String.valueOf(boat.getID()))));
+                    Object removeNotification = new Client().run(new Request(new Message("removeBoatNotification", getMember().getUsername(), String.valueOf(boat.getID()))));
                     Object boats = new Client().run(new Request(new Message("memberBoats", getMember().getUsername())));
                     if (!(boats == null)) {
                         memberBoats = (ArrayList<Boat>) boats;

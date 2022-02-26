@@ -249,7 +249,7 @@ public class MemberGuiController {
 
     @FXML
     void notificationIcon(MouseEvent event) {
-
+            //TODO Notifications view and stuff
     }
 
     /**
@@ -262,6 +262,7 @@ public class MemberGuiController {
         Object logout = new Client().run(new Request(new Message( "logout", getMember().getUsername(), getMember().getPassword())));
         if((boolean) logout){
             FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("welcome-page.fxml"));
+            setMember(null);
             Scene scene = new Scene(fxmlLoader.load());
             getMainStage().setTitle("YCM Club");
             getMainStage().setScene(scene);

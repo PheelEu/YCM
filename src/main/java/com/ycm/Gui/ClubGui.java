@@ -50,6 +50,14 @@ public class ClubGui extends Application {
 
     public static void setPopupTitle(String title){popupStage.setTitle(title);}
 
+    public static boolean stringToBool(String s) {
+        if (s.equals("1"))
+            return true;
+        if (s.equals("0"))
+            return false;
+        throw new IllegalArgumentException(s+" is not a bool. Only 1 and 0 are.");
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         Object obj = new Client().run(new Request(new Message("")));

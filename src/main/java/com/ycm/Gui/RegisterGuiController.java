@@ -76,9 +76,9 @@ public class RegisterGuiController {
         }
         else {
             Member m = new Member(userField.getText(), passField.getText(), nameField.getText(), surnameField.getText(), addressField.getText(), FCField.getText(), false);
-            Object checkUsername = new Client().run(new Request(new Message("checkUsername", getMember().getUsername())));
+            setMember(m);
+            Object checkUsername = new Client().run(new Request(new Message("checkUsername",getMember().getUsername())));
             if((boolean) checkUsername){
-                setMember(m);
                 RegisterGui.a.setContentText("Proceed to payment to \nfinish the registration");
                 RegisterGui.a.showAndWait();
                 setType(2);

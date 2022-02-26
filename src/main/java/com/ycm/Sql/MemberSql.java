@@ -132,7 +132,7 @@ public class MemberSql {
      * @return all the boats of a member.
      * @throws SQLException if there is any error with the queries.
      */
-    public static Object memberBoats(String username) throws SQLException {
+    public static Object memberBoats(String username){
         String sqlSelect = "SELECT * FROM boat WHERE owner ='" + username + "'";
         try {
             ResultSet rst = connection().executeQuery(sqlSelect);
@@ -158,12 +158,13 @@ public class MemberSql {
     public static Object checkUsername(String username) {
         String sqlSelect = "SELECT * FROM member WHERE username='" + username + "'";
         try {
-            ResultSet rst =connection().executeQuery(sqlSelect);
-            if (rst == null){
-                return true;
+            ResultSet rst = connection().executeQuery(sqlSelect);
+            System.out.println(rst);
+            if (rst.next()){
+                return false;
             }
             else{
-                return false;
+                return true;
             }
         }catch (SQLException e) {
             e.printStackTrace();

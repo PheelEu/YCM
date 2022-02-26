@@ -102,7 +102,9 @@ public class ServerThread implements Runnable {
                 case "removeBoat":
                     obj = MemberSql.removeBoat(m.getArgs1(), m.getArgs2());
                     break;
-
+                case "removeAllBoat":
+                    obj = EmployeeSql.removeAllBoat(m.getArgs1());
+                    break;
                 case "expiryDate":
                     obj =  MemberSql.expiryDate(m.getArgs1(), m.getArgs2());
                     break;
@@ -128,6 +130,9 @@ public class ServerThread implements Runnable {
                     break;
                 case "removeBoatNotification":
                     obj = NotificationSql.removeBoatNotification(m.getArgs1(), Integer.parseInt(m.getArgs2()));
+                    break;
+                case "removeAllBoatNotification":
+                    obj = NotificationSql.removeAllBoatNotification(m.getArgs1());
                     break;
                 case "payment":
                     obj = PaymentSql.addPayment(Integer.parseInt(m.getArgs1()),m.getArgs2(), Date.valueOf(m.getArgs3()),
@@ -171,6 +176,12 @@ public class ServerThread implements Runnable {
                     */
                 case "register":
                     obj = MemberSql.register(m.getArgs1(), m.getArgs2(), m.getArgs3(), m.getArgs4(), m.getArgs5(), m.getArgs6());
+                    break;
+                case "members":
+                    obj = EmployeeSql.members();
+                    break;
+                case "removeMember":
+                    obj = EmployeeSql.removeMember(m.getArgs1());
                     break;
                     /*
                 case "removeEmployee":

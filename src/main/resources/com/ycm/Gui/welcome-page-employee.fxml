@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ycm.Gui.EmployeeGuiController">
+   <children>
+      <Pane prefHeight="800.0" prefWidth="1200.0">
+         <children>
+            <ImageView fitHeight="41.0" fitWidth="41.0" layoutX="1133.0" layoutY="27.0" onMouseClicked="#logoutIcon" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/logout.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="302.0" layoutY="37.0" text="YCM Club">
+               <font>
+                  <Font name="Didot" size="48.0" />
+               </font>
+            </Label>
+            <AnchorPane fx:id="contentPane" layoutX="300.0" layoutY="186.0" prefHeight="614.0" prefWidth="900.0">
+               <children>
+                  <Pane prefHeight="614.0" prefWidth="900.0">
+                     <children>
+                        <ImageView fitHeight="614.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/porto.jpeg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/YCM%20Logo.png" />
+               </image>
+            </ImageView>
+            <Pane layoutY="186.0" prefHeight="614.0" prefWidth="300.0">
+               <children>
+                  <Accordion prefHeight="614.0" prefWidth="300.0">
+                     <panes>
+                        <TitledPane animated="false" text="Members">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Hyperlink layoutX="15.0" layoutY="10.0" onAction="#viewMembers" prefHeight="25.0" prefWidth="269.0" text="⚓️     View Members" textFill="#030303">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Boats">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Hyperlink layoutX="15.0" layoutY="10.0" onAction="#viewBoats" prefHeight="15.0" prefWidth="260.0" text="⚓️     View Boats" textFill="#030303">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Races">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Hyperlink layoutX="15.0" layoutY="10.0" onAction="#plannedRaces" prefHeight="15.0" prefWidth="260.0" text="⚓️     Planned Races" textFill="#030303">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Hyperlink layoutX="15.0" layoutY="40.0" onAction="#addRace" prefHeight="25.0" prefWidth="269.0" text="⚓️     Add a Race" textFill="#030303">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Payments &amp; Notifications">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Hyperlink layoutX="15.0" layoutY="10.0" onAction="#annualSubscription" prefHeight="27.0" prefWidth="217.0" text="⚓️     View Annual Subscriptions" textFill="#030303">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Hyperlink layoutX="15.0" layoutY="40.0" onAction="#dockingFares" prefHeight="27.0" prefWidth="180.0" text="⚓️     View Docking Fares" textFill="#030303">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Hyperlink layoutX="15.0" layoutY="70.0" onAction="#racePayments" prefHeight="15.0" prefWidth="200.0" text="⚓️     View Race Payments" textFill="#030303">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Hyperlink>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TitledPane>
+                     </panes>
+                  </Accordion>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

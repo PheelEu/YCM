@@ -82,4 +82,22 @@ public class NotificationSql {
             return false;
         }
     }
+
+
+    /**
+     * Method with a query to delete all the notifications of a member from the database.
+     *
+     * @param username it's the username associated to the notifications which will be deleted.
+     * @return true if there are no errors.
+     */
+    public static Object removeAllBoatNotification(String username) {
+        String sqlDelete = "DELETE FROM boatStorageNotification WHERE username='" + username + "'";
+        try {
+            connection().executeUpdate(sqlDelete);
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

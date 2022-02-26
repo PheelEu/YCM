@@ -15,11 +15,12 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 import static com.ycm.Gui.ClubGui.*;
+import static com.ycm.Gui.EmployeeGui.getEmployee;
+import static com.ycm.Gui.EmployeeGui.setEmployee;
+import static com.ycm.Gui.MemberGui.getMember;
+import static com.ycm.Gui.MemberGui.setMember;
 
 public class LoginGuiController {
-
-    static Employee employee = null;
-    static Member member = null;
 
     @FXML
     private PasswordField passField;
@@ -43,28 +44,26 @@ public class LoginGuiController {
             Object person = new Client().run(new Request(new Message( "login", userField.getText(), passField.getText())));
             if(person!=null){
                 if(person instanceof Employee){
-                    employee = (Employee) person;
+                    setEmployee((Employee) person);
+                    if(getEmployee() != null){
+                        try {
+                            setScene(EmployeeGui.EmployeeWelcomeScene());
+                            ClubGui.getPopupStage().close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
                 if(person instanceof Member){
-                    member = (Member) person;
-                }
-            }
-            if(employee != null){
-                try {
-                    setScene(EmployeeGui.EmployeeWelcomeScene());
-                    EmployeeGui.setEmployee(employee);
-                    ClubGui.getPopupStage().close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if(member != null){
-                try {
-                    setScene(MemberGui.MemberWelcomeScene());
-                    MemberGui.setMember(member);
-                    ClubGui.getPopupStage().close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    setMember((Member) person);
+                    if(getMember() != null){
+                        try {
+                            setScene(MemberGui.MemberWelcomeScene());
+                            ClubGui.getPopupStage().close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             }
             else{
