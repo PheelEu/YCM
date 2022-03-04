@@ -2,6 +2,7 @@ package com.ycm.Gui;
 
 import com.ycm.Classes.Boat;
 import com.ycm.Classes.Member;
+import com.ycm.Classes.Notification;
 import com.ycm.Classes.Race;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,13 +26,21 @@ public class MemberGui {
 
     public static ArrayList<Boat> memberBoats = new ArrayList<Boat>();
 
-    static private Member m = null;
+    public static ArrayList<Notification> mNotifications = new ArrayList<Notification>();
 
-    static private Boat b = null;
+    private static Member m = null;
 
-    static private int selectBoatGuiType;
+    private static Boat b = null;
 
-    static private boolean registered;
+    private static Notification n = null;
+
+    private static int selectBoatGuiType;
+
+    private static boolean registered;
+
+    private static boolean boatRegistered;
+
+
 
     /**
      * It's a set method to set the payment is has been payed or not
@@ -101,7 +110,7 @@ public class MemberGui {
 
     /**
      * It's a get method to get the gui boat once a boat is created
-     * @return the boat which has been create
+     * @return the boat which has been created
      **/
     public static int getSelectBoatGuiType(){return selectBoatGuiType;}
 
@@ -114,12 +123,36 @@ public class MemberGui {
 
     /**
      * It's a get method to check if member is already registered.
-     * @return the is paid boolean
+     * @return the registered boolean
      **/
     public static boolean isRegistered(){return registered;}
 
     /**
-     * This is an alert that is shown to the user.
+     * It's a set method to set the if a boat is already registered or not
+     * @param reg is the registered boolean to be set
+     **/
+    public static void setBoatRegistered(boolean reg){boatRegistered = reg;}
+
+    /**
+     * It's a get method to check if a boat is already registered.
+     * @return the boat registered boolean
+     **/
+    public static boolean isBoatRegistered(){return boatRegistered;}
+
+    /**
+     * It's a set method to set the notification
+     * @param notification is the notification to be set
+     **/
+    public static void setNotification(Notification notification){n = notification;}
+
+    /**
+     * It's a get method to get the notification
+     * @return the notification which has been set
+     **/
+    public static Notification getNotification(){return n;}
+
+    /**
+     * This is an alert that is shown to the member.
      * it can contain information or a warning.
      **/
     static Alert a = new Alert(Alert.AlertType.NONE);
@@ -136,11 +169,10 @@ public class MemberGui {
     }
 
     /**
-     * This method creates a new pane for the user member page.
+     * This method creates a new pane for the member page.
      * @return the pane for the member add boat page.
      * @throws IOException is an exception thrown if something in the GUI does not work
      **/
-
     public static Pane MemberAddBoatPane() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("add-boat-page.fxml"));
         contentPane = (fxmlLoader.load());
@@ -149,11 +181,10 @@ public class MemberGui {
 
 
     /**
-     * This method creates a new pane for the user member page.
+     * This method creates a new pane for the member page.
      * @return the pane for the member annual subscription page.
      * @throws IOException is an exception thrown if something in the GUI does not work
      **/
-
     public static Pane MemberSubscriptionPane() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("annual-sub-page.fxml"));
         contentPane = (fxmlLoader.load());
@@ -161,11 +192,10 @@ public class MemberGui {
     }
 
     /**
-     * This method creates a new pane for the user member page.
+     * This method creates a new pane for the member page.
      * @return the pane for the upcoming races page.
      * @throws IOException is an exception thrown if something in the GUI does not work
      **/
-
     public static Pane UpcomingRacesPane() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("upcoming-races-page.fxml"));
         contentPane = (fxmlLoader.load());
@@ -173,13 +203,24 @@ public class MemberGui {
     }
 
     /**
-     * This method creates a new pane for the user member page.
+     * This method creates a new pane for the member page.
      * @return the pane to select a boat for the member.
      * @throws IOException is an exception thrown if something in the GUI does not work
      **/
-
     public static Pane SelectBoatPane() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("select-boat-page.fxml"));
+        contentPane = (fxmlLoader.load());
+        return contentPane;
+    }
+
+
+    /**
+     * This method creates a new pane for the member page.
+     * @return the pane to select a boat for the member.
+     * @throws IOException is an exception thrown if something in the GUI does not work
+     **/
+    public static Pane memberNotificationsPane() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("member-notifications-page.fxml"));
         contentPane = (fxmlLoader.load());
         return contentPane;
     }

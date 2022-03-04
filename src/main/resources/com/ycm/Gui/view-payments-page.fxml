@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="614.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ycm.Gui.EmployeeViewPGuiController">
+   <children>
+      <TabPane prefHeight="614.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Annual Subscriptions">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="582.5" prefWidth="900.0">
+                           <children>
+                              <TableView fx:id="annualSubTable" layoutY="82.5" prefHeight="500.0" prefWidth="900.0">
+                                <columns>
+                                  <TableColumn fx:id="aIDCol" prefWidth="50.0" text="ID" />
+                                  <TableColumn fx:id="aUsernameCol" prefWidth="200.0" text="Username" />
+                                    <TableColumn fx:id="aDateCol" prefWidth="200.0" text="Payment Date" />
+                                    <TableColumn fx:id="aMethodCol" prefWidth="200.0" text="Method" />
+                                    <TableColumn fx:id="aAmountCol" prefWidth="150.0" text="Amount" />
+                                    <TableColumn fx:id="aPaidCol" prefWidth="100.0" text="Paid" />
+                                </columns>
+                              </TableView>
+                              <Label layoutX="219.0" layoutY="22.0" text="Annual Subscription Payments">
+                                 <font>
+                                    <Font name="System Bold" size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Boats Storage">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="582.5" prefWidth="900.0">
+                           <children>
+                              <TableView fx:id="boatStorageTable" layoutY="82.5" prefHeight="500.0" prefWidth="900.0">
+                                 <columns>
+                                    <TableColumn fx:id="bIDCol" prefWidth="50.0" text="ID" />
+                                    <TableColumn fx:id="bUsernameCol" prefWidth="175.0" text="Username" />
+                                    <TableColumn fx:id="bDateCol" prefWidth="175.0" text="Payment Date" />
+                                    <TableColumn fx:id="bMethodCol" prefWidth="150.0" text="Method" />
+                                    <TableColumn fx:id="bAmountCol" prefWidth="150.0" text="Amount" />
+                                    <TableColumn fx:id="bPaidCol" prefWidth="100.0" text="Paid" />
+                                    <TableColumn fx:id="bBoatIDCol" prefWidth="100.0" text="Boat ID" />
+                                 </columns>
+                              </TableView>
+                              <Label layoutX="270.0" layoutY="18.0" text="Boat Storage Payments">
+                                 <font>
+                                    <Font name="System Bold" size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Race Fees">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="582.5" prefWidth="900.0">
+                           <children>
+                              <Label layoutX="295.0" layoutY="23.0" text="Race Fees Payments">
+                                 <font>
+                                    <Font name="System Bold" size="36.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="raceFeeTable" layoutY="82.5" prefHeight="500.0" prefWidth="900.0">
+                                 <columns>
+                                    <TableColumn fx:id="rIDCol" prefWidth="50.0" text="ID" />
+                                    <TableColumn fx:id="rUsernameCol" prefWidth="175.0" text="Username" />
+                                    <TableColumn fx:id="rDateCol" prefWidth="175.0" text="Payment Date" />
+                                    <TableColumn fx:id="rMethodCol" prefWidth="150.0" text="Method" />
+                                    <TableColumn fx:id="rAmountCol" prefWidth="150.0" text="Amount" />
+                                    <TableColumn fx:id="rPaidCol" prefWidth="100.0" text="Paid" />
+                                    <TableColumn fx:id="rBoatIDCol" prefWidth="100.0" text="Boat ID" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

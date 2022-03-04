@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ycm.Gui.EmployeeGuiController">
    <children>
       <Pane prefHeight="800.0" prefWidth="1200.0">
@@ -104,17 +103,12 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <Hyperlink layoutX="15.0" layoutY="10.0" onAction="#annualSubscription" prefHeight="27.0" prefWidth="217.0" text="⚓️     View Annual Subscriptions" textFill="#030303">
+                                    <Hyperlink layoutX="15.0" layoutY="10.0" onAction="#viewPayments" prefHeight="27.0" prefWidth="217.0" text="⚓️     View Payments" textFill="#030303">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink layoutX="15.0" layoutY="40.0" onAction="#dockingFares" prefHeight="27.0" prefWidth="180.0" text="⚓️     View Docking Fares" textFill="#030303">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Hyperlink>
-                                    <Hyperlink layoutX="15.0" layoutY="70.0" onAction="#racePayments" prefHeight="15.0" prefWidth="200.0" text="⚓️     View Race Payments" textFill="#030303">
+                                    <Hyperlink layoutX="15.0" layoutY="40.0" onAction="#viewNotifications" prefHeight="27.0" prefWidth="180.0" text="⚓️     View Notifications" textFill="#030303">
                                        <font>
                                           <Font size="16.0" />
                                        </font>

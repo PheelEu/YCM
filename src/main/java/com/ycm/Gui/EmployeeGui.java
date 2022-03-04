@@ -1,12 +1,9 @@
 package com.ycm.Gui;
 
-import com.ycm.Classes.Employee;
-import com.ycm.Classes.Member;
-import javafx.fxml.FXML;
+import com.ycm.Classes.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -18,7 +15,15 @@ public class EmployeeGui {
 
     static Employee e = null;
 
+    public static ArrayList<Boat> mBoats = new ArrayList<Boat>();
+
+    public static ArrayList<Race> viewRaces = new ArrayList<Race>();
+
     public static ArrayList<Member> membersInfo = new ArrayList<Member>();
+
+    public static ArrayList<Payment> payments = new ArrayList<Payment>();
+
+    public static ArrayList<Notification> notifications = new ArrayList<Notification>();
 
     /**
      * It's a set method to set the gui employee after the login
@@ -56,6 +61,62 @@ public class EmployeeGui {
      **/
     public static Pane viewMembers() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("view-members-page.fxml"));
+        contentPane = (fxmlLoader.load());
+        return contentPane;
+    }
+
+    /**
+     * This method creates a new pane for the employee page.
+     * @return the pane to select a boat for the member.
+     * @throws IOException is an exception thrown if something in the GUI does not work
+     **/
+    public static Pane viewBoats() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("view-all-boats-page.fxml"));
+        contentPane = (fxmlLoader.load());
+        return contentPane;
+    }
+
+    /**
+     * This method creates a new pane for the employee page.
+     * @return the pane to select a boat for the member.
+     * @throws IOException is an exception thrown if something in the GUI does not work
+     **/
+    public static Pane viewRaces() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("view-races-page.fxml"));
+        contentPane = (fxmlLoader.load());
+        return contentPane;
+    }
+
+
+    /**
+     * This method creates a new pane for the employee page.
+     * @return the pane to add a race.
+     * @throws IOException is an exception thrown if something in the GUI does not work
+     **/
+    public static Pane addRaces() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("add-race-page.fxml"));
+        contentPane = (fxmlLoader.load());
+        return contentPane;
+    }
+
+    /**
+     * This method creates a new pane for the employee page.
+     * @return the pane to add a race.
+     * @throws IOException is an exception thrown if something in the GUI does not work
+     **/
+    public static Pane viewPayments() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("view-payments-page.fxml"));
+        contentPane = (fxmlLoader.load());
+        return contentPane;
+    }
+
+    /**
+     * This method creates a new pane for the employee page.
+     * @return the pane to add a race.
+     * @throws IOException is an exception thrown if something in the GUI does not work
+     **/
+    public static Pane viewNotifications() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("employee-notifications-page.fxml"));
         contentPane = (fxmlLoader.load());
         return contentPane;
     }

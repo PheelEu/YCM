@@ -1,7 +1,5 @@
 package com.ycm.Gui;
 
-import com.ycm.Classes.Employee;
-import com.ycm.Classes.Member;
 import com.ycm.Sockets.Client;
 import com.ycm.Sockets.Message;
 import com.ycm.Sockets.Request;
@@ -16,7 +14,6 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 import static com.ycm.Gui.ClubGui.getMainStage;
-import static com.ycm.Gui.ClubGui.setScene;
 import static com.ycm.Gui.DeleteAccountGui.a;
 
 public class DeleteAccountGuiController {
@@ -42,7 +39,7 @@ public class DeleteAccountGuiController {
             Object person = new Client().run(new Request(new Message( "deleteAccount", userField.getText(), passField.getText())));
             System.out.println((boolean)person);
             if((boolean) person) {
-                new Client().run(new Request(new Message( "removeNotification", userField.getText())));
+                new Client().run(new Request(new Message( "removeAllNotification", userField.getText())));
                 a.setContentText("Your Account has been deleted");
                 a.showAndWait();
                 FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("welcome-page.fxml"));

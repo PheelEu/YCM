@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="614.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ycm.Gui.MemberNotificationGuiController">
+   <children>
+      <Pane prefHeight="614.0" prefWidth="900.0">
+         <children>
+            <TableView fx:id="notificationTable" layoutY="135.5" prefHeight="400.0" prefWidth="900.0">
+               <columns>
+                  <TableColumn fx:id="paymentIDCol" prefWidth="50.0" text="ID" />
+                  <TableColumn fx:id="usernameCol" prefWidth="200.0" text="Username" />
+                  <TableColumn fx:id="dateCol" prefWidth="200.0" text="Expiry Date" />
+                  <TableColumn fx:id="typeCol" prefWidth="200.0" text="Type of Payment" />
+                  <TableColumn fx:id="amountCol" prefWidth="150.0" text="Amount" />
+                  <TableColumn fx:id="boatIDCol" prefWidth="100.0" text="Boat ID" />
+               </columns>
+            </TableView>
+            <Label layoutX="345.0" layoutY="45.0" text="Notifications">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Button layoutX="393.0" layoutY="557.0" mnemonicParsing="false" onAction="#paymentBtn" text="Go to Payment">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="135.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/YCM%20Logo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="40.0" layoutX="553.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/Notification_Icon_-_1-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

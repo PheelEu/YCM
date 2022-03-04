@@ -22,6 +22,7 @@ public class Boat implements Serializable {
     private int ID;
     private double length;
     private double boatStorage;
+    private String owner;
 
     /**
      *Class Constructor
@@ -47,6 +48,21 @@ public class Boat implements Serializable {
         this.ID = ID;
         this.length = length;
         this.boatStorage = length*priceForMeter;
+    }
+
+    /**
+     *Class Constructor
+     *
+     * @param name is the name of the boat
+     * @param ID is the id of the boat
+     * @param length is the length of the boat.
+     **/
+    public Boat(int ID, String name,double length, String owner){
+        this.ID = ID;
+        this.name = name;
+        this.length = length;
+        this.boatStorage = length*priceForMeter;
+        this.owner = owner;
     }
 
     /**
@@ -111,7 +127,26 @@ public class Boat implements Serializable {
      **/
     public void setBoatStorage() {this.boatStorage = this.length*priceForMeter;}
 
+    /**
+     * Gets the price for meter of the port.
+     * @return fee for meter of the boat.
+     **/
     public static double getPriceForMeter() {
         return priceForMeter;
+    }
+
+    /**
+     * Sets the owner of the boat.
+     **/
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    /**
+     * Gets the owner of the boat.
+     * @return the owner of the boat.
+     **/
+    public String getOwner() {
+        return owner;
     }
 }

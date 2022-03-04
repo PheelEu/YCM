@@ -18,7 +18,7 @@ public class RaceSql {
      * @return all the races in descending order.
      * @throws SQLException if there is any error with the queries.
      */
-    public static Object upcomingRaces() throws SQLException {
+    public static Object upcomingRaces() {
         String sqlSelect = "SELECT * FROM race WHERE raceDay > CURRENT_DATE() order by raceDay";
         try {
             ResultSet rst = connection().executeQuery(sqlSelect);
@@ -38,6 +38,58 @@ public class RaceSql {
         String sqlInsert = "INSERT INTO competitors (username, boatID, raceName) VALUES('" + username + "', '" + boatID + "', '" + raceName + "')";
         try {
             connection().execute(sqlInsert);
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Selects all the races
+     *
+     * @return all the races in descending order.
+     * @throws SQLException if there is any error with the queries.
+     */
+    public static Object checkCompetitors(int boatID, String raceName) {
+        String sqlSelect = "SELECT * FROM competitors WHERE boatID = '" + boatID + "' AND raceName = '" + raceName + "'";
+        try {
+            ResultSet rst = connection().executeQuery(sqlSelect);
+            if(rst.next()){
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
+    /**
+     *
+     **/
+    public static Object addRace(String name, double cost, LocalDate raceDay) {
+        String sqlInsert = "INSERT INTO race (name, cost, raceDay) VALUES('" + name + "','" + cost + "','" + raceDay + "')";
+        try {
+            connection().execute(sqlInsert);
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Method with a query to delete a race from the database and its competitors.
+     *
+     * @return true if there are no errors.
+     */
+    public static Object removeRace(String name) {
+        String sqlDeleteR = "DELETE FROM race WHERE name='" + name + "'";
+        String sqlDeleteC = "DELETE FROM competitors WHERE raceName='" + name + "'";
+        try {
+            connection().executeUpdate(sqlDeleteR);
+            connection().executeUpdate(sqlDeleteC);
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

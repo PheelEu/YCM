@@ -15,6 +15,7 @@ public class Payment implements Serializable {
     private String method;
     private double amount;
     private boolean paid;
+    private int info;
 
     public Payment(int ID, Member m, String type,String method, double amount){
         this.ID = ID;
@@ -26,6 +27,36 @@ public class Payment implements Serializable {
         this.paid = false;
     }
 
+    public Payment(int ID, String username, LocalDate paymentDate,String method, double amount, boolean paid){
+        this.ID = ID;
+        this.username = username;
+        this.paymentDate = paymentDate;
+        this.method = method;
+        this.amount = amount;
+        this.paid = paid;
+    }
+
+
+    public Payment(int ID, String username, LocalDate paymentDate,String method, double amount, boolean paid, int info){
+        this.ID = ID;
+        this.username = username;
+        this.paymentDate = paymentDate;
+        this.method = method;
+        this.amount = amount;
+        this.paid = paid;
+        this.info = info;
+    }
+
+    public Payment(int ID, String username, LocalDate paymentDate, String type,String method, double amount, boolean paid,int info){
+        this.ID = ID;
+        this.username = username;
+        this.paymentDate = paymentDate;
+        this.type = type;
+        this.method = method;
+        this.amount = amount;
+        this.paid = paid;
+        this.info = info;
+    }
     /**
      * Gets the id of the payment.
      * @return id of the last payment + 1.
@@ -126,4 +157,20 @@ public class Payment implements Serializable {
     public void setPaid(boolean paid) {
         this.paid = paid;
     }
+
+
+    /**
+     * Gets the info of the boat linked to this payment.
+     * @return info of the boat linked to this payment.
+     **/
+    public int getInfo() {
+        return info;
+    }
+
+    /**
+     * Sets the info of the boat to the payment.
+     * @param info it's the boat info to be set to the payment.
+     **/
+    public void setInfo(int info) {this.info = info;}
+
 }

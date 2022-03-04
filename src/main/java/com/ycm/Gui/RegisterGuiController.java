@@ -74,13 +74,25 @@ public class RegisterGuiController {
         if(!Objects.equals(passField.getText(), passField1.getText())) {
             RegisterGui.a.setContentText("The passwords are not the same");
         }
-        else {
+        if(nameField.getText().isEmpty()){
+            RegisterGui.a.setContentText("name field is Empty");
+        }
+        if(surnameField.getText().isEmpty()){
+            RegisterGui.a.setContentText("surname field is Empty");
+        }
+        if(addressField.getText().isEmpty()){
+            RegisterGui.a.setContentText("address field is Empty");
+        }
+        if(FCField.getText().isEmpty()){
+            RegisterGui.a.setContentText("Fiscal Code field is Empty");
+        }
+        if(!userField.getText().isEmpty() && !passField.getText().isEmpty() && Objects.equals(passField.getText(), passField1.getText())
+                && !nameField.getText().isEmpty() &&  !surnameField.getText().isEmpty() &&  !addressField.getText().isEmpty() &&  !FCField.getText().isEmpty()) {
             Member m = new Member(userField.getText(), passField.getText(), nameField.getText(), surnameField.getText(), addressField.getText(), FCField.getText(), false);
             setMember(m);
             Object checkUsername = new Client().run(new Request(new Message("checkUsername",getMember().getUsername())));
             if((boolean) checkUsername){
                 RegisterGui.a.setContentText("Proceed to payment to \nfinish the registration");
-                RegisterGui.a.showAndWait();
                 setType(2);
                 setPaid(true);
                 setPaymentDate(getToday());
@@ -91,10 +103,9 @@ public class RegisterGuiController {
             }
             else{
                 RegisterGui.a.setContentText("Username already in use!");
-                RegisterGui.a.showAndWait();
             }
-
             getPopupStage().show();
         }
+        RegisterGui.a.showAndWait();
     }
 }

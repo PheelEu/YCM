@@ -1,9 +1,13 @@
 package com.ycm.Sql;
 
+import com.ycm.Classes.Payment;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
+import static com.ycm.Gui.ClubGui.stringToBool;
 import static com.ycm.Sql.QuerySql.connection;
 
 public class PaymentSql {
@@ -20,7 +24,7 @@ public class PaymentSql {
      * @param info is the info about the payment (usually boat id)
      * @return true if there are no errors.
      */
-    public static Object addPayment(int ID, String username, Date paymentDate, String type, String method, double amount, boolean paid, int info) {
+    public static Object addPayment(int ID, String username, LocalDate paymentDate, String type, String method, double amount, boolean paid, int info) {
         int paidInt = paid ? 1 : 0;
         String sqlInsert = "INSERT INTO payment (ID, username, paymentDate, type, method, amount, paid, info) VALUES('" + ID + "', '" + username + "', '" + paymentDate + "', '" + type + "', '" + method + "', '" + amount + "', '" + paidInt + "', '" + info + "')";
         try {
@@ -68,5 +72,31 @@ public class PaymentSql {
             return null;
         }
         return null;
+    }
+
+
+    /**
+     * Selects all the payments
+     *
+     * @return all the payments in the database.
+     * @throws SQLException if there is any error with the queries.
+     */
+    public static Object viewPayments(){
+        String sqlSelect = "SELECT * FROM payment";
+        try {
+            ResultSet rst = connection().executeQuery(sqlSelect);
+            ArrayList<Payment> payments = new ArrayList<Payment>();
+            while (rst.next()) {
+                Payment p = new Payment(Integer.parseInt(rst.getString("ID")), rst.getString("username"),
+                        LocalDate.parse(rst.getString("paymentDate")), rst.getString("type"),
+                        rst.getString("method"), Double.parseDouble(rst.getString("amount")),
+                        stringToBool(rst.getString("paid")), Integer.parseInt(rst.getString("info")));
+                payments.add(p);
+            }
+            return payments;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

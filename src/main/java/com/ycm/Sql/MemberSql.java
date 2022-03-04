@@ -60,12 +60,11 @@ public class MemberSql {
     /**
      * Method with a query to delete a member from database.
      *
-     * @param name the name of boat that will be deleted.
      * @param ID   it's the ID of the boat that will be deleted.
      * @return true if there are no errors.
      */
-    public static Object removeBoat(String name, String ID) {
-        String sqlDelete = "DELETE FROM boat WHERE Name='" + name + "' AND ID='" + ID + "'";
+    public static Object removeBoat(int ID) {
+        String sqlDelete = "DELETE FROM boat WHERE ID='" + ID + "'";
         try {
             connection().executeUpdate(sqlDelete);
             return true;

@@ -100,7 +100,7 @@ public class ServerThread implements Runnable {
                     obj = MemberSql.lastBoatID();
                     break;
                 case "removeBoat":
-                    obj = MemberSql.removeBoat(m.getArgs1(), m.getArgs2());
+                    obj = MemberSql.removeBoat(Integer.parseInt(m.getArgs1()));
                     break;
                 case "removeAllBoat":
                     obj = EmployeeSql.removeAllBoat(m.getArgs1());
@@ -114,30 +114,54 @@ public class ServerThread implements Runnable {
                 case "memberBoats":
                     obj =  MemberSql.memberBoats(m.getArgs1());
                     break;
+                case "boats":
+                    obj =  EmployeeSql.boats();
+                    break;
                 case "addCompetitor":
                     obj = RaceSql.addCompetitor(m.getArgs1(), Integer.parseInt(m.getArgs2()), m.getArgs3());
                     break;
-                 case "addNotification":
-                    obj =  NotificationSql.addNotification(Integer.parseInt(m.getArgs1()), m.getArgs2(),
-                            LocalDate.parse(m.getArgs3()), m.getArgs4(), Double.parseDouble(m.getArgs5()));
+                case "checkCompetitors":
+                    obj = RaceSql.checkCompetitors(Integer.parseInt(m.getArgs1()), m.getArgs2());
                     break;
-                case "removeNotification":
-                    obj = NotificationSql.removeNotification(m.getArgs1());
+                case "addRace":
+                    obj = RaceSql.addRace(m.getArgs1(), Double.parseDouble(m.getArgs2()), LocalDate.parse(m.getArgs3()));
                     break;
-                case "addBoatNotification":
-                    obj =  NotificationSql.addBoatNotification(Integer.parseInt(m.getArgs1()),m.getArgs2(),
+                case "removeRace":
+                    obj = RaceSql.removeRace(m.getArgs1());
+                    break;
+                case "addNotification":
+                    obj =  NotificationSql.addNotification(Integer.parseInt(m.getArgs1()),m.getArgs2(),
                             LocalDate.parse(m.getArgs3()), m.getArgs4(), Double.parseDouble(m.getArgs5()), Integer.parseInt(m.getArgs6()));
                     break;
+                case "viewNotifications":
+                    obj = NotificationSql.viewNotifications();
+                    break;
+                case "viewMemberNotifications":
+                    obj = NotificationSql.viewMemberNotifications(m.getArgs1());
+                    break;
+                case "notificationSent":
+                    obj = NotificationSql.notificationSent(Integer.parseInt(m.getArgs1()));
+                    break;
+                case "removeNotification":
+                    obj =  NotificationSql.removeNotification(Integer.parseInt(m.getArgs1()));
+                    break;
+                case "removeAllNotification":
+                    obj = NotificationSql.removeAllNotification(m.getArgs1());
+                    break;
+
                 case "removeBoatNotification":
-                    obj = NotificationSql.removeBoatNotification(m.getArgs1(), Integer.parseInt(m.getArgs2()));
+                    obj = NotificationSql.removeBoatNotification(Integer.parseInt(m.getArgs1()));
                     break;
                 case "removeAllBoatNotification":
                     obj = NotificationSql.removeAllBoatNotification(m.getArgs1());
                     break;
-                case "payment":
-                    obj = PaymentSql.addPayment(Integer.parseInt(m.getArgs1()),m.getArgs2(), Date.valueOf(m.getArgs3()),
+                case "addPayment":
+                    obj = PaymentSql.addPayment(Integer.parseInt(m.getArgs1()), m.getArgs2(), LocalDate.parse(m.getArgs3()),
                             m.getArgs4(), m.getArgs5(), Double.parseDouble(m.getArgs6()), Boolean.parseBoolean(m.getArgs7()),
                             Integer.parseInt(m.getArgs8()));
+                    break;
+                case "viewPayments":
+                    obj = PaymentSql.viewPayments();
                     break;
                 case "lastPaymentID":
                     obj = PaymentSql.lastPaymentID();
@@ -145,18 +169,6 @@ public class ServerThread implements Runnable {
                 case "deletePayment":
                     obj =  PaymentSql.deletePayment(m.getArgs1(), Double.parseDouble(m.getArgs2()));
                     break;
-
-                    /*
-                case "":
-                    obj = NotifySQL.deleteNotify(Integer.parseInt(m.getArgs1()));
-                    break;
-                case "deleteOrder":
-                    obj = OrderSQL.deleteOrder(Integer.parseInt(m.getArgs1()));
-                    break;
-                case "deliver":
-                    obj = EmployeeSQL.deliver(Integer.parseInt(m.getArgs1()));
-                    break;
-                */
                 case "login":
                     obj = QuerySql.login(m.getArgs1(), m.getArgs2());
                     break;
@@ -169,11 +181,6 @@ public class ServerThread implements Runnable {
                 case "checkUsername":
                     obj = MemberSql.checkUsername(m.getArgs1());
                     break;
-                    /*
-                case "notifyUser":
-                    obj = sqlQuery.notifyUser(m.getArgs1(), m.getArgs2(), m.getArgs3(), Integer.parseInt(m.getArgs3()), m.getArgs4());
-                    break;
-                    */
                 case "register":
                     obj = MemberSql.register(m.getArgs1(), m.getArgs2(), m.getArgs3(), m.getArgs4(), m.getArgs5(), m.getArgs6());
                     break;
@@ -183,41 +190,6 @@ public class ServerThread implements Runnable {
                 case "removeMember":
                     obj = EmployeeSql.removeMember(m.getArgs1());
                     break;
-                    /*
-                case "removeEmployee":
-                    obj = AdminSQL.removeEmployee(m.getArgs1(), m.getArgs2());
-                    break;
-                case "replacement":
-                    obj = EmployeeSQL.replacement(m.getArgs1(), m.getArgs2(), m.getArgs3(), Integer.parseInt(m.getArgs4()), Integer.parseInt(m.getArgs5()));
-                    break;
-                case "request":
-                    obj = EmployeeSQL.request(m.getArgs1(), m.getArgs2(), m.getArgs3(), m.getArgs4(), Integer.parseInt(m.getArgs5()));
-                    break;
-                case "searchWines":
-                    obj = WineSQL.searchWines(m.getArgs1(), m.getArgs2(), m.getArgs3());
-                    break;
-                case "searchWine":
-                    obj = WineSQL.searchWine(m.getArgs1(), m.getArgs2(), m.getArgs3());
-                    break;
-                case "sendNotify":
-                    obj = UserSQL.sendNotify(m.getArgs1(), m.getArgs2(), m.getArgs3(), m.getArgs4(), Integer.parseInt(m.getArgs5()));
-                    break;
-                case "showEmployees":
-                    obj = AdminSQL.showEmployees();
-                    break;
-                case "showOrders":
-                    obj = AdminSQL.showOrders();
-                    break;
-                case "showUsers":
-                    obj = AdminSQL.showUsers();
-                    break;
-                case "showWines":
-                    obj = AdminSQL.showWines();
-                    break;
-                case "updateNotify":
-                    obj = NotifySQL.updateNotify(m.getArgs1(), m.getArgs2(), m.getArgs3(), Integer.parseInt(m.getArgs4()));
-                    break;
-                    */
                 default:
                     obj = (Object) "Query not available";
             }

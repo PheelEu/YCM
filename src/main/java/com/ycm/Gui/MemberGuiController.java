@@ -4,9 +4,10 @@ import static com.ycm.Classes.Boat.getPriceForMeter;
 import static com.ycm.Classes.Club.getToday;
 import static com.ycm.Gui.ClubGui.*;
 import static com.ycm.Gui.MemberGui.*;
-
+import static com.ycm.Gui.MemberNotificationGuiController.notificationsObservableList;
 
 import com.ycm.Classes.Boat;
+import com.ycm.Classes.Notification;
 import com.ycm.Classes.Race;
 import com.ycm.Sockets.Client;
 import com.ycm.Sockets.Message;
@@ -87,7 +88,7 @@ public class MemberGuiController {
             a.setContentText("The boat length field is empty");
             a.showAndWait();
         }
-        if(boatName.getText().isEmpty() && !boatLength.getText().isEmpty()) {
+        if(boatName.getText().isEmpty() && boatLength.getText().isEmpty()) {
             a.setContentText("both fields are empty");
             a.showAndWait();
         }
@@ -100,6 +101,7 @@ public class MemberGuiController {
                 a.showAndWait();
             }
             try {
+                setBoatRegistered(false);
                 setType(1);
                 setPaid(true);
                 setPopupScene(PaymentGui.paymentScene());
@@ -188,6 +190,7 @@ public class MemberGuiController {
     void subscriptionPayBtn(ActionEvent event) {
         try{
             setType(2);
+            setRegistered(true);
             setPaid(true);
             setPopupScene(PaymentGui.paymentScene());
             setPopupTitle("Annual Subscription Payment");
@@ -249,7 +252,38 @@ public class MemberGuiController {
 
     @FXML
     void notificationIcon(MouseEvent event) {
-            //TODO Notifications view and stuff
+        mNotifications.clear();
+        a.setAlertType(Alert.AlertType.INFORMATION);
+
+        Object viewMemberNotifications = new Client().run(new Request(new Message("viewMemberNotifications", getMember().getUsername())));
+        if(((ArrayList<Notification>) viewMemberNotifications).isEmpty()){
+            a.setContentText("No notification Available");
+            a.showAndWait();
+            try {
+                setScene(MemberWelcomeScene());
+            } catch (
+                    IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            try {
+                contentPane.getChildren().clear();
+                contentPane.getChildren().add((memberNotificationsPane()));
+            } catch (
+                    IOException e) {
+                e.printStackTrace();
+            }
+            mNotifications = (ArrayList<Notification>) viewMemberNotifications;
+            if (!(mNotifications.isEmpty())) {
+                notificationsObservableList.clear();
+            }
+            for (int i = 0; i < mNotifications.size(); i++) {
+                notificationsObservableList.add(new Notification(mNotifications.get(i).getPaymentID(), mNotifications.get(i).getUsername(),
+                        mNotifications.get(i).getExpiringDate(), mNotifications.get(i).getTypeofPayment(), mNotifications.get(i).getAmount(),
+                        mNotifications.get(i).getBoatID(), mNotifications.get(i).isSent()));
+            }
+        }
     }
 
     /**

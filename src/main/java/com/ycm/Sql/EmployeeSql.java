@@ -45,7 +45,7 @@ public class EmployeeSql {
 
     /*
 
-    public static viewPayments(){}
+    public static payment(){}
      */
 
     /**
@@ -100,6 +100,46 @@ public class EmployeeSql {
         String sqlDelete = "DELETE FROM member WHERE username='" + username + "'";
         try {
             connection().executeUpdate(sqlDelete);
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Selects all the boats from the database
+     *
+     * @return all the boats registered.
+     * @throws SQLException if there is any error with the queries.
+     */
+    public static Object boats(){
+        String sqlSelect = "SELECT * FROM boat";
+        try {
+            ResultSet rst = connection().executeQuery(sqlSelect);
+            ArrayList<Boat> boats = new ArrayList<Boat>();
+            while (rst.next()) {
+                Boat boat = new Boat(Integer.parseInt(rst.getString("ID")),rst.getString("name"), Double.parseDouble(rst.getString("length")), rst.getString("owner"));
+                boats.add(boat);
+            }
+            return boats;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * Method with a query to delete a member from database.
+     *
+     * @return true if there are no errors.
+     */
+    public static Object removeRace(String name) {
+        String sqlDeleteR = "DELETE FROM race WHERE name='" + name + "'";
+        String sqlDeleteC = "DELETE FROM competitors WHERE raceName='" + name + "'";
+        try {
+            connection().executeUpdate(sqlDeleteR);
+            connection().executeUpdate(sqlDeleteC);
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
