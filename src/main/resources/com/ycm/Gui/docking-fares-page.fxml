@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="614.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ycm.Gui.ClubGuiController">
+   <children>
+      <Pane prefHeight="614.0" prefWidth="900.0">
+         <children>
+            <Label layoutX="50.0" layoutY="105.0" prefHeight="308.0" prefWidth="800.0" text="With 26 superyacht berths from 28 to 60m, this innovative complex has a pontoon for tenders and terminal for charters. Superyacht owners enjoy the benefits of having a privileged access to the Yacht Club de Monaco‘s Clubhouse throughout their stay in the Principality.The YCM Marina meets all the criteria of the label La Belle Classe Destinations, an international network of marinas guaranteeing a high standard of reception, services and security." wrapText="true">
+               <font>
+                  <Font name="Zapfino" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="246.0" layoutY="416.0" text="The cost is 400€/m and its total duration is 1 year">
+               <font>
+                  <Font name="Zapfino" size="13.0" />
+               </font></Label>
+            <Label layoutX="347.0" layoutY="14.0" text="Docking Fares">
+               <font>
+                  <Font name="Zapfino" size="24.0" />
+               </font></Label>
+            <ImageView fitHeight="97.0" fitWidth="118.0" layoutX="402.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/YCM%20Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

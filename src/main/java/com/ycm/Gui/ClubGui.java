@@ -10,16 +10,13 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class ClubGui extends Application {
 
     private static boolean serverNotFound = false;
+
+    static Pane contentPane = new Pane();
 
     private static Stage mainStage;
 
@@ -77,4 +74,27 @@ public class ClubGui extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+    /**
+     * This method creates a new pane for the member page.
+     * @return the pane for the member add boat page.
+     * @throws IOException is an exception thrown if something in the GUI does not work
+     **/
+    public static Pane ourStoryPane() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("story-page.fxml"));
+        contentPane = (fxmlLoader.load());
+        return contentPane;
+    }
+
+    /**
+     * This method creates a new pane for the member page.
+     * @return the pane for the member add boat page.
+     * @throws IOException is an exception thrown if something in the GUI does not work
+     **/
+    public static Pane dockingFaresPane() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("docking-fares-page.fxml"));
+        contentPane = (fxmlLoader.load());
+        return contentPane;
+    }
+
 }

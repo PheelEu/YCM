@@ -1,15 +1,19 @@
 
 package com.ycm.Gui;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-import static com.ycm.Gui.ClubGui.getPopupStage;
-import static com.ycm.Gui.ClubGui.setPopupScene;
+import static com.ycm.Gui.ClubGui.*;
 
 public class ClubGuiController {
+
+    @FXML
+    private Pane contentPane;
 
     @FXML
     void LoginIcon(MouseEvent event) {
@@ -27,6 +31,29 @@ public class ClubGuiController {
         try {
             setPopupScene(RegisterGui.registerUserScene());
             getPopupStage().show();
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void dockingFares(ActionEvent event) {
+        try {
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add((dockingFaresPane()));
+
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void ourStory(ActionEvent event) {
+        try {
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add((ourStoryPane()));
         } catch (
                 IOException e) {
             e.printStackTrace();

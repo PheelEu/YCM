@@ -40,8 +40,6 @@ public class MemberGui {
 
     private static boolean boatRegistered;
 
-
-
     /**
      * It's a set method to set the payment is has been payed or not
      * @param p is the paid boolean to be set

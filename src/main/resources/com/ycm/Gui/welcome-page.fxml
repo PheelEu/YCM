@@ -35,11 +35,15 @@
                   <Image url="@../Images/YCM%20Logo.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="614.0" fitWidth="1200.0" layoutX="300.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/porto.jpeg" />
-               </image>
-            </ImageView>
+            <Pane fx:id="contentPane" layoutX="300.0" layoutY="186.0" prefHeight="614.0" prefWidth="900.0">
+               <children>
+                  <ImageView fitHeight="614.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/porto.jpeg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
             <Pane layoutY="186.0" prefHeight="614.0" prefWidth="300.0">
                <children>
                   <Accordion prefHeight="614.0" prefWidth="300.0">
@@ -48,12 +52,7 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <Hyperlink layoutX="15.0" layoutY="10.0" prefHeight="25.0" prefWidth="269.0" text="⚓️     Our Story" textFill="#030303">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Hyperlink>
-                                    <Hyperlink layoutX="15.0" layoutY="40.0" prefHeight="25.0" prefWidth="269.0" text="⚓️     Who we are" textFill="#030303">
+                                    <Hyperlink layoutX="15.0" layoutY="10.0" onAction="#ourStory" prefHeight="25.0" prefWidth="269.0" text="⚓️     Our Story" textFill="#030303">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -74,11 +73,6 @@
                                           <Font size="16.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink layoutX="15.0" layoutY="40.0" prefHeight="25.0" prefWidth="269.0" text="⚓️     Race Results" textFill="#030303">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Hyperlink>
                                  </children>
                               </AnchorPane>
                         </content>
@@ -95,7 +89,7 @@
                                           <Font size="16.0" />
                                        </font>
                                     </Hyperlink>
-                                    <Hyperlink layoutX="15.0" layoutY="40.0" prefHeight="15.0" prefWidth="160.0" text="⚓️     Docking Fares" textFill="#030303">
+                                    <Hyperlink layoutX="15.0" layoutY="40.0" onAction="#dockingFares" prefHeight="15.0" prefWidth="160.0" text="⚓️     Docking Fares" textFill="#030303">
                                        <font>
                                           <Font size="16.0" />
                                        </font>

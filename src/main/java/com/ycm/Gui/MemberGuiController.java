@@ -29,6 +29,17 @@ public class MemberGuiController {
     @FXML
     private AnchorPane contentPane;
 
+    @FXML
+    void ourStory(ActionEvent event) {
+        try {
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add((ourStoryPane()));
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * ADD-BOAT-PAGE JAVAFX OBJECTS
      **/
@@ -125,12 +136,14 @@ public class MemberGuiController {
 
     @FXML
     void dockingFares(ActionEvent event) {
+        try {
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add((dockingFaresPane()));
 
-    }
-
-    @FXML
-    void raceResults(ActionEvent event) {
-
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

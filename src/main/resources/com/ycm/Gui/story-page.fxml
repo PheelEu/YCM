@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="614.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ycm.Gui.ClubGuiController">
+   <children>
+      <Label layoutX="328.0" text="Our Story">
+         <font>
+            <Font name="Zapfino" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="140.0" prefHeight="395.0" prefWidth="800.0" text="The first regattas were held in 1862, encouraged by Prince Charles III who wanted his country to be a showcase for yachting and technological innovation. The Société des Régates de Monaco was established in 1888 by a group of men passionate about sailing and rowing who from 1889 attracted famous international regattas. Prince Albert I inherited this passion for the sea and would go on to become an early pioneer of modern oceanography and a famous navigator, who would inaugurate the Oceanographic Museum in March 1912." wrapText="true">
+         <font>
+            <Font name="Zapfino" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="105.0" fitWidth="146.0" layoutX="399.0" layoutY="487.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/YCM%20Logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
