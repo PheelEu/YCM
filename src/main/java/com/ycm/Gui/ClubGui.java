@@ -11,6 +11,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * The {@code Club Gui} class defines:
+ *
+ * The main stage of the application and the first scene of the application.
+ * It's the starting point of our application and enables the other classes in the GUI to change between different scenes
+ * and switch between panes.
+ *
+ * @author Filippo Euclidi
+ * @author Matteo Angeloni
+ **/
 
 public class ClubGui extends Application {
 

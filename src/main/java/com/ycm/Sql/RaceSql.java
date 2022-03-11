@@ -96,4 +96,19 @@ public class RaceSql {
             return false;
         }
     }
+    /**
+     * Method with a query to delete a race from the database and its competitors.
+     *
+     * @return true if there are no errors.
+     */
+    public static Object removeCompetitor(String username) {
+        String sqlDeleteC = "DELETE FROM competitors WHERE username='" + username + "'";
+        try {
+            connection().executeUpdate(sqlDeleteC);
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

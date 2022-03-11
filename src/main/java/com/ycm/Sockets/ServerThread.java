@@ -123,6 +123,9 @@ public class ServerThread implements Runnable {
                 case "checkCompetitors":
                     obj = RaceSql.checkCompetitors(Integer.parseInt(m.getArgs1()), m.getArgs2());
                     break;
+                case "removeCompetitor":
+                    obj = RaceSql.removeCompetitor(m.getArgs1());
+                    break;
                 case "addRace":
                     obj = RaceSql.addRace(m.getArgs1(), Double.parseDouble(m.getArgs2()), LocalDate.parse(m.getArgs3()));
                     break;

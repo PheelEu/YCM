@@ -23,14 +23,19 @@ public class Notification implements Serializable {
     private double amount;
     private int boatID;
     private boolean sent;
-    private boolean paid;
+
 
     /**
-     * This is the Notification class constructor
+     *Class Constructor (empty)
+     **/
+    public Notification(){};
+
+    /**
+     * This is the Notification class constructor for a base notification.
      *
-     * @param m is the member to send the notification to.
-     * @param expiringDate is the expiring date of the notification.
-     * @param typeofPayment is the type of tax which is due to be paid
+     * @param m it's the member to send the notification to.
+     * @param expiringDate it's the expiring date of the notification.
+     * @param typeofPayment it's the type of payment to be made.
      * @param amount it's the amount of money due.
      *
      **/
@@ -41,12 +46,13 @@ public class Notification implements Serializable {
         this.amount = amount;
     }
 
+    //TODO: could be deleted
     /**
-     * This is the Notification class constructor
+     * This is the Notification class constructor for a boat storage notification.
      *
-     * @param m is the member to send the notification to.
-     * @param expiringDate is the expiring date of the notification.
-     * @param typeofPayment is the type of tax which is due to be paid
+     * @param m it's the member to send the notification to.
+     * @param expiringDate it's the expiring date of the notification.
+     * @param typeofPayment it's the type of payment to be made.
      * @param amount it's the amount of money due.
      *
      **/
@@ -59,11 +65,11 @@ public class Notification implements Serializable {
     }
 
     /**
-     * This is the Notification class constructor
+     * This is the Notification class constructor for a boat storage notification.
      *
-     * @param username is the member to send the notification to.
-     * @param expiringDate is the expiring date of the notification.
-     * @param typeofPayment is the type of tax which is due to be paid
+     * @param username it's the username of the member to send the notification to.
+     * @param expiringDate it's the expiring date of the notification.
+     * @param typeofPayment it's the type of tax which is due to be paid
      * @param amount it's the amount of money due.
      * @param paymentID it's the id of the payment
      * @param boatID it's the boat ID
@@ -82,7 +88,7 @@ public class Notification implements Serializable {
 
     /**
      * This method gets the ID of the payment which the notification is referred to.
-     * @return the ID of the payment
+     * @return the ID of the payment.
      **/
     public int getPaymentID() {
         return paymentID;
@@ -98,7 +104,7 @@ public class Notification implements Serializable {
 
     /**
      * This method gets the username of the member which the notification is referred to.
-     * @return the username of the member
+     * @return the username of the member.
      **/
     public String getUsername() {
         return username;
@@ -106,15 +112,15 @@ public class Notification implements Serializable {
 
     /**
      * This method sets the username of the member which the notification is referred to.
-     * @param m it's the member
+     * @param m it's the member.
      **/
     public void setUsername(Member m) {
         this.username = m.getUsername();
     }
 
     /**
-     * This method gets the expiration date of the notification.
-     * @return the expiration date of the notification
+     * This method gets the expiry date of the notification.
+     * @return the expiry date of the notification
      **/
     public LocalDate getExpiringDate() {
         return expiringDate;
@@ -122,7 +128,7 @@ public class Notification implements Serializable {
 
     /**
      * This method sets the expiration date of the notification.
-     * @param expiringDate is the expiration date of the notification.
+     * @param expiringDate is the expiry date of the notification.
      **/
     public void setExpiringDate(LocalDate expiringDate) {
         this.expiringDate = expiringDate;
@@ -177,33 +183,17 @@ public class Notification implements Serializable {
     }
 
     /**
-     * This method gets the sent boolean for this notification.
-     * @return the sent boolean for this notification
+     * This method gets the 'sent' boolean for this notification.
+     * @return the 'sent' boolean for this notification
      **/
     public boolean isSent() {return sent;}
 
     /**
-     * This method sets the sent boolean for this notification.
+     * This method sets the 'sent' boolean for this notification.
      * @param sent it's true if sent, false if not.
      **/
     public void setSent(boolean sent) {
         this.sent = sent;
-    }
-
-    /**
-     * This method gets the paid boolean for this notification.
-     * @return the paid boolean for this notification
-     **/
-    public boolean isPaid() {
-        return paid;
-    }
-
-    /**
-     * This method sets the paid boolean for this notification.
-     * @param paid it's true if paid, false if not.
-     **/
-    public void setPaid(boolean paid) {
-        this.paid = paid;
     }
 
 }

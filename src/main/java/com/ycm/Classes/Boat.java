@@ -25,6 +25,11 @@ public class Boat implements Serializable {
     private String owner;
 
     /**
+     *Class Constructor (empty)
+     **/
+    public Boat(){};
+
+    /**
      *Class Constructor
      *
      * @param name is the name of the boat
@@ -39,9 +44,9 @@ public class Boat implements Serializable {
     /**
      *Class Constructor
      *
-     * @param name is the name of the boat
-     * @param ID is the id of the boat
-     * @param length is the length of the boat.
+     * @param name it's the name of the boat
+     * @param ID it's the id of the boat
+     * @param length it's the length of the boat.
      **/
     public Boat(String name, int ID,double length){
         this.name = name;
@@ -53,9 +58,9 @@ public class Boat implements Serializable {
     /**
      *Class Constructor
      *
-     * @param name is the name of the boat
-     * @param ID is the id of the boat
-     * @param length is the length of the boat.
+     * @param name it's the name of the boat
+     * @param ID it's the id of the boat
+     * @param length it's the length of the boat.
      **/
     public Boat(int ID, String name,double length, String owner){
         this.ID = ID;
@@ -67,7 +72,7 @@ public class Boat implements Serializable {
 
     /**
      * Gets the name of the boat.
-     * @return name of the boat.
+     * @return the name of the boat.
      **/
     public String getName() {
         return name;
@@ -75,7 +80,7 @@ public class Boat implements Serializable {
 
     /**
      * Sets the name of the boat.
-     * @param name is the name to set for the boat.
+     * @param name it's the name to set to the boat.
      **/
     public void setName(String name) {
         this.name = name;
@@ -83,7 +88,7 @@ public class Boat implements Serializable {
 
     /**
      * Gets the ID of the boat.
-     * @return the id of the boat.
+     * @return the ID of the boat.
      **/
     public int getID(){
         return ID;
@@ -91,7 +96,7 @@ public class Boat implements Serializable {
 
     /**
      * Sets the ID of the boat.
-     * @param ID is the id to set for the boat.
+     * @param ID is the id to set to the boat.
      **/
     public void setID(int ID) {
         this.ID = ID;
@@ -99,7 +104,7 @@ public class Boat implements Serializable {
 
     /**
      * Gets the length of the boat.
-     * @return length of the boat.
+     * @return the length of the boat.
      **/
     public double getLength() {
         return length;
@@ -107,7 +112,7 @@ public class Boat implements Serializable {
 
     /**
      * Sets the length of the boat.
-     * @param length is the length to set for the boat.
+     * @param length it's the length to set to the boat.
      **/
     public void setLength(double length) {
         this.length = length;
@@ -122,7 +127,7 @@ public class Boat implements Serializable {
     }
 
     /**
-     * Sets the price of the boat storage.
+     * Sets the price of the boat storage fee.
      * Depends on the length of the boat.
      **/
     public void setBoatStorage() {this.boatStorage = this.length*priceForMeter;}
@@ -137,6 +142,7 @@ public class Boat implements Serializable {
 
     /**
      * Sets the owner of the boat.
+     * @param owner it's the username of the owner of the boat.
      **/
     public void setOwner(String owner) {
         this.owner = owner;

@@ -1,9 +1,17 @@
 package com.ycm.Classes;
 
 import java.io.Serializable;
-
 import java.time.LocalDate;
-import java.util.Date;
+
+/**
+ * The{@code Payment} class defines:
+ *
+ * All the variables that describe a Payment.
+ * All the methods to set the attributes of a Payment.
+ *
+ *@author Filippo Euclidi
+ *@author Matteo Angeloni
+ **/
 
 public class Payment implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -17,6 +25,21 @@ public class Payment implements Serializable {
     private boolean paid;
     private int info;
 
+    /**
+     *Class Constructor (empty)
+     **/
+    public Payment(){};
+
+    /**
+     * This is the payment class constructor for any generic payment.
+     *
+     * @param ID it's the unique ID created for this payment.
+     * @param m it's the member making the payment.
+     * @param type it's the type of payment to be made.
+     * @param method it's the method chosen to make the payment (Credit Card or Bank Transfer)
+     * @param amount it's the amount of money due.
+     *
+     **/
     public Payment(int ID, Member m, String type,String method, double amount){
         this.ID = ID;
         this.username = m.getUsername();
@@ -27,6 +50,17 @@ public class Payment implements Serializable {
         this.paid = false;
     }
 
+    /**
+     * This is the payment class constructor for a payment .
+     *
+     * @param ID it's the unique ID created for this payment.
+     * @param username it's username of the member making the payment.
+     * @param paymentDate it's the type of payment to be made.
+     * @param method it's the method chosen to make the payment (Credit Card or Bank Transfer)
+     * @param amount it's the amount of money due.
+     * @param paid it's the boolean set to true if tha payment hase been registered, false if it hasn't.
+     *
+     **/
     public Payment(int ID, String username, LocalDate paymentDate,String method, double amount, boolean paid){
         this.ID = ID;
         this.username = username;
@@ -36,7 +70,18 @@ public class Payment implements Serializable {
         this.paid = paid;
     }
 
-
+    /**
+     * This is the payment class constructor for a payment made for a specific boat storage fee.
+     *
+     * @param ID it's the unique ID created for this payment.
+     * @param username it's username of the member making the payment.
+     * @param paymentDate it's the type of payment to be made.
+     * @param method it's the method chosen to make the payment (Credit Card or Bank Transfer)
+     * @param amount it's the amount of money due.
+     * @param paid it's the boolean set to true if tha payment hase been registered, false if it hasn't.
+     * @param info it's the information regarding the ID of the boat set to a payment.
+     *
+     **/
     public Payment(int ID, String username, LocalDate paymentDate,String method, double amount, boolean paid, int info){
         this.ID = ID;
         this.username = username;
@@ -47,6 +92,19 @@ public class Payment implements Serializable {
         this.info = info;
     }
 
+    /**
+     * This is the payment class constructor for a payment made for a specific boat storage fee.
+     *
+     * @param ID it's the unique ID created for this payment.
+     * @param username it's username of the member making the payment.
+     * @param paymentDate it's the type of payment to be made.
+     * @param type it's the type of payment to be made.
+     * @param method it's the method chosen to make the payment (Credit Card or Bank Transfer)
+     * @param amount it's the amount of money due.
+     * @param paid it's the boolean set to true if tha payment hase been registered, false if it hasn't.
+     * @param info it's the information regarding the ID of the boat set to a payment.
+     *
+     **/
     public Payment(int ID, String username, LocalDate paymentDate, String type,String method, double amount, boolean paid,int info){
         this.ID = ID;
         this.username = username;
@@ -57,6 +115,7 @@ public class Payment implements Serializable {
         this.paid = paid;
         this.info = info;
     }
+
     /**
      * Gets the id of the payment.
      * @return id of the last payment + 1.

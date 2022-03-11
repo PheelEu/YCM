@@ -15,6 +15,10 @@ import java.io.Serializable;
 public final class Member extends Person implements Serializable {
     private  static final long serialVersionUID = 1L;
 
+    /**
+     *Class Constructor (empty)
+     **/
+    public Member(){};
 
     /**
      * This is the class constructor to initialize a Member

@@ -16,6 +16,11 @@ public class Employee extends Person implements Serializable {
     private final static long serialVersionUID = 1L;
 
     /**
+     *Class Constructor (empty)
+     **/
+    public Employee(){};
+
+    /**
      * This is the class constructor to initialize an Employee
      *
      * @param username it's the username of the employee

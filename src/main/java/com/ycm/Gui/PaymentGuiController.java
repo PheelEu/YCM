@@ -22,6 +22,15 @@ import static com.ycm.Gui.MemberGui.*;
 import static com.ycm.Gui.MemberGui.isBoatRegistered;
 import static com.ycm.Gui.PaymentGui.*;
 
+/**
+ * The {@code Payment Gui Controller} class defines:
+ *
+ * All the methods and their implementations in the Payment Gui interface.
+ *
+ * @author Filippo Euclidi
+ * @author Matteo Angeloni
+ **/
+
 public class PaymentGuiController implements Initializable {
 
     public String typeOfPayment;

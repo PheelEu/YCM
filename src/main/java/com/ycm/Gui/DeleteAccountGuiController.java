@@ -16,6 +16,15 @@ import java.io.IOException;
 import static com.ycm.Gui.ClubGui.getMainStage;
 import static com.ycm.Gui.DeleteAccountGui.a;
 
+/**
+ * The {@code Delete Gui Controller} class defines:
+ *
+ * All the methods and their implementations in the Delete Gui interface.
+ *
+ * @author Filippo Euclidi
+ * @author Matteo Angeloni
+ **/
+
 public class DeleteAccountGuiController {
 
     @FXML
@@ -40,6 +49,8 @@ public class DeleteAccountGuiController {
             System.out.println((boolean)person);
             if((boolean) person) {
                 new Client().run(new Request(new Message( "removeAllNotification", userField.getText())));
+                new Client().run(new Request(new Message( "removeAllBoat", userField.getText())));
+                new Client().run(new Request(new Message( "removeCompetitor", userField.getText())));
                 a.setContentText("Your Account has been deleted");
                 a.showAndWait();
                 FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("welcome-page.fxml"));

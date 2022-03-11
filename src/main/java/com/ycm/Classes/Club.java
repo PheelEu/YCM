@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
 
+
 /**
  * The class {@code Club} defines the Club and all of its functions.
  *
@@ -18,6 +19,11 @@ public class Club implements Serializable {
     private String address;
 
     private static final long serialVersionUID = 1L;
+
+    /**
+     *Class Constructor (empty)
+     **/
+    public Club(){};
 
     /**
      * This is the Club class constructor.

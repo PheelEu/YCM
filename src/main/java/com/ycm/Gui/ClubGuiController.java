@@ -10,6 +10,15 @@ import java.io.IOException;
 
 import static com.ycm.Gui.ClubGui.*;
 
+/**
+ * The {@code Club Gui Controller} class defines:
+ *
+ * All the methods and their implementations in the Club interface.
+ *
+ * @author Filippo Euclidi
+ * @author Matteo Angeloni
+ **/
+
 public class ClubGuiController {
 
     @FXML

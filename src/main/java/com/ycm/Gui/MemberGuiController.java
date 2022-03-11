@@ -24,6 +24,15 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * The {@code Member Gui Controller} class defines:
+ *
+ * All the methods and their implementations in the Member Gui interface.
+ *
+ * @author Filippo Euclidi
+ * @author Matteo Angeloni
+ **/
+
 public class MemberGuiController {
 
     @FXML

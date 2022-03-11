@@ -25,6 +25,14 @@ import static com.ycm.Gui.EmployeeGui.*;
 import static com.ycm.Gui.EmployeeViewRGuiController.racesObservableList;
 import static com.ycm.Gui.MemberGui.a;
 
+/**
+ * The {@code Employee Gui Controller} class defines:
+ *
+ * All the methods and their implementations in the Employee Gui interface.
+ *
+ * @author Filippo Euclidi
+ * @author Matteo Angeloni
+ **/
 
 public class EmployeeGuiController {
 

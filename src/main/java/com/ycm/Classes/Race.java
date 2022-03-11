@@ -9,8 +9,8 @@ import java.util.Date;
  *
  * The{@code Race} class defines:
  *
- * All the variables that describe a race.
- * All the methods to set the attributes of a race.
+ * All the variables that describe a Race.
+ * All the methods to set the attributes of a Race.
  *
  *@author Filippo Euclidi
  *@author Matteo Angeloni
@@ -26,6 +26,11 @@ public class Race implements Serializable {
     private LocalDate raceDay;
 
     ArrayList<Boat> competitors = new ArrayList<Boat>();
+
+    /**
+     *Class Constructor (empty)
+     **/
+    public Race(){};
 
     public Race(String name, double cost, LocalDate raceDay){
         this.name = name;

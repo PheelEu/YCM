@@ -6,8 +6,8 @@ import java.io.Serializable;
  *
  * The{@code Person} class defines:
  *
- * All the variables that describe a person.
- * All the methods to set the attributes of a person.
+ * All the variables that describe a Person.
+ * All the methods to set the attributes of a Person.
  *
  *@author Filippo Euclidi
  *@author Matteo Angeloni

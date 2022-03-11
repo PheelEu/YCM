@@ -20,6 +20,15 @@ import static com.ycm.Gui.EmployeeGui.setEmployee;
 import static com.ycm.Gui.MemberGui.getMember;
 import static com.ycm.Gui.MemberGui.setMember;
 
+/**
+ * The {@code Login Gui Controller} class defines:
+ *
+ * All the methods and their implementations in the Login Gui interface.
+ *
+ * @author Filippo Euclidi
+ * @author Matteo Angeloni
+ **/
+
 public class LoginGuiController {
 
     @FXML

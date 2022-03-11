@@ -10,6 +10,8 @@ module com.ycm.Gui {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires junit;
+    requires org.junit.jupiter.api;
 
     exports com.ycm.Gui;
     exports com.ycm.Classes;

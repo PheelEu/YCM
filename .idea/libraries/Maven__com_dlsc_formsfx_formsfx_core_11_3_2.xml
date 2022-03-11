@@ -2,7 +2,6 @@
   <library name="Maven: com.dlsc.formsfx:formsfx-core:11.3.2">
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/com/dlsc/formsfx/formsfx-core/11.3.2/formsfx-core-11.3.2.jar!/" />
-      <root url="jar://$USER_HOME$/Desktop/UNI/LISI LAUREATI/Ingegneria del Software/Java/Librerie Java/mysql-connector-java-8.0.27/mysql-connector-java-8.0.27.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/com/dlsc/formsfx/formsfx-core/11.3.2/formsfx-core-11.3.2-javadoc.jar!/" />
