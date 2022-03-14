@@ -27,9 +27,9 @@ import static com.ycm.Gui.MemberGui.a;
 
 public class MemberSelectBoatGuiController implements Initializable {
 
-    /**
+    /*
      * SELECT BOAT OBJECTS
-     **/
+     */
 
     @FXML
     private Label boatListLabel;
@@ -52,6 +52,14 @@ public class MemberSelectBoatGuiController implements Initializable {
     @FXML
     static ObservableList<Boat> boatsObservableList = FXCollections.observableArrayList();
 
+    /**
+     * This method it's called by a GUI event, when the 'select boat' button gets clicked
+     * It enables the member who clicked it to add a new boat to the selected race
+     * If the input is accepted and the boat is not already present in the selected race a new competitor is added and
+     * the payment page gets opened
+     *
+     * @param event it's the triggered event
+     **/
     @FXML
     void selectBoatBtn(ActionEvent event) {
         a.setAlertType(Alert.AlertType.INFORMATION);
@@ -105,10 +113,10 @@ public class MemberSelectBoatGuiController implements Initializable {
     }
 
     /**
-     * This is the initialize method from the @class javafx.fxml.Initializable
+     * This is the initialize method from the @class javafx.fxml.Initialize
      * @param location is the URL location
      * @param resources are the ResourceBundle resources
-     * Here is used to set the products table, the values inside each column, the brand box brands and to get the products info
+     * Here is used to set the boat table and the values inside each column for each boat
      **/
     @Override
     public void initialize(final URL location, final ResourceBundle resources){

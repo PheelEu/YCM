@@ -1,5 +1,6 @@
 package com.ycm.Classes;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -14,6 +15,7 @@ import java.time.LocalDate;
  **/
 
 public class Payment implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private int ID;
@@ -28,7 +30,7 @@ public class Payment implements Serializable {
     /**
      *Class Constructor (empty)
      **/
-    public Payment(){};
+    public Payment(){}
 
     /**
      * This is the payment class constructor for any generic payment.
@@ -51,7 +53,7 @@ public class Payment implements Serializable {
     }
 
     /**
-     * This is the payment class constructor for a payment .
+     * This is the payment class constructor for a payment to be created when accessing a notification.
      *
      * @param ID it's the unique ID created for this payment.
      * @param username it's username of the member making the payment.
@@ -93,7 +95,7 @@ public class Payment implements Serializable {
     }
 
     /**
-     * This is the payment class constructor for a payment made for a specific boat storage fee.
+     * This is the payment class constructor for a payment made for a specific boat storage fee, accessed by a notification.
      *
      * @param ID it's the unique ID created for this payment.
      * @param username it's username of the member making the payment.

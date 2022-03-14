@@ -1,5 +1,6 @@
 package com.ycm.Classes;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -14,6 +15,7 @@ import java.time.LocalDate;
  **/
 
 public class Notification implements Serializable {
+    @Serial
     private final static long serialVersionUID = 1L;
 
     private int paymentID;
@@ -28,7 +30,7 @@ public class Notification implements Serializable {
     /**
      *Class Constructor (empty)
      **/
-    public Notification(){};
+    public Notification(){}
 
     /**
      * This is the Notification class constructor for a base notification.
@@ -44,24 +46,6 @@ public class Notification implements Serializable {
         this.expiringDate = expiringDate;
         this.typeofPayment = typeofPayment;
         this.amount = amount;
-    }
-
-    //TODO: could be deleted
-    /**
-     * This is the Notification class constructor for a boat storage notification.
-     *
-     * @param m it's the member to send the notification to.
-     * @param expiringDate it's the expiring date of the notification.
-     * @param typeofPayment it's the type of payment to be made.
-     * @param amount it's the amount of money due.
-     *
-     **/
-    public Notification(Member m, LocalDate expiringDate, String typeofPayment, double amount, int boatID){
-        this.username = m.getUsername();
-        this.expiringDate = expiringDate;
-        this.typeofPayment = typeofPayment;
-        this.amount = amount;
-        this.boatID = boatID;
     }
 
     /**
@@ -92,14 +76,6 @@ public class Notification implements Serializable {
      **/
     public int getPaymentID() {
         return paymentID;
-    }
-
-    /**
-     * This method sets the ID of the payment which the notification is referred to.
-     * @param paymentID it's the payment ID's.
-     **/
-    public void setPaymentID(int paymentID) {
-        this.paymentID = paymentID;
     }
 
     /**
@@ -195,5 +171,4 @@ public class Notification implements Serializable {
     public void setSent(boolean sent) {
         this.sent = sent;
     }
-
 }

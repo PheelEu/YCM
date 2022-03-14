@@ -37,6 +37,12 @@ public class LoginGuiController {
     @FXML
     private TextField userField;
 
+    /**
+     * This method it's called by a GUI event, when the 'login' button gets pressed
+     * Enables the Person who clicked it to log in to the system and sets the GUI according to the type of person who logged
+     *
+     * @param event it's the triggered event
+     **/
     @FXML
     void loginBtn(ActionEvent event) {
         if(userField.getText().isEmpty()){
@@ -83,6 +89,11 @@ public class LoginGuiController {
         }
     }
 
+    /**
+     * This method it's called by a GUI event, when the Register link gets pressed
+     * Enables the person who clicked it to jump to the register page, and register into the system as a Member
+     * @param event it's the triggered event
+     **/
     @FXML
     void registerLink(ActionEvent event) {
         try{

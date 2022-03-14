@@ -1,5 +1,6 @@
 package com.ycm.Classes;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -14,6 +15,7 @@ import java.io.Serializable;
 
 public class Boat implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private static final double priceForMeter = 400.0;
@@ -27,7 +29,7 @@ public class Boat implements Serializable {
     /**
      *Class Constructor (empty)
      **/
-    public Boat(){};
+    public Boat(){}
 
     /**
      *Class Constructor

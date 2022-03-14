@@ -1,9 +1,9 @@
 package com.ycm.Classes;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.*;
 
 
 /**
@@ -18,12 +18,13 @@ public class Club implements Serializable {
     private String name;
     private String address;
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**
      *Class Constructor (empty)
      **/
-    public Club(){};
+    public Club(){}
 
     /**
      * This is the Club class constructor.

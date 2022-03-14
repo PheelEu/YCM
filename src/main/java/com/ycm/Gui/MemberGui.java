@@ -41,7 +41,7 @@ public class MemberGui {
     private static boolean boatRegistered;
 
     /**
-     * It's a set method to set the payment is has been payed or not
+     * It's a set method to set the payment is has been paid or not
      * @param p is the paid boolean to be set
      **/
     public static void setPaid(boolean p){paid = p;}
@@ -78,40 +78,39 @@ public class MemberGui {
 
     /**
      * It's a set method to set the gui boat once a boat is created
-     * @param boat is the boat to be created
+     * @param boat it's the boat to be created
      **/
     public static void setBoat(Boat boat){b = boat;}
 
     /**
      * It's a get method to get the gui boat once a boat is created
-     * @return the boat which has been create
+     * @return the boat which has been created
      **/
     public static Boat getBoat(){return b;}
 
     /**
-     * It's a set method to set the gui race once a boat is selected
+     * It's a set method to set the gui race once a race is selected
      * @param race is the race to be set
      **/
     public static void setRace(Race race){ r = race;}
 
     /**
-     * It's a get method to get the gui boat once a boat is created
-     * @return the boat which has been create
+     * It's a get method to get the gui race once a race is created
+     * @return the race which has been created
      **/
     public static Race getRace(){return r;}
 
     /**
-     * It's a set method to set the gui race once a boat is selected
+     * It's a set method to set the gui boat type
      * @param sbt is the select boat gui type
      **/
     public static void setSelectBoatGuiType(int sbt){ selectBoatGuiType = sbt;}
 
     /**
-     * It's a get method to get the gui boat once a boat is created
-     * @return the boat which has been created
+     * It's a get method to get the gui boat type
+     * @return the boat type which has been previously set
      **/
     public static int getSelectBoatGuiType(){return selectBoatGuiType;}
-
 
     /**
      * It's a set method to set the if the member is already registered or not
@@ -214,7 +213,7 @@ public class MemberGui {
 
     /**
      * This method creates a new pane for the member page.
-     * @return the pane to select a boat for the member.
+     * @return the pane to view the notifications that have been sent to a member.
      * @throws IOException is an exception thrown if something in the GUI does not work
      **/
     public static Pane memberNotificationsPane() throws IOException {

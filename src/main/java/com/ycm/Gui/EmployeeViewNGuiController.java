@@ -49,8 +49,14 @@ public class EmployeeViewNGuiController implements Initializable {
     @FXML
     private TableView<Notification> notificationTable;
     @FXML
-    static ObservableList<Notification> notificationsObservableList = FXCollections.observableArrayList();
+    private static ObservableList<Notification> notificationsObservableList = FXCollections.observableArrayList();
 
+    /**
+     * This method it's called by a GUI event, when the 'send notification' button gets pressed
+     * Enables the Employee who clicked it send a notification to a member to remind him of an oncoming payment
+     *
+     * @param event it's the triggered event
+     **/
     @FXML
     void sendNotificationBtn(ActionEvent event) {
         a.setAlertType(Alert.AlertType.INFORMATION);
@@ -88,10 +94,10 @@ public class EmployeeViewNGuiController implements Initializable {
     }
 
     /**
-     * This is the initialize method from the @class javafx.fxml.Initializable
+     * This is the initialize method from the @class javafx.fxml.Initialize
      * @param location is the URL location
      * @param resources are the ResourceBundle resources
-     * Here is used to set the products table, the values inside each column, the brand box brands and to get the products info
+     * Here is used to set the notification table and the values inside each column for each notification
      **/
     @Override
     public void initialize(final URL location, final ResourceBundle resources){
@@ -111,12 +117,12 @@ public class EmployeeViewNGuiController implements Initializable {
                 }
             }
         }
-        paymentIDCol.setCellValueFactory(new PropertyValueFactory<Notification, Integer>("paymentID"));
-        usernameCol.setCellValueFactory(new PropertyValueFactory<Notification, String>("username"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<Notification, LocalDate>("expiringDate"));
-        typeCol.setCellValueFactory(new PropertyValueFactory<Notification, String>("typeofPayment"));
-        amountCol.setCellValueFactory(new PropertyValueFactory<Notification, Double>("amount"));
-        boatIDCol.setCellValueFactory(new PropertyValueFactory<Notification, Integer>("boatID"));
+        paymentIDCol.setCellValueFactory(new PropertyValueFactory<>("paymentID"));
+        usernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("expiringDate"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("typeofPayment"));
+        amountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        boatIDCol.setCellValueFactory(new PropertyValueFactory<>("boatID"));
         notificationTable.setItems(notificationsObservableList);
     }
 }

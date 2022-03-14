@@ -70,16 +70,16 @@ public class EmployeeViewRGuiController implements Initializable {
     }
 
     /**
-     * This is the initialize method from the @class javafx.fxml.Initializable
+     * This is the initialize method from the @class javafx.fxml.Initialize
      * @param location is the URL location
      * @param resources are the ResourceBundle resources
-     * Here is used to set the products table, the values inside each column, the brand box brands and to get the products info
+     * Here is used to set the race table and the values inside each column for each race
      **/
     @Override
     public void initialize(final URL location, final ResourceBundle resources){
-        raceFeeCol.setCellValueFactory(new PropertyValueFactory<Race, String>("name"));
-        raceNameCol.setCellValueFactory(new PropertyValueFactory<Race, Double>("cost"));
-        raceDayCol.setCellValueFactory(new PropertyValueFactory<Race, LocalDate>("raceDay"));
+        raceFeeCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        raceNameCol.setCellValueFactory(new PropertyValueFactory<>("cost"));
+        raceDayCol.setCellValueFactory(new PropertyValueFactory<>("raceDay"));
         raceTable.setItems(racesObservableList);
     }
 }

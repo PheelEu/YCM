@@ -45,8 +45,14 @@ public class EmployeeViewMGuiController implements Initializable {
     private TableView<Member> memberTable;
 
     @FXML
-    static ObservableList<Member> membersObservableList = FXCollections.observableArrayList();
+    private static ObservableList<Member> membersObservableList = FXCollections.observableArrayList();
 
+    /**
+     * This method it's called by a GUI event, when the 'remove member' button gets pressed
+     * Enables the Employee who clicked it remove a member and all of their information from the club
+     *
+     * @param event it's the triggered event
+     **/
     @FXML
     void removeMemberBtn(ActionEvent event) {
         a.setAlertType(Alert.AlertType.INFORMATION);
@@ -95,10 +101,10 @@ public class EmployeeViewMGuiController implements Initializable {
     }
 
     /**
-     * This is the initialize method from the @class javafx.fxml.Initializable
+     * This is the initialize method from the @class javafx.fxml.Initialize
      * @param location is the URL location
      * @param resources are the ResourceBundle resources
-     * Here is used to set the products table, the values inside each column, the brand box brands and to get the products info
+     * Here is used to set the member table and all the information of a member in the columns of the table
      **/
     @Override
     public void initialize(final URL location, final ResourceBundle resources){

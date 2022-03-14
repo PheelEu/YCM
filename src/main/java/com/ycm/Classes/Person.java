@@ -1,5 +1,6 @@
 package com.ycm.Classes;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -16,6 +17,7 @@ import java.io.Serializable;
 
 public class Person implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private String username;
@@ -29,10 +31,10 @@ public class Person implements Serializable {
     /**
      *Class Constructor (empty)
      **/
-    public Person(){};
+    public Person(){}
 
     /**
-     *Class Constructor
+     *Class Constructor for any person (could be both a Member or an Employee)
      *
      * @param username is the username of the person.
      * @param password is the password of the person.
@@ -42,7 +44,6 @@ public class Person implements Serializable {
      * @param FC is the Fiscal Code of the person
      * @param logged tells whether the person is logged in or not.
      **/
-
     public Person(String username, String password, String name, String surname, String address, String FC, boolean logged){
         this.username = username;
         this.password = password;
@@ -158,7 +159,7 @@ public class Person implements Serializable {
     }
 
     /**
-     * This method sets the boolean logged to true when a Person logs in, False if does the logout
+     * This method sets the boolean logged to true when a Person logs in, False if the person logs out.
      * @param logged set to true if a person is logged in, false if is logged out.
      */
     public void setLogged(boolean logged) {

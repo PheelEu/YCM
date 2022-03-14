@@ -1,5 +1,6 @@
 package com.ycm.Classes;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -13,12 +14,13 @@ import java.io.Serializable;
  **/
 
 public final class Member extends Person implements Serializable {
+    @Serial
     private  static final long serialVersionUID = 1L;
 
     /**
      *Class Constructor (empty)
      **/
-    public Member(){};
+    public Member(){}
 
     /**
      * This is the class constructor to initialize a Member

@@ -16,7 +16,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static com.ycm.Classes.Club.getToday;
@@ -39,6 +38,11 @@ public class EmployeeGuiController {
     @FXML
     private AnchorPane contentPane;
 
+    /**
+     * This method it's called by a GUI event, when the 'view members' Link gets pressed
+     * Enables the Employee who clicked it to jump to the view members page, and view the members registered to the club
+     * @param event it's the triggered event
+     **/
     @FXML
     void viewMembers(ActionEvent event) {
         try {
@@ -50,6 +54,11 @@ public class EmployeeGuiController {
         }
     }
 
+    /**
+     * This method it's called by a GUI event, when the 'view boats' Link gets pressed
+     * Enables the Employee who clicked it to jump to the view boats page, and view the boats registered to the club
+     * @param event it's the triggered event
+     **/
     @FXML
     void viewBoats(ActionEvent event) {
         try {
@@ -61,6 +70,11 @@ public class EmployeeGuiController {
         }
     }
 
+     /**
+     * This method it's called by a GUI event, when the 'planned races' Link gets pressed
+     * Enables the Employee who clicked it to jump to the planned races page, and view the upcoming races
+     * @param event it's the triggered event
+     **/
     @FXML
     void plannedRaces(ActionEvent event) {
         try {
@@ -90,6 +104,11 @@ public class EmployeeGuiController {
      * Add Race GUI Components
      **/
 
+    /**
+     * This method it's called by a GUI event, when the 'add race' Link gets pressed
+     * Enables the Employee who clicked it to jump to the add race page, and add new competitions to the club
+     * @param event it's the triggered event
+     **/
     @FXML
     void addRace(ActionEvent event) {
         try {
@@ -113,6 +132,13 @@ public class EmployeeGuiController {
     @FXML
     private TextField raceName;
 
+    /**
+     * This method it's called by a GUI event, when the 'add a race' button gets pressed
+     * Enables the Employee who clicked it to add a new competition to the club
+     *
+     * @param event it's the triggered event
+     * @throws IOException if any input/output exception gets thrown
+     **/
     @FXML
     void addARace(ActionEvent event) {
         a.setAlertType(Alert.AlertType.INFORMATION);
@@ -148,6 +174,11 @@ public class EmployeeGuiController {
         a.showAndWait();
     }
 
+    /**
+     * This method it's called by a GUI event, when the 'view notifications' Link gets pressed
+     * Enables the Employee who clicked it to jump to the view notifications page, and view all the notifications of the club
+     * @param event it's the triggered event
+     **/
     @FXML
     void viewNotifications(ActionEvent event) {
         try {
@@ -159,6 +190,11 @@ public class EmployeeGuiController {
         }
     }
 
+    /**
+     * This method it's called by a GUI event, when the 'view payments' Link gets pressed
+     * Enables the Employee who clicked it to jump to the view payments page, and view all the payments made to the club
+     * @param event it's the triggered event
+     **/
     @FXML
     void viewPayments(ActionEvent event) {
         try {
@@ -170,8 +206,13 @@ public class EmployeeGuiController {
         }
     }
 
-
-
+    /**
+     * This method it's called by a GUI event, when the 'Logout' Icon gets pressed
+     * Enables the Employee who clicked it log out of the system
+     *
+     * @param event it's the triggered event
+     * @throws IOException if any input/output exception gets thrown
+     **/
     @FXML
     void logoutIcon(MouseEvent event) throws IOException{
         a.setAlertType(Alert.AlertType.INFORMATION);

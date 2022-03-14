@@ -1,7 +1,5 @@
 package com.ycm.Gui;
 
-import com.ycm.Classes.Employee;
-import com.ycm.Classes.Member;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;

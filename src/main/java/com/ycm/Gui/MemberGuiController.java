@@ -38,6 +38,11 @@ public class MemberGuiController {
     @FXML
     private AnchorPane contentPane;
 
+    /**
+     * This method it's called by a GUI event, when the 'our story' Link gets pressed
+     * Enables the member who clicked it to jump to the 'our story' page, and view the history and presentation of the club
+     * @param event it's the triggered event
+     **/
     @FXML
     void ourStory(ActionEvent event) {
         try {
@@ -49,10 +54,15 @@ public class MemberGuiController {
         }
     }
 
-    /**
+    /*
      * ADD-BOAT-PAGE JAVAFX OBJECTS
-     **/
+     */
 
+    /**
+     * This method it's called by a GUI event, when the 'add boat' Link gets pressed
+     * Enables the member who clicked it to jump to the add boat page, and insert a new boat in the club
+     * @param event it's the triggered event
+     **/
     @FXML
     void addBoat(ActionEvent event) {
         try {
@@ -73,6 +83,12 @@ public class MemberGuiController {
     @FXML
     private Label liveCost;
 
+    /**
+     * This method it's called by a GUI event, when the 'cost' button gets clicked
+     * Enables the member who clicked it to check how much will it cost to register a specific boat to the club
+     *
+     * @param event it's the triggered event
+     **/
     @FXML
     void CostBtn(ActionEvent event) {
         String cost = "Incorrect Value";
@@ -97,6 +113,13 @@ public class MemberGuiController {
         }
     }
 
+    /**
+     * This method it's called by a GUI event, when the 'docking payment' button gets clicked
+     * It enables the member who clicked it to add a new boat to the club, if the input is accepted by the filters
+     * If input is accepted the payment page gets opened.
+     *
+     * @param event it's the triggered event
+     **/
     @FXML
     void dockingPaymentBtn(ActionEvent event) {
         a.setAlertType(Alert.AlertType.INFORMATION);
@@ -143,6 +166,11 @@ public class MemberGuiController {
         }
     }
 
+    /**
+     * This method it's called by a GUI event, when the 'docking fares' Link gets pressed
+     * Enables the member who clicked it to jump to the docking fares page, and view the docking fares of the club
+     * @param event it's the triggered event
+     **/
     @FXML
     void dockingFares(ActionEvent event) {
         try {
@@ -155,6 +183,13 @@ public class MemberGuiController {
         }
     }
 
+    /**
+     * This method it's called by a GUI event, when the 'remove boat' Link gets pressed
+     * Enables the member who clicked it to jump to the remove boat page, and view all the boats registered to his account
+     * and if he wants to he can remove one or more.
+     *
+     * @param event it's the triggered event
+     **/
     @FXML
     void removeBoat(ActionEvent event) {
         setSelectBoatGuiType(2);
@@ -167,8 +202,14 @@ public class MemberGuiController {
         }
     }
 
-    /**
+    /*
      * Annual Subscription Objects
+     */
+
+    /**
+     * This method it's called by a GUI event, when the 'subscription' Link gets pressed
+     * Enables the member who clicked it to jump to the member subscription page.
+     * @param event it's the triggered event
      **/
     @FXML
     void subscription(ActionEvent event) {
@@ -189,7 +230,15 @@ public class MemberGuiController {
 
     @FXML
     private Button subscriptionPayBtn;
-    
+
+    /**
+     * This method it's called by a GUI event, when the 'check next payment' link gets clicked
+     * Enables the member who clicked it to check when is the next annual subscription payment due
+     * If the expiry date is after the present day, a button to make the annual sub payment
+     * it's enabled and the payment page opened
+     *
+     * @param event it's the triggered event
+     **/
     @FXML
     void checkNextPaymentLink(ActionEvent event) {
         Object date = new Client().run(new Request(new Message( "expiryDate", getMember().getUsername(), "Annual subscription payment")));
@@ -208,6 +257,13 @@ public class MemberGuiController {
         }
     }
 
+    /**
+     * This method it's called by a GUI event, when the 'subscription payment' button gets clicked
+     * Enables the member who clicked it to pay for the annual subscription. If the expiry date is after the present day,
+     * the payment page is opened and the pay button hidden.
+     *
+     * @param event it's the triggered event
+     **/
     @FXML
     void subscriptionPayBtn(ActionEvent event) {
         try{
@@ -223,8 +279,12 @@ public class MemberGuiController {
         }
     }
 
-
-
+    /**
+     * This method it's called by a GUI event, when the 'delete account' link gets clicked
+     * Enables the member who clicked it to jump to the 'delete account' page and if he wants to delete his account permanently
+     *
+     * @param event it's the triggered event
+     **/
     @FXML
     void deleteAccountLink(ActionEvent event) {
         try {
@@ -237,11 +297,17 @@ public class MemberGuiController {
     }
 
 
-    /**
+    /*
      * UPCOMING RACES OBJECTS
+     */
+
+
+    /**
+     * This method it's called by a GUI event, when the 'upcoming races' link gets clicked
+     * Enables the member who clicked it to jump to the 'upcoming races' page and select a race to join.
+     *
+     * @param event it's the triggered event
      **/
-
-
     @FXML
     void upcomingRaces(ActionEvent event) {
         setSelectBoatGuiType(1);
@@ -268,10 +334,16 @@ public class MemberGuiController {
         }
     }
 
-    /**
+    /*
      *NOTIFICATION OBJECTS
-     **/
+     */
 
+    /**
+     * This method it's called by a GUI event, when the 'notifications' icon gets clicked
+     * Enables the member who clicked it to jump to the 'notifications' page view his notifications if any are present.
+     *
+     * @param event it's the triggered event
+     **/
     @FXML
     void notificationIcon(MouseEvent event) {
         mNotifications.clear();
@@ -308,10 +380,16 @@ public class MemberGuiController {
         }
     }
 
-    /**
+    /*
      *LOGOUT OBJECTS
-     **/
+     */
 
+    /**
+     * This method it's called by a GUI event, when the 'logout' icon gets clicked
+     * Enables the member who clicked it to log out of the system
+     *
+     * @param event it's the triggered event
+     **/
     @FXML
     void logoutIcon(MouseEvent event) throws IOException {
         a.setAlertType(Alert.AlertType.INFORMATION);

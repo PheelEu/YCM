@@ -19,7 +19,7 @@ import static com.ycm.Gui.DeleteAccountGui.a;
 /**
  * The {@code Delete Gui Controller} class defines:
  *
- * All the methods and their implementations in the Delete Gui interface.
+ * All the methods and their implementations in the 'Delete Gui' interface.
  *
  * @author Filippo Euclidi
  * @author Matteo Angeloni
@@ -33,6 +33,13 @@ public class DeleteAccountGuiController {
     @FXML
     private TextField userField;
 
+    /**
+     * This method it's called by a GUI event, when the 'delete account' button gets pressed
+     * Enables the Member who clicked it to delete their account and information from the database
+     * removing all of its boat, unsubscribing from competitions and deleting all the notifications present.
+     * @param event it's the triggered event
+     * @throws IOException if any input/output exception gets thrown
+     **/
     @FXML
     void DeleteAccountBtn(ActionEvent event) throws IOException {
         a.setAlertType(Alert.AlertType.INFORMATION);

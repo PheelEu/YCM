@@ -15,15 +15,15 @@ public class EmployeeGui {
 
     static Employee e = null;
 
-    public static ArrayList<Boat> mBoats = new ArrayList<Boat>();
+    public static ArrayList<Boat> mBoats = new ArrayList<>();
 
-    public static ArrayList<Race> viewRaces = new ArrayList<Race>();
+    public static ArrayList<Race> viewRaces = new ArrayList<>();
 
-    public static ArrayList<Member> membersInfo = new ArrayList<Member>();
+    public static ArrayList<Member> membersInfo = new ArrayList<>();
 
-    public static ArrayList<Payment> payments = new ArrayList<Payment>();
+    public static ArrayList<Payment> payments = new ArrayList<>();
 
-    public static ArrayList<Notification> notifications = new ArrayList<Notification>();
+    public static ArrayList<Notification> notifications = new ArrayList<>();
 
     /**
      * It's a set method to set the gui employee after the login
@@ -56,7 +56,7 @@ public class EmployeeGui {
 
     /**
      * This method creates a new pane for the employee page.
-     * @return the pane to select a boat for the member.
+     * @return the pane to view all the members of the club.
      * @throws IOException is an exception thrown if something in the GUI does not work
      **/
     public static Pane viewMembers() throws IOException {
@@ -78,7 +78,7 @@ public class EmployeeGui {
 
     /**
      * This method creates a new pane for the employee page.
-     * @return the pane to select a boat for the member.
+     * @return the pane to view all the upcoming races of the club.
      * @throws IOException is an exception thrown if something in the GUI does not work
      **/
     public static Pane viewRaces() throws IOException {
@@ -101,7 +101,7 @@ public class EmployeeGui {
 
     /**
      * This method creates a new pane for the employee page.
-     * @return the pane to add a race.
+     * @return the pane to view the payments made.
      * @throws IOException is an exception thrown if something in the GUI does not work
      **/
     public static Pane viewPayments() throws IOException {
@@ -112,7 +112,7 @@ public class EmployeeGui {
 
     /**
      * This method creates a new pane for the employee page.
-     * @return the pane to add a race.
+     * @return the pane to view the notifications to be sent.
      * @throws IOException is an exception thrown if something in the GUI does not work
      **/
     public static Pane viewNotifications() throws IOException {

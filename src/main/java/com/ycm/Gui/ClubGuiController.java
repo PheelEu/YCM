@@ -24,6 +24,11 @@ public class ClubGuiController {
     @FXML
     private Pane contentPane;
 
+    /**
+     * This method it's called by a GUI event, when the Login Icon gets pressed
+     * Enables the person who clicked it to jump to the login page, and log into the system
+     * @param event it's the triggered event
+     **/
     @FXML
     void LoginIcon(MouseEvent event) {
         try {
@@ -35,6 +40,11 @@ public class ClubGuiController {
         }
     }
 
+    /**
+     * This method it's called by a GUI event, when the Register Icon gets pressed
+     * Enables the person who clicked it to jump to the register page, and register into the system as a Member
+     * @param event it's the triggered event
+     **/
     @FXML
     void registerIcon(MouseEvent event) {
         try {
@@ -46,23 +56,33 @@ public class ClubGuiController {
         }
     }
 
+    /**
+     * This method it's called by a GUI event, when the 'our story' Link gets pressed
+     * Enables the person who clicked it to jump to the 'our story' page, and view the history and presentation of the club
+     * @param event it's the triggered event
+     **/
     @FXML
-    void dockingFares(ActionEvent event) {
+    void ourStory(ActionEvent event) {
         try {
             contentPane.getChildren().clear();
-            contentPane.getChildren().add((dockingFaresPane()));
-
+            contentPane.getChildren().add((ourStoryPane()));
         } catch (
                 IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * This method it's called by a GUI event, when the 'docking fares' Link gets pressed
+     * Enables the person who clicked it to jump to the docking fares page, and view the docking fares of the club
+     * @param event it's the triggered event
+     **/
     @FXML
-    void ourStory(ActionEvent event) {
+    void dockingFares(ActionEvent event) {
         try {
             contentPane.getChildren().clear();
-            contentPane.getChildren().add((ourStoryPane()));
+            contentPane.getChildren().add((dockingFaresPane()));
+
         } catch (
                 IOException e) {
             e.printStackTrace();

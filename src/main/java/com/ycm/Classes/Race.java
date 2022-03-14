@@ -1,9 +1,9 @@
 package com.ycm.Classes;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -19,25 +19,41 @@ import java.util.Date;
 
 public class Race implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private String name;
     private double cost;
     private LocalDate raceDay;
 
-    ArrayList<Boat> competitors = new ArrayList<Boat>();
+    ArrayList<Boat> competitors = new ArrayList<>();
 
     /**
      *Class Constructor (empty)
      **/
-    public Race(){};
+    public Race(){}
 
+    /**
+     *Class Constructor for a generic race
+     *
+     * @param name it's the name of the race.
+     * @param cost it's the fee to join the race.
+     * @param raceDay it's the day on which the race will be taken.
+     **/
     public Race(String name, double cost, LocalDate raceDay){
         this.name = name;
         this.cost = cost;
         this.raceDay = raceDay;
-
     }
+
+    /**
+     *Class Constructor for a generic race and competitors already present.
+     *
+     * @param name it's the name of the race.
+     * @param cost it's the fee to join the race.
+     * @param raceDay it's the day on which the race will be taken.
+     * @param competitors it's the list of competitors who already joined the race
+     **/
     public Race(String name, double cost, LocalDate raceDay,ArrayList<Boat> competitors){
         this.name = name;
         this.cost = cost;

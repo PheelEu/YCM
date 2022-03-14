@@ -103,10 +103,11 @@ public class EmployeeViewPGuiController implements Initializable {
     static ObservableList<Payment> rPaymentsObservableList = FXCollections.observableArrayList();
 
     /**
-     * This is the initialize method from the @class javafx.fxml.Initializable
+     * This is the initialize method from the @class javafx.fxml.Initialize
      * @param location is the URL location
      * @param resources are the ResourceBundle resources
-     * Here is used to set the products table, the values inside each column, the brand box brands and to get the products info
+     * Here is used to set the annual sub table, the boat storage table and the race fee table,
+     *                 with all the values of the corresponding tables inside each column for each table and each type of payment
      **/
     @Override
     public void initialize(final URL location, final ResourceBundle resources){
@@ -136,28 +137,28 @@ public class EmployeeViewPGuiController implements Initializable {
             }
         }
 
-        aIDCol.setCellValueFactory(new PropertyValueFactory<Payment, Integer>("ID"));
-        aUsernameCol.setCellValueFactory(new PropertyValueFactory<Payment, String>("username"));
-        aDateCol.setCellValueFactory(new PropertyValueFactory<Payment, LocalDate>("paymentDate"));
-        aMethodCol.setCellValueFactory(new PropertyValueFactory<Payment, String>("method"));
-        aAmountCol.setCellValueFactory(new PropertyValueFactory<Payment, Double>("amount"));
-        aPaidCol.setCellValueFactory(new PropertyValueFactory<Payment, Boolean>("paid"));
+        aIDCol.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        aUsernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
+        aDateCol.setCellValueFactory(new PropertyValueFactory<>("paymentDate"));
+        aMethodCol.setCellValueFactory(new PropertyValueFactory<>("method"));
+        aAmountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        aPaidCol.setCellValueFactory(new PropertyValueFactory<>("paid"));
 
-        bIDCol.setCellValueFactory(new PropertyValueFactory<Payment, Integer>("ID"));
-        bUsernameCol.setCellValueFactory(new PropertyValueFactory<Payment, String>("username"));
-        bDateCol.setCellValueFactory(new PropertyValueFactory<Payment, LocalDate>("paymentDate"));
-        bMethodCol.setCellValueFactory(new PropertyValueFactory<Payment, String>("method"));
-        bAmountCol.setCellValueFactory(new PropertyValueFactory<Payment, Double>("amount"));
-        bPaidCol.setCellValueFactory(new PropertyValueFactory<Payment, Boolean>("paid"));
-        bBoatIDCol.setCellValueFactory(new PropertyValueFactory<Payment, Integer>("info"));
+        bIDCol.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        bUsernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
+        bDateCol.setCellValueFactory(new PropertyValueFactory<>("paymentDate"));
+        bMethodCol.setCellValueFactory(new PropertyValueFactory<>("method"));
+        bAmountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        bPaidCol.setCellValueFactory(new PropertyValueFactory<>("paid"));
+        bBoatIDCol.setCellValueFactory(new PropertyValueFactory<>("info"));
 
-        rIDCol.setCellValueFactory(new PropertyValueFactory<Payment, Integer>("ID"));
-        rUsernameCol.setCellValueFactory(new PropertyValueFactory<Payment, String>("username"));
-        rDateCol.setCellValueFactory(new PropertyValueFactory<Payment, LocalDate>("paymentDate"));
-        rMethodCol.setCellValueFactory(new PropertyValueFactory<Payment, String>("method"));
-        rAmountCol.setCellValueFactory(new PropertyValueFactory<Payment, Double>("amount"));
-        rPaidCol.setCellValueFactory(new PropertyValueFactory<Payment, Boolean>("paid"));
-        rBoatIDCol.setCellValueFactory(new PropertyValueFactory<Payment, Integer>("info"));
+        rIDCol.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        rUsernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
+        rDateCol.setCellValueFactory(new PropertyValueFactory<>("paymentDate"));
+        rMethodCol.setCellValueFactory(new PropertyValueFactory<>("method"));
+        rAmountCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        rPaidCol.setCellValueFactory(new PropertyValueFactory<>("paid"));
+        rBoatIDCol.setCellValueFactory(new PropertyValueFactory<>("info"));
 
         annualSubTable.setItems(aPaymentsObservableList);
         boatStorageTable.setItems(bPaymentsObservableList);
