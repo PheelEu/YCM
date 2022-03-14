@@ -100,7 +100,6 @@ public class ClubGui extends Application {
         throw new IllegalArgumentException(s+" is not a bool. Only 1 and 0 are.");
     }
 
-
     /**
      * This is the main stage, it's the starting point of our application regarding all the GUI classes.
      * @param stage it's the stage to be set when the application is executed.

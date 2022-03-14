@@ -16,17 +16,6 @@ public class EmployeeSql {
 
     public EmployeeSql(){};
 
-    /*
-    public static removeMember(){}
-
-    public static removeBoat(){}
-
-    public static addRace(){}
-
-    public static removeRace(){}
-
-
-     */
     /**
      * Create a new notification made by user in the database.
      *
@@ -42,11 +31,6 @@ public class EmployeeSql {
             return false;
         }
     }
-
-    /*
-
-    public static payment(){}
-     */
 
     /**
      * Method with a query to delete all the boats of a member from the database.

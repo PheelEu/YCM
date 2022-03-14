@@ -1,16 +1,11 @@
 package com.ycm.Sql;
 
 import com.ycm.Classes.Boat;
-import com.ycm.Classes.Employee;
-import com.ycm.Classes.Race;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Locale;
 
-import static com.ycm.Classes.Club.getToday;
 import static com.ycm.Sql.QuerySql.connection;
 
 /**

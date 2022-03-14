@@ -61,9 +61,9 @@ public class PaymentSql {
      */
     public static Object lastPaymentID() {
         String sqlSelect = "SELECT MAX( `ID` ) FROM `payment`";
-        try{
+        try {
             ResultSet rst = connection().executeQuery(sqlSelect);
-            if(rst.next()){
+            if (rst.next()) {
                 String number = rst.getString(1);
                 return number;
             }
@@ -73,7 +73,6 @@ public class PaymentSql {
         }
         return null;
     }
-
 
     /**
      * Selects all the payments

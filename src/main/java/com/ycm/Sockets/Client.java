@@ -11,8 +11,7 @@ public class Client {
     private static final String SHOST = "localhost";
 
     /**
-     * Runs the client code.
-     *
+     * This runs the client code
      **/
     public Object run(Request rq) {
         Socket client = null;

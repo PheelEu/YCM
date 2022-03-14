@@ -16,32 +16,33 @@ public class Message implements Serializable {
     private String args8;
 
     /**
-     * Class constructor.
+     * Class constructor of the message.
+     * @param functionName is the name of the SQL function that needs to be passed.
      *
-     * @param functionName name of the SQL function that need to be passed.
-     */
+     **/
     public Message(String functionName) {
         this.functionName = functionName;
     }
 
     /**
-     * Class constructor.
+     * Class constructor with one argument.
      *
-     * @param functionName name of the SQL function that need to be passed.
-     * @param args1 the attribute needed by function.
-     */
+     * @param functionName is name of the SQL function that needs to be passed.
+     * @param args1 is the attribute needed by the function.
+     *
+     **/
     public Message(String functionName, String args1) {
         this.functionName = functionName;
         this.args1 = args1;
     }
 
     /**
-     * Class constructor.
+     * Class constructor with two arguments.
      *
-     * @param functionName name of the SQL function that need to be passed.
-     * @param args1 the first attribute needed by function.
-     * @param args2 the second attribute needed by function.
-     */
+     * @param functionName is name of the SQL function that needs to be passed.
+     * @param args1 is the attribute needed by the function.
+     * @param args2 is the second attribute needed by the function.
+     **/
     public Message(String functionName, String args1, String args2) {
         this.functionName = functionName;
         this.args1 = args1;
@@ -49,12 +50,12 @@ public class Message implements Serializable {
     }
 
     /**
-     * Class constructor.
+     * Class constructor with three arguments.
      *
-     * @param functionName name of the SQL function that need to be passed.
-     * @param args1 the first attribute needed by function.
-     * @param args2 the second attribute needed by function.
-     * @param args3 the third attribute needed by function.
+     * @param functionName is name of the SQL function that needs to be passed.
+     * @param args1 is the attribute needed by the function.
+     * @param args2 is the second attribute needed by the function.
+     * @param args3 is the third attribute needed by the function.
      */
     public Message(String functionName, String args1, String args2, String args3) {
         this.functionName = functionName;
@@ -64,13 +65,13 @@ public class Message implements Serializable {
     }
 
     /**
-     * Class constructor.
+     * Class constructor with four arguments.
      *
-     * @param functionName name of the SQL function that need to be passed.
-     * @param args1 the first attribute needed by function.
-     * @param args2 the second attribute needed by function.
-     * @param args3 the third attribute needed by function.
-     * @param args4 the fourth attribute needed by function.
+     * @param functionName is name of the SQL function that needs to be passed.
+     * @param args1 is the first attribute needed by the function.
+     * @param args2 is the second attribute needed by the function.
+     * @param args3 is the third attribute needed by the function.
+     * @param args4 is the fourth attribute needed by the function.
      */
     public Message(String functionName, String args1, String args2, String args3, String args4) {
         this.functionName = functionName;
@@ -81,14 +82,14 @@ public class Message implements Serializable {
     }
 
     /**
-     * Class constructor.
+     * Class constructor with four arguments.
      *
-     * @param functionName name of the SQL function that need to be passed.
-     * @param args1 the first attribute needed by function.
-     * @param args2 the second attribute needed by function.
-     * @param args3 the third attribute needed by function.
-     * @param args4 the fourth attribute needed by function.
-     * @param args5 the fifth attribute needed by function.
+     * @param functionName is name of the SQL function that needs to be passed.
+     * @param args1 is the first attribute needed by the function.
+     * @param args2 is the second attribute needed by the function.
+     * @param args3 is the third attribute needed by the function.
+     * @param args4 is the fourth attribute needed by the function.
+     * @param args5 is the fifth attribute needed by the function.
      */
     public Message(String functionName, String args1, String args2, String args3, String args4, String args5) {
         this.functionName = functionName;
@@ -100,15 +101,15 @@ public class Message implements Serializable {
     }
 
     /**
-     * Class constructor.
+     * Class constructor with four arguments.
      *
-     * @param functionName name of the SQL function that need to be passed.
-     * @param args1 the first attribute needed by function.
-     * @param args2 the second attribute needed by function.
-     * @param args3 the third attribute needed by function.
-     * @param args4 the fourth attribute needed by function.
-     * @param args5 the fifth attribute needed by function.
-     * @param args6 the sixth attribute needed by function.
+     * @param functionName is name of the SQL function that needs to be passed.
+     * @param args1 is the first attribute needed by the function.
+     * @param args2 is the second attribute needed by the function.
+     * @param args3 is the third attribute needed by the function.
+     * @param args4 is the fourth attribute needed by the function.
+     * @param args5 is the fifth attribute needed by the function.
+     * @param args6 is the sixth attribute needed by the function.
      */
     public Message(String functionName, String args1, String args2, String args3, String args4, String args5, String args6) {
         this.functionName = functionName;
@@ -121,16 +122,16 @@ public class Message implements Serializable {
     }
 
     /**
-     * Class constructor.
+     * Class constructor with four arguments.
      *
-     * @param functionName name of the SQL function that need to be passed.
-     * @param args1 the first attribute needed by function.
-     * @param args2 the second attribute needed by function.
-     * @param args3 the third attribute needed by function.
-     * @param args4 the fourth attribute needed by function.
-     * @param args5 the fifth attribute needed by function.
-     * @param args6 the sixth attribute needed by function.
-     * @param args7 the seventh attribute needed by function.
+     * @param functionName is name of the SQL function that needs to be passed.
+     * @param args1 is the first attribute needed by the function.
+     * @param args2 is the second attribute needed by the function.
+     * @param args3 is the third attribute needed by the function.
+     * @param args4 is the fourth attribute needed by the function.
+     * @param args5 is the fifth attribute needed by the function.
+     * @param args6 is the sixth attribute needed by the function.
+     * @param args7 is the seventh attribute needed by the function.
      */
     public Message(String functionName, String args1, String args2, String args3, String args4, String args5, String args6, String args7) {
         this.functionName = functionName;
@@ -144,16 +145,16 @@ public class Message implements Serializable {
     }
 
     /**
-     * Class constructor.
+     * Class constructor with four arguments.
      *
-     * @param functionName name of the SQL function that need to be passed.
-     * @param args1 the first attribute needed by function.
-     * @param args2 the second attribute needed by function.
-     * @param args3 the third attribute needed by function.
-     * @param args4 the fourth attribute needed by function.
-     * @param args5 the fifth attribute needed by function.
-     * @param args6 the sixth attribute needed by function.
-     * @param args7 the seventh attribute needed by function.
+     * @param functionName is name of the SQL function that needs to be passed.
+     * @param args1 is the first attribute needed by the function.
+     * @param args2 is the second attribute needed by the function.
+     * @param args3 is the third attribute needed by the function.
+     * @param args4 is the fourth attribute needed by the function.
+     * @param args5 is the fifth attribute needed by the function.
+     * @param args6 is the sixth attribute needed by the function.
+     * @param args7 is the seventh attribute needed by the function.
      */
     public Message(String functionName, String args1, String args2, String args3, String args4, String args5, String args6, String args7, String args8) {
         this.functionName = functionName;

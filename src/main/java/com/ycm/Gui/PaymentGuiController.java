@@ -430,7 +430,12 @@ public class PaymentGuiController implements Initializable {
         }
     }
 
-
+    /**
+     * This is the initialize method from the @class javafx.fxml.Initialize
+     * @param url is the URL location
+     * @param rb are the ResourceBundle resources
+     * Here is used to set a specific type of payment when the payment GUI stage gets opened
+     **/
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         if (getType() == 1) {

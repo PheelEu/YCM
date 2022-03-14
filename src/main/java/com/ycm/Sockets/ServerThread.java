@@ -20,11 +20,19 @@ public class ServerThread implements Runnable {
     private Server server;
     private Socket socket;
 
+    /**
+     * Class constructor of the server thread.
+     * @param s is the server to be passed.
+     *
+     **/
     public ServerThread(final Server s, final Socket c) {
         this.server = s;
         this.socket = c;
     }
 
+    /**
+     * This runs the server thread code
+     **/
     @Override
     public void run() {
         ObjectInputStream is = null;

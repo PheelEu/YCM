@@ -17,21 +17,24 @@ public class Server {
     private ServerSocket socket;
     private ThreadPoolExecutor pool;
 
+    /**
+     * Class constructor of the server.
+     * @throws IOException is an exception trown
+     **/
     public Server() throws IOException{
         this.socket = new ServerSocket(SPORT);
     }
 
     private void run(){
-
         System.out.println("Server is starting...");
         this.pool = new ThreadPoolExecutor(COREPOOL, MAXPOOL, IDLETIME,
                 TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
-        System.out.println("Server started...");
+        System.out.println("Server started");
 
         while(true){
             try {
                 Socket s = this.socket.accept();
-                System.out.println("Client connected successfully");
+                System.out.println("Client request executed");
 
                 this.pool.execute(new ServerThread(this, s));
             }catch(Exception e){

@@ -1,8 +1,6 @@
 package com.ycm.Sql;
 
-import com.ycm.Classes.Member;
 import com.ycm.Classes.Notification;
-import com.ycm.Classes.Payment;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
