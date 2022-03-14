@@ -32,16 +32,15 @@ public class PaymentGui {
         return cost;
     }
 
-    /**
+    /*
      * Regex Checks
-     **/
+     */
 
     /**
      * CVV Regex Check
      * @param str is the input string
      * @return true or false if is acceptable or not
      **/
-
     public static boolean isValidCVVNumber(String str)
     {
         String regex = "^[0-9]{3,4}$";
@@ -86,8 +85,8 @@ public class PaymentGui {
     public static Alert a = new Alert(Alert.AlertType.NONE);
 
     /**
-     * This method creates a new stage and a new scene for the user member welcome page.
-     * @return the stage for the member welcome page.
+     * This method creates a new stage and a new scene for the member payment page.
+     * @return the stage for the member payment page.
      * @throws IOException is an exception thrown if something in the GUI does not work
      **/
     public static Scene paymentScene() throws IOException {

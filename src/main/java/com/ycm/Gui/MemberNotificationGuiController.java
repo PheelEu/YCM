@@ -54,6 +54,14 @@ public class MemberNotificationGuiController implements Initializable{
     @FXML
     static ObservableList<Notification> notificationsObservableList = FXCollections.observableArrayList();
 
+    /**
+     * This method is called by a GUI event, when the 'payment' button gets pressed
+     * Enables the member who clicked it to make a payment, if a notification (corresponding to a specific type of payment)
+     * is selected.
+     * If input is accepted the payment page gets opened.
+     *
+     * @param event it's the triggered event
+     **/
     @FXML
     void paymentBtn(ActionEvent event) {
         a.setAlertType(Alert.AlertType.INFORMATION);
@@ -109,10 +117,10 @@ public class MemberNotificationGuiController implements Initializable{
 
 
     /**
-     * This is the initialize method from the @class javafx.fxml.Initializable
+     * This is the initialize method from the @class javafx.fxml.Initialize
      * @param location is the URL location
      * @param resources are the ResourceBundle resources
-     * Here is used to set the products table, the values inside each column, the brand box brands and to get the products info
+     * Here is used to set the notifications table and all the values and information inside each column.
      **/
     @Override
     public void initialize(final URL location, final ResourceBundle resources){

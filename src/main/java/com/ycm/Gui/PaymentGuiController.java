@@ -68,6 +68,14 @@ public class PaymentGuiController implements Initializable {
     @FXML
     private Label titleLabel;
 
+    /**
+     * This method it's called by a GUI event, when the 'pay' button if the credit card pane gets clicked
+     * It enables the member who clicked it to make a new payment, if the input is accepted by the filters
+     * If input is accepted the payment is added to the database and a new notification could be created based on the type
+     * of payment that has been made.
+     *
+     * @param event it's the triggered event
+     **/
     @FXML
     void cPayBtn(ActionEvent event) {
         PaymentGui.a.setAlertType(Alert.AlertType.INFORMATION);
@@ -94,65 +102,84 @@ public class PaymentGuiController implements Initializable {
         if(!isValidCardNumber(cardNumber.getText())){
             PaymentGui.a.setContentText("Card number is not acceptable");
         }
+        /*
+            If all the input fields are correct, then proceed to the payment.
+            Else some or all of the input is incorrect or unacceptable.
+         */
         if(!cNameField.getText().isEmpty() && !cSurnameField.getText().isEmpty() && isValidCVVNumber(cvvField.getText()) &&
                 !(dateField.getValue() == null) && isValidCVVNumber(cvvField.getText()) &&
                 isValidCardNumber(cardNumber.getText()) && !getToday().isAfter(LocalDate.parse(dateField.getValue().toString()))){
             LocalDate date;
             Object obj;
             int paymentID = 1;
+            //Checks for the last payment made and sets this payment new ID.
             Object lastPaymentID = new Client().run(new Request(new Message( "lastPaymentID")));
             if(lastPaymentID != null) {
                 paymentID = Integer.parseInt(String.valueOf(lastPaymentID)) + 1;
             }
+            //Checks if the type of payment is an annual subscription and adds the payment.
             if(Objects.equals(typeOfPayment, "Annual subscription payment")){
                 date = getPaymentDate();
                 obj = new Client().run(new Request(new Message( "addPayment", String.valueOf(paymentID),getMember().getUsername(),
-                        String.valueOf(date), typeOfPayment, "Bank Transfer", String.valueOf(getCost()),
+                        String.valueOf(date), typeOfPayment, "Credit Card", String.valueOf(getCost()),
                         String.valueOf(isPaid()), String.valueOf(0))));
             }
+            //for other types of payment we use a different constructor
             else{
                 date = LocalDate.parse(getToday().toString());
+                //If the boat is already in the system.
                 if(isBoatRegistered()){
                     obj = new Client().run(new Request(new Message( "addPayment", String.valueOf(paymentID),getMember().getUsername(),
-                            String.valueOf(date), typeOfPayment, "Bank Transfer", String.valueOf(getNotification().getAmount()),
+                            String.valueOf(date), typeOfPayment, "Credit Card", String.valueOf(getNotification().getAmount()),
                             String.valueOf(isPaid()), String.valueOf(getNotification().getBoatID()))));
                 }
+                //If a member is adding a new boat
                 else{
                     obj = new Client().run(new Request(new Message( "addPayment", String.valueOf(paymentID),getMember().getUsername(),
-                            String.valueOf(date), typeOfPayment, "Bank Transfer", String.valueOf(getCost()),
+                            String.valueOf(date), typeOfPayment, "Credit Card", String.valueOf(getCost()),
                             String.valueOf(isPaid()), String.valueOf(getBoat().getID()))));
                 }
             }
+            //Checks if the payment has been registered successfully
             if((boolean) obj) {
                 PaymentGui.a.setContentText("Payment successful!");
                 PaymentGui.a.showAndWait();
+                //Depending on the type of payment a specific notification is made and a
+                // unique alert containing information is shown to the Member
                 if(getType()==1){
+                    //If the payment was for a boat already registered
                     if(isBoatRegistered()){
                         Object notification = new Client().run(new Request(new Message( "addNotification", String.valueOf(paymentID), getMember().getUsername(),
                                 getToday().plusYears(1).toString(), typeOfPayment, String.valueOf(getNotification().getAmount()), String.valueOf(getNotification().getBoatID()))));
                         Object removeNotification = new Client().run(new Request(new Message( "removeNotification", String.valueOf(getNotification().getPaymentID()))));
+                        //If the notification is not created successfully
                         if(!(boolean) notification){
                             PaymentGui.a.setContentText("""
                                     There has been an error while creating\s
                                     the notification for this payment!
                                     Contact us!""");
                         }
+                        //If the notification of the older payment has not been deleted successfully
                         if(!(boolean) removeNotification){
                             PaymentGui.a.setContentText("""
                                     There has been an error while removing\s
                                     the old notification for this payment!
                                     Contact us!""");
                         }
+                        //If everything worked correctly
                         if((boolean) removeNotification){
                             PaymentGui.a.setContentText("Boat Storage Payment Accepted");
                         }
                     }
+                    //If the boat is registered for the first time
                     else{
                         Object boat = new Client().run(new Request(new Message( "addBoat", String.valueOf(getBoat().getID()), getBoat().getName(),
                                 String.valueOf(getBoat().getLength()), String.valueOf(getBoat().getBoatStorage()), getMember().getUsername())));
+                        //if the boat is added correctly to the database
                         if((boolean) boat) {
                             Object notification = new Client().run(new Request(new Message( "addNotification", String.valueOf(paymentID), getMember().getUsername(),
                                     getToday().plusYears(1).toString(), typeOfPayment, String.valueOf(getCost()), String.valueOf(getBoat().getID()))));
+                            //If the notification is not created correctly for this boat
                             if(!(boolean) notification){
                                 PaymentGui.a.setContentText("""
                                         There has been an error while creating\s
@@ -163,51 +190,65 @@ public class PaymentGuiController implements Initializable {
                                 PaymentGui.a.setContentText("Boat added");
                             }
                         }
+                        //if the boat does not get added to the database
                         else{
                             PaymentGui.a.setContentText("Boat not added");
                             Object deletePayment = new Client().run(new Request(new Message( "deletePayment", getMember().getUsername(), String.valueOf(getCost()))));
                         }
                     }
                 }
+                //If the type of payment is for the annual subscription
                 if(getType()==2){
                     Object notification = new Client().run(new Request(new Message("addNotification", String.valueOf(paymentID), getMember().getUsername(),
                             String.valueOf(date.plusYears(1)), typeOfPayment, String.valueOf(getCost()), "0")));
+                    //If the notification for this payment was not created successfully
                     if (!(boolean) notification) {
                         PaymentGui.a.setContentText("""
                                 There has been an error while creating\s
                                 the notification for this payment!
                                 Contact us!""");
                     }
+                    //If the member was not registered and this is the first time paying the annual subscription
                     if (!isRegistered()) {
                         Object member = new Client().run(new Request(new Message("register", getMember().getUsername(), getMember().getPassword(), getMember().getName(), getMember().getSurname(), getMember().getAddress(), getMember().getFC())));
+                        //If the member is registered correctly
                         if ((boolean) member) {
                             PaymentGui.a.setContentText("Member registered successfully!");
                         }
+                        //If the member is not registered correctly
                         if (!(boolean) member) {
                             PaymentGui.a.setContentText("Something went wrong, contact an employee!");
                             Object deletePayment = new Client().run(new Request(new Message("deletePayment", getMember().getUsername(), String.valueOf(getCost()))));
+                            //payment made gets deleted so that there is no proof he actually paid
                             if(!(boolean) deletePayment){
                                 PaymentGui.a.setContentText("Something went wrong, contact an employee!");
                             }
                         }
-                    } else {
+
+                    }
+                    //If the member is already registered to the club database
+                    else {
                         Object removeNotification = new Client().run(new Request(new Message( "removeNotification", String.valueOf(getNotification().getPaymentID()))));
+                        //If old notification is not removed
                         if(!(boolean) removeNotification){
                             PaymentGui.a.setContentText("There has been an error while removing" +
                                     " \nthe old notification for this payment!"+"\nContact us!");
                         }
+                        //If the notification gets removed
                         else {
                             PaymentGui.a.setContentText("Annual subscription accepted");
                         }
                     }
                 }
+                //If the type of payment is to add a competitor to a race
                 if(getType()==3){
                     Object competitor = new Client().run(new Request(new Message( "addCompetitor", getMember().getUsername(),
                             String.valueOf(getBoat().getID()), getRace().getName())));
-
+                    //If the competitor is added correctly
                     if((boolean) competitor){
                         PaymentGui.a.setContentText("Race fee paid");
                     }
+                    //If the competitor is not added
                     else{
                         PaymentGui.a.setContentText("Race not paid");
                     }
@@ -228,6 +269,16 @@ public class PaymentGuiController implements Initializable {
         }
     }
 
+
+    /**
+     * This method it's called by a GUI event, when the 'pay' button if the bank transfer pane gets clicked
+     * It enables the member who clicked it to make a new payment, if the input is accepted by the filters
+     * If input is accepted the payment is added to the database and a new notification could be created based on the type
+     * of payment that has been made.
+     *
+     * @param event it's the triggered event
+     **/
+    //All the comments made for the Credit Card payment are the same also in the Bank Transfer
     @FXML
     void bPayBtn(ActionEvent event) {
         PaymentGui.a.setAlertType(Alert.AlertType.INFORMATION);
@@ -378,6 +429,7 @@ public class PaymentGuiController implements Initializable {
             PaymentGui.a.showAndWait();
         }
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
