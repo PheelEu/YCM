@@ -16,8 +16,8 @@ public class RaceSql {
      * Selects all the races
      *
      * @return all the races in descending order.
-     * @throws SQLException if there is any error with the queries.
-     */
+     * @throws SQLException if there is any error with the query.
+     **/
     public static Object upcomingRaces() {
         String sqlSelect = "SELECT * FROM race WHERE raceDay > CURRENT_DATE() order by raceDay";
         try {
@@ -34,6 +34,12 @@ public class RaceSql {
         }
     }
 
+    /**
+     * Method that adds a competitor to a specified race.
+     *
+     * @return true if a competitor is added correctly, false if not.
+     * @throws SQLException if there is any error with the query.
+     **/
     public static Object addCompetitor(String username, int boatID, String raceName) throws SQLException{
         String sqlInsert = "INSERT INTO competitors (username, boatID, raceName) VALUES('" + username + "', '" + boatID + "', '" + raceName + "')";
         try {
@@ -46,10 +52,10 @@ public class RaceSql {
     }
 
     /**
-     * Selects all the races
+     * Checks if a competitor is already present or not in a race.
      *
-     * @return all the races in descending order.
-     * @throws SQLException if there is any error with the queries.
+     * @return true if is present, false if not and can be therefore added to the race.
+     * @throws SQLException if there is any error with the query.
      */
     public static Object checkCompetitors(int boatID, String raceName) {
         String sqlSelect = "SELECT * FROM competitors WHERE boatID = '" + boatID + "' AND raceName = '" + raceName + "'";
@@ -66,7 +72,10 @@ public class RaceSql {
     }
 
     /**
+     * Method that adds a race to the database (this method can be accessed only by an employee).
      *
+     * @return true if a race is added correctly, false if not.
+     * @throws SQLException if there are any errors with the query.
      **/
     public static Object addRace(String name, double cost, LocalDate raceDay) {
         String sqlInsert = "INSERT INTO race (name, cost, raceDay) VALUES('" + name + "','" + cost + "','" + raceDay + "')";
@@ -97,7 +106,7 @@ public class RaceSql {
         }
     }
     /**
-     * Method with a query to delete a race from the database and its competitors.
+     * Method with a query to remove a competitor from all races.
      *
      * @return true if there are no errors.
      */

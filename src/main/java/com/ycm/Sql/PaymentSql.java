@@ -13,7 +13,7 @@ import static com.ycm.Sql.QuerySql.connection;
 public class PaymentSql {
 
     /**
-     * Method with a query to insert a member into the database
+     * Method with a query to insert a payment into the database
      *
      * @param username the username of the member making payment.
      * @param paymentDate the date of the payment.

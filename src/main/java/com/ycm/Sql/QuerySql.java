@@ -21,14 +21,14 @@ public class QuerySql {
     private static Connection conn;
 
     /**
-     * Gets the connection.
+     * Method that gets the connection.
      *
      * @return the connection.
      */
     public static Connection getConnection() { return conn; }
 
     /**
-     * Assign a connection and create a statement.
+     * Method that assigns a connection and creates a statement.
      *
      * @return the statement.
      */

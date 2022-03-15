@@ -17,7 +17,7 @@ import static com.ycm.Sql.QuerySql.connection;
 public class MemberSql {
 
     /**
-     * Method with a query to insert a member into the database
+     * Method with a query to register a member and insert it into the database
      *
      * @param username the username of the new member.
      * @param password the password of new member.
@@ -39,7 +39,13 @@ public class MemberSql {
     }
 
     /**
-     *
+     * Method with a query to add a boat to the database.
+     * @param ID is the ID of the boat that will be added.
+     * @param name is the ID of the boat that will be added.
+     * @param length is the length of the boat.
+     * @param boatStorage is the boat storage fee for this specific boat.
+     * @param owner is the owner of the boat
+     * @return true if there are no errors.
      **/
     public static Object AddBoat(int ID, String name, double length, double boatStorage, String owner) {
         String sqlInsert = "INSERT INTO boat (ID, name, length, boatStorage, owner) VALUES('" + ID + "','" + name + "','" + length + "','" + boatStorage + "','" + owner + "')";
@@ -53,11 +59,11 @@ public class MemberSql {
     }
 
     /**
-     * Method with a query to delete a member from database.
+     * Method with a query to remove a boat from database.
      *
      * @param ID   it's the ID of the boat that will be deleted.
      * @return true if there are no errors.
-     */
+     **/
     public static Object removeBoat(int ID) {
         String sqlDelete = "DELETE FROM boat WHERE ID='" + ID + "'";
         try {
@@ -73,7 +79,7 @@ public class MemberSql {
      * Method with a query get the last boat ID from database.
      *
      * @return true if there are no errors.
-     */
+     **/
     public static Object lastBoatID() {
         String sqlSelect = "SELECT MAX( `ID` ) FROM `boat`";
         try {
@@ -90,11 +96,10 @@ public class MemberSql {
     }
 
     /**
-     * Changes a boolean that tells whether a person is logged (1) or not(0).
-     * Can be a member or an employee
+     * Method to check when is the expiry date of an annual payment.
      *
      * @param username the username of the member.
-     * @param type     the type of payment.
+     * @param type the type of payment.
      * @return the last payment date.
      * @throws SQLException if there is any error with the queries.
      */
@@ -121,7 +126,7 @@ public class MemberSql {
 
 
     /**
-     * Selects all the boats
+     * Method that selects all the boats of a member.
      *
      * @return all the boats of a member.
      * @throws SQLException if there is any error with the queries.

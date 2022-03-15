@@ -1,7 +1,6 @@
 package com.ycm.Sql;
 
 import com.ycm.Classes.Boat;
-import com.ycm.Classes.Employee;
 import com.ycm.Classes.Member;
 
 import java.sql.Date;
@@ -17,8 +16,7 @@ public class EmployeeSql {
     public EmployeeSql(){};
 
     /**
-     * Create a new notification made by user in the database.
-     *
+     * Method that create a new notification made by an employee and adds it in the database.
      * @return true if there are no errors.
      **/
     public static Object sendNotification(String Username, Date expiringDate, String typeofPayment, double amount){
@@ -50,7 +48,7 @@ public class EmployeeSql {
     }
 
     /**
-     * Selects all the members
+     * Method to select all the members in the database
      *
      * @return all the members registered.
      * @throws SQLException if there is any error with the queries.
@@ -75,9 +73,9 @@ public class EmployeeSql {
     }
 
     /**
-     * Method with a query to delete a member from the database.
+     * Method with a query to remove a member from the database
      *
-     * @param username the name of the member to be deleted.
+     * @param username the name of the member to be deleted
      * @return true if there are no errors.
      */
     public static Object removeMember(String username) {
@@ -114,8 +112,7 @@ public class EmployeeSql {
     }
 
     /**
-     * Method with a query to delete a member from database.
-     *
+     * Method with a query to remove a race from database and all of its competitors
      * @return true if there are no errors.
      */
     public static Object removeRace(String name) {
@@ -130,5 +127,4 @@ public class EmployeeSql {
             return false;
         }
     }
-
 }

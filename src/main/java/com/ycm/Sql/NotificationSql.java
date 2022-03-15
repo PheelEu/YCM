@@ -12,9 +12,6 @@ import static com.ycm.Sql.QuerySql.connection;
 
 public class NotificationSql {
 
-
-
-
     /**
      * Method with a query to insert a notification into the database
      *
@@ -62,9 +59,9 @@ public class NotificationSql {
     }
 
     /**
-     * Selects all the notifications that have been sent to a member
+     * Selects all the notifications that have been sent to a member.
      *
-     * @return all the payments in the database.
+     * @return all the notifications regarding a member in the database.
      * @throws SQLException if there is any error with the queries.
      */
     public static Object viewMemberNotifications(String username){
@@ -87,7 +84,7 @@ public class NotificationSql {
     }
 
     /**
-     * Method with a query to delete a payment from the database.
+     * Method with a query to delete a notification from the database.
      *
      * @param boatID it's the id of the boat associated to the notifications which will be deleted.
      * @return true if there are no errors.
