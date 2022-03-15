@@ -231,10 +231,6 @@ public class MemberGui {
         return contentPane;
     }
 
-    /**
-     * This is the main stage, it's the starting point of our application regarding all the GUI classes.
-     * @throws IOException if any exception gets thrown.
-     **/
     /*
     @Override
     public void start(){
