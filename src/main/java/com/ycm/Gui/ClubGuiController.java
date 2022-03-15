@@ -5,9 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-
 import java.io.IOException;
-
 import static com.ycm.Gui.ClubGui.*;
 
 /**
@@ -88,5 +86,4 @@ public class ClubGuiController {
             e.printStackTrace();
         }
     }
-
 }

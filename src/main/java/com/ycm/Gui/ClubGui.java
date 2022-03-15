@@ -4,9 +4,14 @@ import com.ycm.Sockets.Client;
 import com.ycm.Sockets.Message;
 import com.ycm.Sockets.Request;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.transform.Scale;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,7 +27,7 @@ import java.io.IOException;
  * @author Matteo Angeloni
  **/
 
-public class ClubGui extends Application {
+public class ClubGui extends Application{
 
     private static boolean serverNotFound = false;
 
@@ -33,6 +38,14 @@ public class ClubGui extends Application {
     private static Stage popupStage;
 
     private static int typeof;
+
+    private static double mainStageWidth = 0.0;
+
+    private static double mainStageHeight = 0.0;
+
+    public static void setMainStageHeight(double height) {mainStageHeight = height;}
+
+    public static void setMainStageWidth(double width) {mainStageWidth = width;}
 
     public static Stage getMainStage() {return mainStage;}
 
@@ -99,7 +112,7 @@ public class ClubGui extends Application {
             return false;
         throw new IllegalArgumentException(s+" is not a bool. Only 1 and 0 are.");
     }
-
+    
     /**
      * This is the main stage, it's the starting point of our application regarding all the GUI classes.
      * @param stage it's the stage to be set when the application is executed.
@@ -109,16 +122,82 @@ public class ClubGui extends Application {
     public void start(Stage stage) throws IOException {
         Object obj = new Client().run(new Request(new Message("")));
 
-        if(obj instanceof Exception){
+        if (obj instanceof Exception) {
             serverNotFound = true;
         }
+
+        //Getting screen bounds
+        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+
+        //Creating a new stage and Popup stage
         mainStage = new Stage();
         popupStage = new Stage();
+
+        //Loading first Scene from a fxml file
         FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("welcome-page.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+
+        //Setting the scene and the title, making window resizable
         mainStage.setTitle("YCM Club");
         mainStage.setScene(scene);
+        mainStage.setResizable(true);
         mainStage.show();
+
+        final double initWidth = scene.getWidth();
+        final double initHeight = scene.getHeight();
+        final double ratio = initWidth / initHeight;
+
+        //Setting max height and max width to screen bounds
+        mainStage.setMaxHeight(screenBounds.getHeight());
+        mainStage.setMaxWidth(screenBounds.getWidth());
+
+        //Modifying stage size to resized value and scaling the whole scene
+        mainStage.minWidthProperty().bind(scene.heightProperty().multiply(1.5));
+        mainStage.minHeightProperty().bind(scene.widthProperty().divide(1.5));
+        SceneSizeChangeListener sizeListener = new SceneSizeChangeListener(scene, ratio, initHeight, initWidth, mainStage);
+        scene.widthProperty().addListener(sizeListener);
+        scene.heightProperty().addListener(sizeListener);
+
+        mainStage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            mainStageWidth = newVal.doubleValue();
+        });
+
+        mainStage.heightProperty().addListener((obs, oldVal, newVal) -> {
+            mainStageHeight = newVal.doubleValue();
+        });
+    }
+
+
+    static class SceneSizeChangeListener implements ChangeListener<Number> {
+        private final Scene scene;
+        private final double ratio;
+        private final double initHeight;
+        private final double initWidth;
+        private final Stage stage;
+
+        public SceneSizeChangeListener(Scene scene, double ratio, double initHeight, double initWidth, Stage mainStage) {
+            this.scene = scene;
+            this.ratio = ratio;
+            this.initHeight = initHeight;
+            this.initWidth = initWidth;
+            this.stage = mainStage;
+        }
+
+        @Override
+        public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
+            final double newWidth = stage.getWidth();
+            final double newHeight = stage.getHeight();
+
+            double scaleFactor =
+                    newWidth / newHeight > ratio
+                            ? newHeight / initHeight
+                            : newWidth / initWidth;
+
+            Scale scale = new Scale(scaleFactor, scaleFactor);
+            scale.setPivotX(0);
+            scale.setPivotY(0);
+            scene.getRoot().getTransforms().setAll(scale);
+        }
     }
 
     /**
@@ -150,5 +229,4 @@ public class ClubGui extends Application {
         contentPane = (fxmlLoader.load());
         return contentPane;
     }
-
 }
