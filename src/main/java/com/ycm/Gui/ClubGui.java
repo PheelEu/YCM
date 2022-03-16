@@ -39,9 +39,13 @@ public class ClubGui extends Application{
 
     private static int typeof;
 
-    private static double mainStageWidth = 0.0;
+    private static double mainStageWidth;
 
-    private static double mainStageHeight = 0.0;
+    private static double mainStageHeight;
+
+    public static void setMainStageHeight(double height) {mainStageHeight = height;}
+
+    public static void setMainStageWidth(double width) {mainStageWidth = width;}
 
     public static Stage getMainStage() {return mainStage;}
 

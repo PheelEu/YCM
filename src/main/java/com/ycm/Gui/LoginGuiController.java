@@ -74,6 +74,7 @@ public class LoginGuiController {
                     if(getMember() != null){
                         try {
                             setScene(MemberGui.MemberWelcomeScene());
+
                             ClubGui.getPopupStage().close();
                         } catch (IOException e) {
                             e.printStackTrace();

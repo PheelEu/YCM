@@ -5,20 +5,13 @@ import com.ycm.Classes.Member;
 import com.ycm.Classes.Notification;
 import com.ycm.Classes.Race;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
-import javafx.stage.Screen;
-
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
-import static com.ycm.Gui.ClubGui.*;
 
 
 public class MemberGui {
@@ -31,11 +24,11 @@ public class MemberGui {
 
     private static Race r;
 
-    public static ArrayList<Race> upcomingRaces = new ArrayList<Race>();
+    public static ArrayList<Race> upcomingRaces = new ArrayList<>();
 
-    public static ArrayList<Boat> memberBoats = new ArrayList<Boat>();
+    public static ArrayList<Boat> memberBoats = new ArrayList<>();
 
-    public static ArrayList<Notification> mNotifications = new ArrayList<Notification>();
+    public static ArrayList<Notification> mNotifications = new ArrayList<>();
 
     private static Member m = null;
 
@@ -171,7 +164,41 @@ public class MemberGui {
     public static Scene MemberWelcomeScene() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("welcome-page-member.fxml"));
         Scene memberWelcomeScene = new Scene(fxmlLoader.load());
+
         return memberWelcomeScene;
+        //Setting the scene and the title, making window resizable
+
+        /*
+        getMainStage().setResizable(true);
+        getMainStage().show();
+
+        final double initWidth = getMainStage().getScene().getWidth();
+        final double initHeight =  getMainStage().getScene().getHeight();
+        final double ratio = initWidth / initHeight;
+
+
+        //Getting screen bounds
+        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+
+        //Setting max height and max width to screen bounds
+        getMainStage().setMaxHeight(screenBounds.getHeight());
+        getMainStage().setMaxWidth(screenBounds.getWidth());
+
+        //Modifying stage size to resized value and scaling the whole scene
+        getMainStage().minWidthProperty().bind( getMainStage().getScene().heightProperty().multiply(1.5));
+        getMainStage().minHeightProperty().bind( getMainStage().getScene().widthProperty().divide(1.5));
+        ClubGui.SceneSizeChangeListener sizeListener = new ClubGui.SceneSizeChangeListener( getMainStage().getScene(), ratio, initHeight, initWidth, getMainStage());
+        getMainStage().getScene().widthProperty().addListener(sizeListener);
+        getMainStage().getScene().heightProperty().addListener(sizeListener);
+
+        getMainStage().widthProperty().addListener((obs, oldVal, newVal) -> {
+            setMainStageWidth(newVal.doubleValue());
+        });
+
+        getMainStage().heightProperty().addListener((obs, oldVal, newVal) -> {
+            setMainStageHeight(newVal.doubleValue());
+        });
+        */
     }
 
     /**
