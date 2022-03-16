@@ -151,8 +151,8 @@ public class ClubGui extends Application{
         stage.setMaxWidth(screenBounds.getWidth());
 
         //Modifying stage size to resized value and scaling the whole scene
-        stage.minWidthProperty().bind(scene.heightProperty().multiply(1.5));
-        stage.minHeightProperty().bind(scene.widthProperty().divide(1.5));
+        stage.minWidthProperty().bind(scene.heightProperty().multiply(1.45));
+        stage.minHeightProperty().bind(scene.widthProperty().divide(1.45));
         SceneSizeChangeListener sizeListener = new SceneSizeChangeListener(scene, ratio, initHeight, initWidth, stage);
         scene.widthProperty().addListener(sizeListener);
         scene.heightProperty().addListener(sizeListener);
