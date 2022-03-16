@@ -18,8 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static com.ycm.Gui.ClubGui.*;
-import static com.ycm.Gui.EmployeeGui.getEmployee;
-import static com.ycm.Gui.EmployeeGui.setEmployee;
+import static com.ycm.Gui.EmployeeGui.*;
 import static com.ycm.Gui.MemberGui.*;
 
 /**
@@ -65,6 +64,7 @@ public class LoginGuiController {
                     if(getEmployee() != null){
                         try {
                             setScene(EmployeeGui.EmployeeWelcomeScene());
+                            SceneSize(EmployeeWelcomeScene(), getMainStage());
                             ClubGui.getPopupStage().close();
                         } catch (IOException e) {
                             e.printStackTrace();

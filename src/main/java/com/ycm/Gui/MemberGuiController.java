@@ -398,12 +398,17 @@ public class MemberGuiController {
         a.setAlertType(Alert.AlertType.INFORMATION);
         Object logout = new Client().run(new Request(new Message( "logout", getMember().getUsername(), getMember().getPassword())));
         if((boolean) logout){
-            FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("welcome-page.fxml"));
             setMember(null);
+            //Loading first Scene from a fxml file
+            FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("welcome-page.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
+
+            //Setting the scene and the title, making window resizable
             getMainStage().setTitle("YCM Club");
             getMainStage().setScene(scene);
+            getMainStage().setResizable(true);
             getMainStage().show();
+            SceneSize(scene, getMainStage());
             a.setContentText("Logged out correctly!");
             a.showAndWait();
         }

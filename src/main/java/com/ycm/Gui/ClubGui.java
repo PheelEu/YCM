@@ -39,14 +39,6 @@ public class ClubGui extends Application{
 
     private static int typeof;
 
-    private static double mainStageWidth;
-
-    private static double mainStageHeight;
-
-    public static void setMainStageHeight(double height) {mainStageHeight = height;}
-
-    public static void setMainStageWidth(double width) {mainStageWidth = width;}
-
     public static Stage getMainStage() {return mainStage;}
 
     /**
@@ -79,7 +71,10 @@ public class ClubGui extends Application{
      *
      * @param popScene it's the scene to set for the popup stage
      **/
-    public static void setPopupScene(Scene popScene){popupStage.setScene(popScene);}
+    public static void setPopupScene(Scene popScene){
+        popupStage.setScene(popScene);
+        //SceneSize(popScene, popupStage);
+    }
 
     /**
      * Gets the type of payment to be made
@@ -140,7 +135,6 @@ public class ClubGui extends Application{
         mainStage.setScene(scene);
         mainStage.setResizable(true);
         mainStage.show();
-
         SceneSize(scene, mainStage);
     }
 
@@ -162,30 +156,10 @@ public class ClubGui extends Application{
         SceneSizeChangeListener sizeListener = new SceneSizeChangeListener(scene, ratio, initHeight, initWidth, stage);
         scene.widthProperty().addListener(sizeListener);
         scene.heightProperty().addListener(sizeListener);
-
-        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            setMainStageWidth(newVal.doubleValue());
-        });
-
-        stage.heightProperty().addListener((obs, oldVal, newVal) -> {
-           setMainStageHeight(newVal.doubleValue());
-        });
     }
 
-    static class SceneSizeChangeListener implements ChangeListener<Number> {
-        private final Scene scene;
-        private final double ratio;
-        private final double initHeight;
-        private final double initWidth;
-        private final Stage stage;
-
-        public SceneSizeChangeListener(Scene scene, double ratio, double initHeight, double initWidth, Stage mainStage) {
-            this.scene = scene;
-            this.ratio = ratio;
-            this.initHeight = initHeight;
-            this.initWidth = initWidth;
-            this.stage = mainStage;
-        }
+    record SceneSizeChangeListener(Scene scene, double ratio, double initHeight, double initWidth,
+                                   Stage stage) implements ChangeListener<Number> {
 
         @Override
         public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {

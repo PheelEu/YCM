@@ -5,18 +5,12 @@ import com.ycm.Classes.Member;
 import com.ycm.Classes.Notification;
 import com.ycm.Classes.Race;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import static com.ycm.Gui.ClubGui.SceneSize;
-import static com.ycm.Gui.ClubGui.getMainStage;
-
 
 public class MemberGui {
 

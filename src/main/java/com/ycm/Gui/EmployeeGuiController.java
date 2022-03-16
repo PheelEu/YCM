@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.ycm.Classes.Club.getToday;
+import static com.ycm.Gui.ClubGui.SceneSize;
 import static com.ycm.Gui.ClubGui.getMainStage;
 import static com.ycm.Gui.EmployeeGui.*;
 import static com.ycm.Gui.EmployeeViewRGuiController.racesObservableList;
@@ -221,9 +222,13 @@ public class EmployeeGuiController {
             FXMLLoader fxmlLoader = new FXMLLoader(ClubGui.class.getResource("welcome-page.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             setEmployee(null);
+
+            //Setting the scene and the title, making window resizable
             getMainStage().setTitle("YCM Club");
             getMainStage().setScene(scene);
+            getMainStage().setResizable(true);
             getMainStage().show();
+            SceneSize(scene, getMainStage());
             a.setContentText("Logged out correctly!");
             a.showAndWait();
         }
