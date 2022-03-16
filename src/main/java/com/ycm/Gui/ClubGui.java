@@ -56,6 +56,7 @@ public class ClubGui extends Application{
      **/
     public static void setScene(Scene scene) {
         mainStage.setScene(scene);
+        SceneSize(scene, mainStage);
     }
 
     /**
@@ -126,9 +127,6 @@ public class ClubGui extends Application{
             serverNotFound = true;
         }
 
-        //Getting screen bounds
-        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-
         //Creating a new stage and Popup stage
         mainStage = new Stage();
         popupStage = new Stage();
@@ -143,30 +141,36 @@ public class ClubGui extends Application{
         mainStage.setResizable(true);
         mainStage.show();
 
+        SceneSize(scene, mainStage);
+    }
+
+    public static void SceneSize(Scene scene, Stage stage){
+        //Getting screen bounds
+        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+
         final double initWidth = scene.getWidth();
         final double initHeight = scene.getHeight();
         final double ratio = initWidth / initHeight;
 
         //Setting max height and max width to screen bounds
-        mainStage.setMaxHeight(screenBounds.getHeight());
-        mainStage.setMaxWidth(screenBounds.getWidth());
+        stage.setMaxHeight(screenBounds.getHeight());
+        stage.setMaxWidth(screenBounds.getWidth());
 
         //Modifying stage size to resized value and scaling the whole scene
-        mainStage.minWidthProperty().bind(scene.heightProperty().multiply(1.5));
-        mainStage.minHeightProperty().bind(scene.widthProperty().divide(1.5));
-        SceneSizeChangeListener sizeListener = new SceneSizeChangeListener(scene, ratio, initHeight, initWidth, mainStage);
+        stage.minWidthProperty().bind(scene.heightProperty().multiply(1.5));
+        stage.minHeightProperty().bind(scene.widthProperty().divide(1.5));
+        SceneSizeChangeListener sizeListener = new SceneSizeChangeListener(scene, ratio, initHeight, initWidth, stage);
         scene.widthProperty().addListener(sizeListener);
         scene.heightProperty().addListener(sizeListener);
 
-        mainStage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            mainStageWidth = newVal.doubleValue();
+        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            setMainStageWidth(newVal.doubleValue());
         });
 
-        mainStage.heightProperty().addListener((obs, oldVal, newVal) -> {
-            mainStageHeight = newVal.doubleValue();
+        stage.heightProperty().addListener((obs, oldVal, newVal) -> {
+           setMainStageHeight(newVal.doubleValue());
         });
     }
-
 
     static class SceneSizeChangeListener implements ChangeListener<Number> {
         private final Scene scene;

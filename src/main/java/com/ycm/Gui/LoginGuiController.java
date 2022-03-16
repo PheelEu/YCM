@@ -8,17 +8,19 @@ import com.ycm.Sockets.Message;
 import com.ycm.Sockets.Request;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 import static com.ycm.Gui.ClubGui.*;
 import static com.ycm.Gui.EmployeeGui.getEmployee;
 import static com.ycm.Gui.EmployeeGui.setEmployee;
-import static com.ycm.Gui.MemberGui.getMember;
-import static com.ycm.Gui.MemberGui.setMember;
+import static com.ycm.Gui.MemberGui.*;
 
 /**
  * The {@code Login Gui Controller} class defines:
@@ -74,8 +76,9 @@ public class LoginGuiController {
                     if(getMember() != null){
                         try {
                             setScene(MemberGui.MemberWelcomeScene());
-
+                            SceneSize(MemberWelcomeScene(), getMainStage());
                             ClubGui.getPopupStage().close();
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
