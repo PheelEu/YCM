@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ycm.Gui.MemberGuiController">
     <children>
-        <Pane prefHeight="800.0" prefWidth="1200.0"  style="-fx-background-color: white">
+        <Pane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: white">
             <children>
             <ImageView fitHeight="41.0" fitWidth="41.0" layoutX="1081.0" layoutY="23.0" onMouseClicked="#logoutIcon" pickOnBounds="true" preserveRatio="true">
                <image>
