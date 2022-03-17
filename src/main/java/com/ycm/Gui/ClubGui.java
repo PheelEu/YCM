@@ -134,8 +134,9 @@ public class ClubGui extends Application{
         mainStage.setTitle("YCM Club");
         mainStage.setScene(scene);
         mainStage.setResizable(true);
-        mainStage.show();
         SceneSize(scene, mainStage);
+        mainStage.show();
+
     }
 
     public static void SceneSize(Scene scene, Stage stage){
